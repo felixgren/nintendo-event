@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 const AppLol = styled.div`
     text-align: center;
-    font-family: 'NewRocker';
 `;
 
 const AppHeader = styled.header`
@@ -38,12 +37,12 @@ const AppLogo = styled.img`
 
 const AppLink = styled.a`
     color: #61dafb;
-    font-family: 'Montserrat';
-    font-weight: 400;
+    font-family: 'Montserrat-Italic';
+    font-weight: 200;
     transition: 0.25s;
 
     &:hover {
-        font-weight: 500;
+        font-weight: 800;
     }
 `;
 
@@ -54,7 +53,7 @@ const Default = () => {
                 <AppLogo src={logo} alt="logo" />
                 <p>mario time mario time mario time</p>
                 <AppLink
-                    href="https://reactjs.org"
+                    href="https://youtu.be/gDcPJqnrn44"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
