@@ -1,13 +1,12 @@
 import styled from 'styled-components';
-import StateTest from './StateTest';
-import HookTest from './HookTest';
+import Hero from './Hero';
 
 const PageWrapper = styled.div``;
 
 function App() {
     return (
         <PageWrapper>
-            <HookTest />
+            <Hero />
         </PageWrapper>
     );
 }
