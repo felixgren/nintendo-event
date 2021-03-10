@@ -14,6 +14,7 @@ const Icons = styled.div`
     height: 100%;
     background: no-repeat url(${heroBackground});
     background-position: top;
+    z-index: -100;
 `;
 
 const Logo = styled.div`
@@ -45,32 +46,32 @@ const Bold = styled.b`
     font-size: 46px;
 `;
 
-const ButtonWrapper = styled.div`
-    width: 380px;
-    height: 120px;
-`;
-
 const Button = styled.button`
     background: #ffc901;
-    width: 100%;
-    height: 100%;
-    transition: 250ms;
+    width: 380px;
+    height: 120px;
+    margin-top: 15px;
+    transition: 200ms;
+    font-family: inherit;
+    font-weight: 700;
     font-size: 38px;
-    font-weight: 600;
-    box-sizing: content-box;
-    z-index: 10;
     outline: none;
     border: 4px solid black;
     border-radius: 10px;
     cursor: pointer;
+    /* box-sizing: content-box; */
+    /* z-index: 1000; */
 
     &::before {
-        content: '';
-        box-sizing: content-box;
-        border: 4px solid black;
-        background: tomato;
-        z-index: 1;
-        padding: 10%;
+        /* content: 'JOIN'; */
+        /* box-sizing: border-box; */
+        /* position: relative; */
+        /* border: 4px solid black; */
+        /* background: tomato; */
+        /* z-index: 1; */
+        /* margin: 10px 10px; */
+        /* padding: calc(120px / 2) calc(380px / 2); */
+        /* margin: calc(120px / 2) calc(380px / 2); */
         /* padding: 100px 50px; */
         /* height: 8%; */
         /* margin: -3% -5%; */
@@ -83,8 +84,13 @@ const Button = styled.button`
     /* background: transparent; */
 
     &:hover {
-        background: hotpink;
+        background: #e2b200;
     }
+`;
+
+const ButtonText = styled.p`
+    font-weight: 700;
+    font-size: 46px;
 `;
 
 const Hero = () => {
@@ -99,9 +105,7 @@ const Hero = () => {
                     <Name>
                         NEW <Bold>SUPER MARIO 3D</Bold> WORLD
                     </Name>
-                    <ButtonWrapper>
-                        <Button></Button>
-                    </ButtonWrapper>
+                    <Button>JOIN EVENT</Button>
                 </InfoWrapper>
             </Icons>
         </Wrapper>
