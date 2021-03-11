@@ -1,16 +1,25 @@
 import styled from 'styled-components';
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+    & > p,
+    video {
+        transition: 250ms;
+    }
+
+    &:hover > p {
+        transform: translateY(5px);
+    }
+
+    &:hover > video {
+        transform: translateY(5px);
+    }
+`;
 
 const StyledVideo = styled.video`
-    width: 200px;
-    transition: 250ms;
+    width: 180px;
+    filter: ${(props) => props.active && 'brightness(50%)'};
     cursor: pointer;
     margin-right: 24px;
-
-    &:hover {
-        transform: scale(1.2);
-    }
 `;
 
 const Text = styled.p`
@@ -19,14 +28,14 @@ const Text = styled.p`
 
 const Source = styled.source``;
 
-const VideoThumbnail = ({ vidSrc, description }) => {
+const VideoThumbnail = ({ vidSrc, description, active }) => {
     return (
         <Wrapper>
             <StyledVideo
                 muted
                 disablekb
                 loop
-                useRef
+                active={active}
                 onMouseEnter={(e) => e.target.play()}
                 onMouseLeave={(e) => e.target.pause()}
             >
