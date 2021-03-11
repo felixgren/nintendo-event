@@ -16,9 +16,10 @@ const Wrapper = styled.div`
 `;
 
 const ActiveVideo = styled.video`
+    transition: opacity 250ms;
+    opacity: ${(props) => (props.activeFade ? '0' : '1')};
     width: 100%;
     max-height: 100vh;
-    box-shadow: inset 10px 10px 250px #000000;
     height: 55vw;
     object-fit: cover;
 `;
@@ -36,8 +37,8 @@ const ThumbnailWrapper = styled.div`
 
 const TextWrapper = styled.div`
     position: absolute;
-    top: 64px;
     left: 64px;
+    top: 64px;
 `;
 
 const Header = styled.h2`
@@ -55,9 +56,10 @@ const Description = styled.p`
 `;
 
 const Fade = styled.div`
+    position: absolute;
+    top: 0;
     width: 60%;
     height: 100%;
-    position: absolute;
     background: linear-gradient(
         72.66deg,
         #000000 -7.66%,
@@ -90,15 +92,23 @@ const VideoGallery = () => {
         },
     ];
 
-    const [activeVideo, setActive] = useState(videos[0]);
+    const [activeVideo, setVideo] = useState(videos[0]);
+    const [activeFade, setFade] = useState(false);
 
     return (
         <Wrapper>
-            <Fade />
-            <ActiveVideo key={activeVideo.src} muted disablekb autoPlay loop>
+            <ActiveVideo
+                activeFade={activeFade}
+                key={activeVideo.src}
+                muted
+                disablekb
+                autoPlay
+                loop
+            >
                 <Source src={activeVideo.src} type="video/mp4" />
             </ActiveVideo>
 
+            <Fade activeFade={activeFade} />
             <TextWrapper>
                 <Header>{activeVideo.title}</Header>
                 <Description>{activeVideo.description}</Description>
@@ -106,7 +116,14 @@ const VideoGallery = () => {
 
             <ThumbnailWrapper>
                 {videos.map((video, key) => (
-                    <Div key={key} onClick={() => setActive(video)}>
+                    <Div
+                        key={key}
+                        onClick={() => {
+                            setFade(true);
+                            setTimeout(() => setVideo(video), 250);
+                            setTimeout(() => setFade(false), 500);
+                        }}
+                    >
                         <Thumbnail
                             active={video.title === activeVideo.title}
                             vidSrc={video.src}
