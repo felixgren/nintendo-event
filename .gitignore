@@ -24,3 +24,4 @@ yarn-error.log*
 
 # unfinished
 /src/components/HeroTest.js
+/src/components/Default.js

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Hero from './Hero';
+import GameInfo from './GameInfo';
 import SignUp from './SignUp';
 import VideoGallery from './VideoGallery';
 import Footer from './Footer';
@@ -15,10 +16,11 @@ const Gap = styled.div`
 function App() {
     return (
         <PageWrapper>
-            <Hero />
             <SignUp />
+            <Hero />
             <VideoGallery />
             <Gap />
+            <GameInfo />
             <Footer />
         </PageWrapper>
     );

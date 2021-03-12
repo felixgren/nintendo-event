@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Text from './Text';
+import EventTitle from './EventTitle';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -29,13 +30,7 @@ const EventInfo = () => {
     return (
         <Wrapper>
             <Div>
-                <Text transform="uppercase">
-                    <Bold>Mario</Bold>
-                </Text>
-                <Text m="0 6px">vs</Text>
-                <Text transform="uppercase">
-                    <Bold>Bowser</Bold>
-                </Text>
+                <EventTitle size="24px" />
                 <Text m="0 8px" size="40px" weight="300">
                     |
                 </Text>
@@ -43,12 +38,14 @@ const EventInfo = () => {
                     Event 2021
                 </Text>
             </Div>
+
             <Div>
                 <Text size="20px" transform="uppercase">
                     Apr <Bold>27</Bold>
                     <Bold> - </Bold> June <Bold>2</Bold>
                 </Text>
             </Div>
+
             <Div>
                 <Text w="110px" weight="700" size="16px" align="right">
                     Automobile building

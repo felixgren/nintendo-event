@@ -1,4 +1,4 @@
-import logo from '../logo512.png';
+import logo from '../../logo512.png';
 import styled from 'styled-components';
 
 const AppLol = styled.div`

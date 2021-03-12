@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import CatLogo from '../icons/CatLogo';
+import CatLogo from '../../icons/CatLogo';
 import React, { Component } from 'react';
 
 const Wrapper = styled.div``;

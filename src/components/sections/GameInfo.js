@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import React, { useState } from 'react';
-import EventInfo from './EventInfo';
+import EventInfo from '../EventInfo';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -24,7 +24,7 @@ const Strong = styled.strong`
     font-size: 46px;
 `;
 
-const SignUp = () => {
+const GameInfo = () => {
     return (
         <Wrapper>
             <EventInfoWrapper>
@@ -37,4 +37,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default GameInfo;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import iconImage from '../images/footer-icons.webp';
+import iconImage from '../../images/footer-icons.webp';
 
 const Wrapper = styled.div`
     width: 100%;

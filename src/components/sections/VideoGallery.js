@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Thumbnail from './VideoThumbnail';
-import video1 from '../videos/video1.mp4';
-import video2 from '../videos/video2.mp4';
-import video3 from '../videos/video1.mp4';
+import Thumbnail from './../VideoThumbnail';
+import video1 from '../../videos/video1.mp4';
+import video2 from '../../videos/video2.mp4';
+import video3 from '../../videos/video1.mp4';
 
 const Wrapper = styled.div`
     width: 100%;

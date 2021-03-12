@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import heroBackground from '../images/hero-background.webp';
-import heroLogo from '../images/hero-logo.webp';
+import heroBackground from '../../images/hero-background.webp';
+import heroLogo from '../../images/hero-logo.webp';
 
 const Wrapper = styled.div`
     width: 100%;
