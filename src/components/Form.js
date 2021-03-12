@@ -25,14 +25,22 @@ const Input = styled.input`
     height: 60px;
     border: 2px solid red;
     border-radius: 4px;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
     margin-top: 16px;
     box-shadow: -4px -4px 0px red;
     color: red;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 500;
     padding: 0 24px;
     letter-spacing: 0.05em;
     transition: 200ms;
+    color: black;
 
+    &::placeholder {
+        font-weight: 400;
+    }
     &:focus {
         transform: translate(-3px, -3px);
         box-shadow: 0 0 0 red;
@@ -126,7 +134,7 @@ const Form = ({ isPopup }) => {
                     placeholder="Phone"
                 />
 
-                <Label for="policy">
+                <Label>
                     <CheckboxInput type="checkbox" />
                     <CheckboxSpan />
                     <Text

@@ -59,38 +59,10 @@ const Button = styled.button`
     border: 4px solid black;
     border-radius: 10px;
     cursor: pointer;
-    /* box-sizing: content-box; */
-    /* z-index: 1000; */
-
-    &::before {
-        /* content: 'JOIN'; */
-        /* box-sizing: border-box; */
-        /* position: relative; */
-        /* border: 4px solid black; */
-        /* background: tomato; */
-        /* z-index: 1; */
-        /* margin: 10px 10px; */
-        /* padding: calc(120px / 2) calc(380px / 2); */
-        /* margin: calc(120px / 2) calc(380px / 2); */
-        /* padding: 100px 50px; */
-        /* height: 8%; */
-        /* margin: -3% -5%; */
-        /* width: 14%; */
-    }
-    /* -webkit-user-select: none; */
-    /* -moz-user-select: none; */
-    /* width: 50px; */
-    /* height: 50px; */
-    /* background: transparent; */
 
     &:hover {
         background: #e2b200;
     }
-`;
-
-const ButtonText = styled.p`
-    font-weight: 700;
-    font-size: 46px;
 `;
 
 const Hero = () => {

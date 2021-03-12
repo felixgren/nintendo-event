@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import React, { useState } from 'react';
 import EventInfo from '../EventInfo';
 import Form from '../Form';
 

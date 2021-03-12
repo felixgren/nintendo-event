@@ -54,39 +54,3 @@ Text.defaultProps = {
 };
 
 export default Text;
-
-// const Paragraph = ({
-//     text,
-//     fontFamily,
-//     fontStyle,
-//     size,
-//     weight,
-//     color,
-//     w,
-//     h,
-//     m,
-//     maxWidth,
-//     textAlign,
-//     lineHeight,
-//     transform,
-// }) => {
-//     return (
-//         <Text
-//             text={text}
-//             fontFamily={fontFamily}
-//             fontStyle={fontStyle}
-//             size={size}
-//             weight={weight}
-//             color={color}
-//             w={w}
-//             h={h}
-//             m={m}
-//             maxWidth={maxWidth}
-//             textAlign={textAlign}
-//             lineHeight={lineHeight}
-//             transform={transform}
-//         >
-//             {text}
-//         </Text>
-//     );
-// };
