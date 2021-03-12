@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import Hero from './Hero';
-import Footer from './Footer';
+import SignUp from './SignUp';
 import VideoGallery from './VideoGallery';
+import Footer from './Footer';
 
 const PageWrapper = styled.div``;
 
@@ -14,8 +15,9 @@ const Gap = styled.div`
 function App() {
     return (
         <PageWrapper>
-            <VideoGallery />
             <Hero />
+            <SignUp />
+            <VideoGallery />
             <Gap />
             <Footer />
         </PageWrapper>
