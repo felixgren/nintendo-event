@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrapper = styled.div`
     & > p,
@@ -44,6 +45,17 @@ const VideoThumbnail = ({ vidSrc, description, active }) => {
             <Text>{description}</Text>
         </Wrapper>
     );
+};
+
+VideoThumbnail.propTypes = {
+    vidSrc: PropTypes.string.isRequired,
+    active: PropTypes.bool,
+    description: PropTypes.string,
+};
+
+VideoThumbnail.defaultProps = {
+    active: false,
+    description: '',
 };
 
 export default VideoThumbnail;

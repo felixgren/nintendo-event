@@ -1,69 +1,64 @@
 import styled from 'styled-components';
+import Text from './Text';
 
 const Wrapper = styled.div`
     width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    color: #ff0000;
 `;
 
 const Div = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
-    width: 370px;
-    height: auto;
-    font-size: 24px;
-    /* font-style: oblique -13deg; */
-    font-style: italic;
-`;
+    width: 350px;
+    margin-top: 32px;
 
-const Paragraph = styled.p``;
-
-const ParagraphSmall = styled.p`
-    font-size: 16px;
-    /* width: 50px; */
-
-    & ~ & {
-        background-color: hotpink;
-        width: 100px;
+    & > p {
+        font-style: italic;
     }
 `;
 
-const Seperator = styled.p`
-    font-size: 40px;
-    font-weight: 300;
-    padding: 0 10px;
-`;
-
 const Bold = styled.b`
-    font-weight: 650;
-    width: 100px;
+    font-weight: 600;
+    font-size: 24px;
 `;
 
 const EventInfo = () => {
     return (
         <Wrapper>
             <Div>
-                <Paragraph>
-                    <Bold>MARIO</Bold> vs <Bold>BOWSER</Bold>
-                </Paragraph>
-                <Seperator>|</Seperator>
-                <ParagraphSmall>EVENT 2021</ParagraphSmall>
+                <Text transform="uppercase">
+                    <Bold>Mario</Bold>
+                </Text>
+                <Text m="0 6px">vs</Text>
+                <Text transform="uppercase">
+                    <Bold>Bowser</Bold>
+                </Text>
+                <Text m="0 8px" size="40px" weight="300">
+                    |
+                </Text>
+                <Text weight="500" transform="uppercase" size="14px" w="44px">
+                    Event 2021
+                </Text>
             </Div>
             <Div>
-                <Paragraph>
-                    APR <Bold>27</Bold> - JUNE <Bold>2</Bold>
-                </Paragraph>
+                <Text size="20px" transform="uppercase">
+                    Apr <Bold>27</Bold>
+                    <Bold> - </Bold> June <Bold>2</Bold>
+                </Text>
             </Div>
             <Div>
-                <ParagraphSmall>
-                    <Bold>Automobile building</Bold>
-                </ParagraphSmall>
-                <Seperator>|</Seperator>
-                <ParagraphSmall>Fair Park Dallas, Texas</ParagraphSmall>
+                <Text w="110px" weight="700" size="16px" align="right">
+                    Automobile building
+                </Text>
+                <Text m="0 8px" size="40px" weight="300">
+                    |
+                </Text>
+                <Text weight="500" w="100px" size="14px">
+                    Fair Park Dallas, Texas
+                </Text>
             </Div>
         </Wrapper>
     );

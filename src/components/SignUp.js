@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     color: #ff0000;
 `;
 const EventInfoWrapper = styled.div`
-    padding: 64px 32px;
+    padding: 64px 16px;
     border: 1px solid red;
 `;
 
@@ -33,7 +33,6 @@ const SignUp = () => {
                 </Header>
                 <EventInfo />
             </EventInfoWrapper>
-            <p>lol</p>
         </Wrapper>
     );
 };
