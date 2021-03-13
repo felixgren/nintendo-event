@@ -52,7 +52,7 @@ const Input = styled.input`
 const Label = styled.label`
     display: flex;
     align-items: center;
-    padding: 20px 36px;
+    padding: 20px 36px 32px;
     position: relative;
 `;
 
@@ -105,7 +105,11 @@ const Form = ({ isPopup }) => {
         <Wrapper>
             {isPopup && (
                 <Div>
-                    <Text fontStyle="italic" transform="uppercase" size="28px">
+                    <Text
+                        fontFamily="Montserrat-Italic"
+                        transform="uppercase"
+                        size="28px"
+                    >
                         Event 2021
                     </Text>
                     <EventTitle size="28px" />
@@ -141,8 +145,7 @@ const Form = ({ isPopup }) => {
                     <Text
                         size="14px"
                         color="black"
-                        fontStyle="italic"
-                        weight="300"
+                        fontFamily="Montserrat-Italic"
                     >
                         I have read and accepted the privacy policy
                     </Text>

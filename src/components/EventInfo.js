@@ -17,7 +17,7 @@ const Div = styled.div`
     margin-top: 32px;
 
     & > p {
-        font-style: italic;
+        font-family: 'Montserrat-Italic';
     }
 `;
 

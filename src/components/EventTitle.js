@@ -12,7 +12,7 @@ const EventTitle = ({ color, size, align, m }) => {
         <Text
             color={color}
             size={size}
-            fontStyle="italic"
+            fontFamily="Montserrat-Italic"
             align={align}
             weight="600"
             transform="uppercase"
