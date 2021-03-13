@@ -3,13 +3,15 @@ import EventInfo from '../EventInfo';
 import Form from '../Form';
 
 const Wrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 755px;
     color: #ff0000;
 `;
 const EventInfoWrapper = styled.div`
     padding: 64px 16px;
-    border: 1px solid blue;
 `;
 
 const SignUp = () => {

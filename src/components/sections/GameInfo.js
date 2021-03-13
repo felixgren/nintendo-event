@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import EventInfo from '../EventInfo';
+import Text from '../Text';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -8,7 +9,6 @@ const Wrapper = styled.div`
 `;
 const EventInfoWrapper = styled.div`
     padding: 64px 16px;
-    border: 1px solid red;
 `;
 
 const Header = styled.h2`
@@ -31,6 +31,9 @@ const GameInfo = () => {
                     New <Strong>Super Mario 3D</Strong> World
                 </Header>
                 <EventInfo />
+                <Text align="center">
+                    soon i will be filled with COOL info 😎
+                </Text>
             </EventInfoWrapper>
         </Wrapper>
     );

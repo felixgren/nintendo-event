@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import heroBackground from '../../images/hero-background.webp';
 import heroLogo from '../../images/hero-logo.webp';
+import Button from '../Button';
+import EventTitle from '../EventTitle';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -24,7 +26,14 @@ const Logo = styled.div`
 `;
 
 const InfoWrapper = styled.div`
-    height: 500px;
+    margin: auto;
+    width: 700px;
+    background: linear-gradient(
+        270deg,
+        rgba(255, 0, 0, 0) 0%,
+        #ff0000 52.08%,
+        rgba(255, 0, 0, 0) 100%
+    );
 `;
 
 const Date = styled.h2`
@@ -36,35 +45,6 @@ const Span = styled.span`
     font-style: italic;
 `;
 
-const Name = styled.h2`
-    font-weight: 300;
-    font-size: 40px;
-`;
-
-const Bold = styled.b`
-    font-weight: 700;
-    font-size: 46px;
-`;
-
-const Button = styled.button`
-    background: #ffc901;
-    width: 380px;
-    height: 120px;
-    margin-top: 15px;
-    transition: 200ms;
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 38px;
-    outline: none;
-    border: 4px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-
-    &:hover {
-        background: #e2b200;
-    }
-`;
-
 const Hero = () => {
     return (
         <Wrapper>
@@ -74,10 +54,13 @@ const Hero = () => {
                     <Date>
                         EVENT 2021 <Span>APR 27 - JUNE 2</Span>
                     </Date>
-                    <Name>
-                        NEW <Bold>SUPER MARIO 3D</Bold> WORLD
-                    </Name>
-                    <Button>JOIN EVENT</Button>
+                    <EventTitle
+                        color="white"
+                        align="center"
+                        size="40px"
+                        m="4px 0 20px"
+                    />
+                    <Button isHero isBlue />
                 </InfoWrapper>
             </Icons>
         </Wrapper>

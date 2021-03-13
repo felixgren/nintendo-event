@@ -16,12 +16,12 @@ const Gap = styled.div`
 function App() {
     return (
         <PageWrapper>
-            <SignUp />
             <Hero />
             <VideoGallery />
-            <Gap />
+            <SignUp />
             <GameInfo />
             <Footer />
+            <Gap />
         </PageWrapper>
     );
 }

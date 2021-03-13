@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 import iconImage from '../../images/footer-icons.webp';
+import Button from '../Button';
+import Text from '../Text';
 
 const Wrapper = styled.div`
     width: 100%;
     height: 570px;
-    background: green;
+    background: #ff0000;
 `;
 
 const EventInfo = styled.div`
+    max-width: 1440px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     background: #ff0000;
@@ -63,6 +67,8 @@ const VsSpan = styled.span`
 `;
 
 const BottomWrapper = styled.div`
+    display: flex;
+    justify-content: center;
     background: white;
     height: 10%;
 `;
@@ -72,6 +78,7 @@ const Footer = () => {
         <Wrapper>
             <EventInfo>
                 <TopIcons src={iconImage} />
+                <Button isBlue />
                 <TextWrapper>
                     <LargeText>It's game time</LargeText>
                     <Dates>
@@ -79,7 +86,11 @@ const Footer = () => {
                     </Dates>
                 </TextWrapper>
             </EventInfo>
-            <BottomWrapper>Social icons etc go here</BottomWrapper>
+            <BottomWrapper>
+                <Text w="1440px" color="black">
+                    Social icons etc go here
+                </Text>
+            </BottomWrapper>
         </Wrapper>
     );
 };

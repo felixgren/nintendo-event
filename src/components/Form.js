@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Text from './Text';
 import EventTitle from './EventTitle';
+import Button from './Button';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -147,7 +148,8 @@ const Form = ({ isPopup }) => {
                     </Text>
                 </Label>
 
-                <Input type="submit" value="Send" />
+                {/* <Input type="submit" value="Send" /> */}
+                <Button type="submit" />
             </StyledForm>
         </Wrapper>
     );
