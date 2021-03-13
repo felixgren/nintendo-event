@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import iconImage from '../../images/footer-icons.webp';
 import Button from '../Button';
 import Text from '../Text';
+import EventTitle from '../EventTitle';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -10,7 +11,7 @@ const Wrapper = styled.div`
 `;
 
 const EventInfo = styled.div`
-    max-width: 1440px;
+    max-width: 1600px;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -29,41 +30,12 @@ const TextWrapper = styled.div`
     height: 300px;
 `;
 
-const LargeText = styled.h2`
-    text-transform: uppercase;
-    font-size: 140px;
-    font-weight: 800;
-    line-height: 148px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #a50505;
-
-    &::after {
-        content: '';
-    }
-`;
-
 const Dates = styled.p`
     position: absolute;
-    text-transform: uppercase;
     right: 70px;
     bottom: 30px;
     height: 80px;
-    line-height: 33px;
     width: 330px;
-    color: #ffffff;
-    font-size: 30px;
-    font-style: italic;
-    font-weight: 600;
-    line-height: 29px;
-    letter-spacing: 0em;
-    text-align: left;
-`;
-
-const VsSpan = styled.span`
-    font-weight: 200;
-    line-height: 29px;
-    text-transform: lowercase;
 `;
 
 const BottomWrapper = styled.div`
@@ -73,6 +45,11 @@ const BottomWrapper = styled.div`
     height: 10%;
 `;
 
+const Bold = styled.b`
+    font-weight: 600;
+    font-size: 24px;
+`;
+
 const Footer = () => {
     return (
         <Wrapper>
@@ -80,14 +57,32 @@ const Footer = () => {
                 <TopIcons src={iconImage} />
                 <Button isBlue />
                 <TextWrapper>
-                    <LargeText>It's game time</LargeText>
+                    <Text
+                        size="140px"
+                        weight="800"
+                        color="#a50505"
+                        transform="uppercase"
+                        lineHeight="148px"
+                    >
+                        It's game time
+                    </Text>
                     <Dates>
-                        Mario <VsSpan>vs</VsSpan> Bowser apr 27 - june 2
+                        <EventTitle color="#FFFFFF" size="28px" />
+
+                        <Text
+                            fontFamily="Montserrat-Italic"
+                            color="#FFFFFF"
+                            size="20px"
+                            transform="uppercase"
+                            m="4px 0 0 0"
+                        >
+                            Apr <Bold>27 -</Bold> June <Bold>2</Bold>
+                        </Text>
                     </Dates>
                 </TextWrapper>
             </EventInfo>
             <BottomWrapper>
-                <Text w="1440px" color="black">
+                <Text w="1600px" color="black">
                     Social icons etc go here
                 </Text>
             </BottomWrapper>
