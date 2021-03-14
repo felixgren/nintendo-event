@@ -3,6 +3,7 @@ import heroBackground from '../../images/hero-background.webp';
 import heroLogo from '../../images/hero-logo.webp';
 import Button from '../Button';
 import EventTitle from '../EventTitle';
+import Text from '../Text';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -36,14 +37,28 @@ const InfoWrapper = styled.div`
     );
 `;
 
-const Date = styled.h2`
-    font-weight: 700;
-    font-size: 30px;
+const StyledText = styled(Text)`
+    &::first-letter {
+        text-transform: capitalize;
+    }
 `;
-const Span = styled.span`
-    font-weight: 300;
-    font-style: italic;
-`;
+
+const InviteText = () => {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
+    const country = params.get('country');
+
+    return (
+        <StyledText color="white" align="center" fontStyle="italic">
+            {name && `${name}!`} You are invited to travel{' '}
+            {country ? `from ${country} to 🇯🇵 to` : 'to 🇯🇵 and'} participate
+            in...
+            {/* You are invited to travel to Japan and participate in... */}
+            {/* You are invited to travel from Sweden to Japan to participate in... */}
+            {/* Kanye! You are invited to travel from Sweden to Japan to participate in... */}
+        </StyledText>
+    );
+};
 
 const Hero = () => {
     return (
@@ -51,9 +66,7 @@ const Hero = () => {
             <Icons>
                 <Logo />
                 <InfoWrapper>
-                    <Date>
-                        EVENT 2021 <Span>APR 27 - JUNE 2</Span>
-                    </Date>
+                    <InviteText />
                     <EventTitle
                         color="white"
                         align="center"

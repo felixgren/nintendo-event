@@ -30,7 +30,7 @@ const TextWrapper = styled.div`
     height: 300px;
 `;
 
-const Dates = styled.p`
+const Dates = styled.div`
     position: absolute;
     right: 70px;
     bottom: 30px;
