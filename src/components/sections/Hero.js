@@ -50,12 +50,6 @@ const InviteText = () => {
     const name = params.get('name');
     const country = params.get('country');
 
-    // const test = 'haeeajjeajae';
-
-    // let storage = sessionStorage.setItem('hej', 'omg guys i work!!!11');
-
-    let data = sessionStorage.getItem('key');
-
     return (
         <StyledText color="white" align="center" fontStyle="italic">
             {name && `${name}!`} You are invited to travel{' '}
@@ -64,33 +58,6 @@ const InviteText = () => {
             {/* You are invited to travel to Japan and participate in... */}
             {/* You are invited to travel from Sweden to Japan to participate in... */}
             {/* Kanye! You are invited to travel from Sweden to Japan to participate in... */}
-            <StyledText
-                color="green"
-                onClick={() => {
-                    console.log('i set..');
-                    sessionStorage.setItem('hej', 'omg guys i work!!!11');
-                }}
-            >
-                set sessionstorage
-            </StyledText>
-            <StyledText
-                color="blue"
-                onClick={() => {
-                    data = sessionStorage.getItem('hej');
-                    console.log(`i am reading: ${data}`);
-                }}
-            >
-                read session
-            </StyledText>
-            <StyledText
-                color="yellow"
-                onClick={() => {
-                    data = sessionStorage.removeItem('hej');
-                    console.log(`i have deleted...`);
-                }}
-            >
-                reset session
-            </StyledText>
         </StyledText>
     );
 };

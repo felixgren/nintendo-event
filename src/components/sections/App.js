@@ -6,9 +6,9 @@ import SignUp from './SignUp';
 import VideoGallery from './VideoGallery';
 import Footer from './Footer';
 import SignUpPopup from './SignUpPopup';
-import Bowser from './Bowser';
+import SessionTester from './SessionTester';
 // eslint-disable-next-line
-import GlobalTest from './GlobalTest';
+import Bowser from './Bowser';
 
 const PageWrapper = styled.div``;
 
@@ -20,8 +20,9 @@ function App() {
 
     return (
         <PageWrapper>
-            <Bowser />
+            <SessionTester />
             <Hero setPopupState={setPopupState} />
+            <VideoGallery />
             <GameInfo />
             {showPopup && (
                 <SignUpPopup
@@ -29,10 +30,8 @@ function App() {
                     setPopupState={setPopupState}
                 />
             )}
-            <VideoGallery />
             <SignUp />
             <Footer setPopupState={setPopupState} />
-            <GlobalTest />
         </PageWrapper>
     );
 }
