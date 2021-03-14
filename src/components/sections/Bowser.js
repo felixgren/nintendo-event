@@ -1,18 +1,43 @@
 // eslint-disable-next-line
-import React, { useState } from 'react';
-// eslint-disable-next-line
-import PropTypes from 'prop-types';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import colors from '../../utils/colors';
+import anime from 'animejs/lib/anime.es.js';
 
 const Wrapper = styled.div`
-    height: 100px;
+    height: 300px;
+    background-color: ${colors.darkRed};
 `;
 
-const Bowser = ({ bowserified, bowserify }) => {
-    console.log(bowserify);
+const YayCube = styled.div`
+    height: 50px;
+    width: 50px;
+    background-color: green;
+`;
+
+const Bowser = () => {
+    const animationRef = useRef(null);
+
+    useEffect(() => {
+        animationRef.current = anime({
+            translateX: 1000,
+            targets: `${YayCube}`,
+            rotate: '1turn',
+            backgroundColor: '#FFF',
+            duration: 1000,
+            direction: 'alternate',
+            loop: true,
+            easing: 'easeInOutSine',
+        });
+    });
+
     return (
         <Wrapper>
-            <p>yo 🐉</p>
+            <p>yo i don't watch that stuff, these cubes though 🐉🐉🐉</p>
+            <YayCube />
+            <button onClick={() => animationRef.current.restart()}>
+                reset
+            </button>
         </Wrapper>
     );
 };

@@ -14,12 +14,10 @@ const PageWrapper = styled.div``;
 
 function App() {
     const [showPopup, setPopupState] = useState(false);
-    // eslint-disable-next-line
-    const [bowserified, bowserify] = useState(false);
-    console.log(bowserified);
 
     return (
         <PageWrapper>
+            <Bowser />
             <SessionTester />
             <Hero setPopupState={setPopupState} />
             <VideoGallery />
