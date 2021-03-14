@@ -11,13 +11,6 @@ const EventInfoWrapper = styled.div`
     padding: 64px 16px;
 `;
 
-const Header = styled.h2`
-    text-transform: uppercase;
-    text-align: center;
-    font-weight: 400;
-    font-size: 40px;
-`;
-
 const Strong = styled.strong`
     font-weight: 800;
     font-size: 46px;
@@ -27,9 +20,9 @@ const GameInfo = () => {
     return (
         <Wrapper>
             <EventInfoWrapper>
-                <Header>
+                <Text align="center" size="38px" transform="uppercase">
                     New <Strong>Super Mario 3D</Strong> World
-                </Header>
+                </Text>
                 <EventInfo />
                 <Text align="center">
                     soon i will be filled with COOL info 😎
