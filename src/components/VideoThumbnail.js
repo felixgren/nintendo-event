@@ -25,6 +25,7 @@ const StyledVideo = styled.video`
 
 const Text = styled.p`
     color: white;
+    user-select: none;
 `;
 
 const Source = styled.source``;

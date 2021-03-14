@@ -39,6 +39,10 @@ const Input = styled.input`
     transition: 200ms;
     color: black;
 
+    &:first-child {
+        text-transform: capitalize;
+    }
+
     &::placeholder {
         font-weight: 400;
     }
@@ -101,6 +105,8 @@ const CheckboxSpan = styled.span`
 `;
 
 const Form = ({ isPopup }) => {
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get('name');
     return (
         <Wrapper>
             {isPopup && (
@@ -116,23 +122,32 @@ const Form = ({ isPopup }) => {
                 </Div>
             )}
 
-            <Text transform="uppercase" weight="700" size="42px">
+            <Text
+                transform="uppercase"
+                weight="700"
+                size="42px"
+                userSelect="none"
+            >
                 Take the challenge
             </Text>
             <StyledForm action="" method="">
                 <Input
+                    required
                     ariaLabel="fullName"
                     type="text"
                     id="fullName"
-                    placeholder="Full name"
+                    placeholder="Name"
+                    defaultValue={name && name}
                 />
                 <Input
+                    required
                     ariaLabel="Email"
                     type="email"
                     id="email"
                     placeholder="Email"
                 />
                 <Input
+                    required
                     ariaLabel="Phone"
                     type="tel"
                     id="phone"

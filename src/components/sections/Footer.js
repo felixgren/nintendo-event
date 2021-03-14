@@ -115,6 +115,7 @@ const Footer = ({ setPopupState }) => {
                             color="#a50505"
                             transform="uppercase"
                             lineHeight="144px"
+                            userSelect="none"
                         >
                             It’s game time!
                         </Text>

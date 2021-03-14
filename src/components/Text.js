@@ -15,6 +15,7 @@ const Text = styled.p`
     text-align: ${(props) => props.align};
     line-height: ${(props) => props.lineHeight};
     text-transform: ${(props) => props.transform};
+    user-select: ${(props) => props.userSelect};
     letter-spacing: 0.02em;
 `;
 
@@ -26,6 +27,7 @@ Text.propTypes = {
     align: PropTypes.string,
     lineHeight: PropTypes.string,
     transform: PropTypes.string,
+    userSelect: PropTypes.string,
     size: PropTypes.string,
     weight: PropTypes.string,
     color: PropTypes.string,
@@ -51,6 +53,7 @@ Text.defaultProps = {
     maxWidth: 'unset',
     lineHeight: '1.2em',
     transform: 'initial',
+    userSelect: 'initial',
 };
 
 export default Text;

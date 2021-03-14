@@ -76,6 +76,7 @@ const SignUp = () => {
                     lineHeight="0.9em"
                     w="50%"
                     maxWidth="500px"
+                    userSelect="none"
                 >
                     It’s game time!
                 </Text>
@@ -87,6 +88,7 @@ const SignUp = () => {
                     size="min(4vw, 48px)"
                     weight="800"
                     color="#FFB3B3"
+                    userSelect="none"
                 >
                     Sponsorship
                 </Text>
