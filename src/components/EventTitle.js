@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Text from './Text';
-import colors from '../utils/colors';
 
 const Span = styled.span`
     font-weight: 400;

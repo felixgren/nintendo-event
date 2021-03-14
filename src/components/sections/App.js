@@ -6,15 +6,21 @@ import SignUp from './SignUp';
 import VideoGallery from './VideoGallery';
 import Footer from './Footer';
 import SignUpPopup from './SignUpPopup';
+import Bowser from './Bowser';
+// eslint-disable-next-line
+import GlobalTest from './GlobalTest';
 
 const PageWrapper = styled.div``;
 
 function App() {
     const [showPopup, setPopupState] = useState(false);
-    console.log(showPopup);
+    // eslint-disable-next-line
+    const [bowserified, bowserify] = useState(false);
+    console.log(bowserified);
 
     return (
         <PageWrapper>
+            <Bowser />
             <Hero setPopupState={setPopupState} />
             <GameInfo />
             {showPopup && (
@@ -26,6 +32,7 @@ function App() {
             <VideoGallery />
             <SignUp />
             <Footer setPopupState={setPopupState} />
+            <GlobalTest />
         </PageWrapper>
     );
 }
