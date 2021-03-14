@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Hero from './Hero';
 import GameInfo from './GameInfo';
@@ -9,14 +10,22 @@ import SignUpPopup from './SignUpPopup';
 const PageWrapper = styled.div``;
 
 function App() {
+    const [showPopup, setPopupState] = useState(false);
+    console.log(showPopup);
+
     return (
         <PageWrapper>
-            <Hero />
+            <Hero setPopupState={setPopupState} />
             <GameInfo />
-            {/* <SignUpPopup /> */}
+            {showPopup && (
+                <SignUpPopup
+                    showPopup={showPopup}
+                    setPopupState={setPopupState}
+                />
+            )}
             <VideoGallery />
             <SignUp />
-            <Footer />
+            <Footer setPopupState={setPopupState} />
         </PageWrapper>
     );
 }

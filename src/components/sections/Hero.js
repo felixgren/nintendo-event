@@ -43,6 +43,8 @@ const StyledText = styled(Text)`
     }
 `;
 
+const ButtonWrapper = styled.div``;
+
 const InviteText = () => {
     const params = new URLSearchParams(window.location.search);
     const name = params.get('name');
@@ -60,7 +62,7 @@ const InviteText = () => {
     );
 };
 
-const Hero = () => {
+const Hero = ({ setPopupState }) => {
     return (
         <Wrapper>
             <Icons>
@@ -73,7 +75,9 @@ const Hero = () => {
                         size="40px"
                         m="4px 0 20px"
                     />
-                    <Button isHero isBlue />
+                    <ButtonWrapper onClick={() => setPopupState(true)}>
+                        <Button isHero isBlue />
+                    </ButtonWrapper>
                 </InfoWrapper>
             </Icons>
         </Wrapper>

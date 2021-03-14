@@ -77,7 +77,7 @@ const SignUp = () => {
                     w="50%"
                     maxWidth="500px"
                 >
-                    It's game time!
+                    It’s game time!
                 </Text>
                 <Image src={MarioPoleImg} alt="Mario on flag" />
             </FormWrapper>

@@ -65,7 +65,8 @@ const Icons = styled.img`
     width: 90%;
 `;
 
-const SignUpPopup = () => {
+const SignUpPopup = ({ showPopup, setPopupState }) => {
+    console.log(showPopup, setPopupState);
     return (
         <DarkOverlay>
             <Wrapper>
@@ -73,7 +74,7 @@ const SignUpPopup = () => {
                     <Form isPopup />
                 </FormWrapper>
                 <BackgroundWrapper>
-                    <CrossWrapper>
+                    <CrossWrapper onClick={() => setPopupState(false)}>
                         <CrossIcon />
                     </CrossWrapper>
                     <Text

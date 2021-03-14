@@ -97,7 +97,11 @@ const SocialIcon = styled.img`
     cursor: pointer;
 `;
 
-const Footer = () => {
+const ButtonWrapper = styled.div`
+    width: 100%;
+`;
+
+const Footer = ({ setPopupState }) => {
     return (
         <Wrapper>
             <FooterComp>
@@ -112,13 +116,13 @@ const Footer = () => {
                             transform="uppercase"
                             lineHeight="144px"
                         >
-                            It's game time
+                            It’s game time!
                         </Text>
                         <Dates>
-                            <EventTitle color="#FFCCCC" size="28px" />
+                            <EventTitle color="#FFFFFF" size="28px" />
                             <Text
                                 fontFamily="Montserrat-Italic"
-                                color="#FFCCCC"
+                                color="#FFFFFF"
                                 size="20px"
                                 transform="uppercase"
                                 m="4px 0 0 0"
@@ -129,7 +133,9 @@ const Footer = () => {
                     </TextWrapper>
 
                     <ImageWrapper>
-                        <Button isBlue />
+                        <ButtonWrapper onClick={() => setPopupState(true)}>
+                            <Button isBlue />
+                        </ButtonWrapper>
                         <Image src={marioImage} alt="mario and friends" />
                     </ImageWrapper>
                 </Div>
