@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Hero from './Hero';
 import GameInfo from './GameInfo';
+import GameGallery from './GameGallery';
 import SignUp from './SignUp';
 import VideoGallery from './VideoGallery';
 import Footer from './Footer';
 import SignUpPopup from './SignUpPopup';
+// eslint-disable-next-line
 import SessionTester from './SessionTester';
 // eslint-disable-next-line
 import Bowser from './Bowser';
@@ -17,11 +19,12 @@ function App() {
 
     return (
         <PageWrapper>
-            <Bowser />
-            <SessionTester />
+            {/* <Bowser /> */}
+            {/* <SessionTester /> */}
             <Hero setPopupState={setPopupState} />
             <VideoGallery />
             <GameInfo />
+            <GameGallery />
             {showPopup && (
                 <SignUpPopup
                     showPopup={showPopup}
