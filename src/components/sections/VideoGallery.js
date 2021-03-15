@@ -4,6 +4,7 @@ import Thumbnail from './../VideoThumbnail';
 import video1 from '../../videos/video1.mp4';
 import video2 from '../../videos/video2.mp4';
 import video3 from '../../videos/video1.mp4';
+import Text from '../Text';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -39,20 +40,6 @@ const TextWrapper = styled.div`
     position: absolute;
     left: 64px;
     top: 64px;
-`;
-
-const Header = styled.h2`
-    text-transform: uppercase;
-    font-weight: 800;
-    font-size: 50px;
-    line-height: 61px;
-`;
-
-const Description = styled.p`
-    width: 470px;
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
 `;
 
 const Fade = styled.div`
@@ -110,8 +97,24 @@ const VideoGallery = () => {
 
             <Fade activeFade={activeFade} />
             <TextWrapper>
-                <Header>{activeVideo.title}</Header>
-                <Description>{activeVideo.description}</Description>
+                <Text
+                    size="50px"
+                    lineHeight="80px"
+                    weight="800"
+                    color="white"
+                    transform="uppercase"
+                >
+                    {activeVideo.title}
+                </Text>
+                <Text
+                    size="24px"
+                    lineHeight="1.4em"
+                    weight="500"
+                    color="white"
+                    maxWidth="470px"
+                >
+                    {activeVideo.description}
+                </Text>
             </TextWrapper>
 
             <ThumbnailWrapper>

@@ -20,7 +20,7 @@ const Wrapper = styled.div`
     position: relative;
 `;
 const EventInfoWrapper = styled.div`
-    padding: 64px 16px;
+    padding: 40px 16px;
 `;
 
 const FormWrapper = styled.div`
@@ -42,7 +42,7 @@ const SponsorsWrapper = styled.div`
     justify-content: space-between;
     width: 100%;
     max-width: 1068px;
-    padding: 64px 190px 32px 0;
+    padding: 72px 190px 64px 0;
 `;
 
 const SponsorLogo = styled.img`

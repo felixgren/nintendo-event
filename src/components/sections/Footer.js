@@ -71,6 +71,7 @@ const Image = styled.img`
     z-index: 1;
     width: 100%;
     max-width: 540px;
+    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
 `;
 
 const BottomWrapper = styled.div`
