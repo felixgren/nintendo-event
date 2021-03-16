@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 
     background-color: ${(props) =>
         // `rgba(${255 * props.divPercentage}, 0, 0, 1)`};
-        `rgba(${(1 - props.divPercentage * 2) * 255}, 0, 0, 1)`};
+        `rgba(${(1 - props.divPercentage) * 255}, 0, 0, 1)`};
 `;
 
 const Sticky = styled.div`
@@ -22,33 +22,29 @@ const Sticky = styled.div`
 `;
 
 const Bowser = () => {
+    // Ref is like QuerySelect
+    // Access to tons of cool values through .current
+
+    // window.innerHeight: viewport height
+    // current.offsetTop: pixels from top
+    // current.offsetHeight: object pixel height
+    // current.scrollHeight: object pixel height?
+    // window.scrollY: pixels scrolled from top
+
     const WrapperRef = useRef(null);
     const [percentage, setPercent] = useState('255');
-
     useEffect(() => {
-        console.log(WrapperRef.current);
-        console.log(window.innerHeight);
-        // console.log(WrapperRef.current.offsetTop);
         const onScroll = () => {
-            // console.log(window);
-            // console.log(window.scrollY);
-
             const offsetTop = WrapperRef.current.offsetTop;
-            const end = offsetTop + WrapperRef.current.offsetHeight;
+            const offsetTopRefEnd = offsetTop + WrapperRef.current.offsetHeight;
+            const refScrollY = window.scrollY - offsetTop;
+            const refHeight = WrapperRef.current.scrollHeight;
+            const viewHeight = window.innerHeight;
 
-            const yipie = window.scrollY - offsetTop;
+            const RefScrollDecimal = refScrollY / (refHeight - viewHeight);
 
-            // const percentage = (yipie / WrapperRef.current.scrollHeight) * 100;
-            const ayy =
-                yipie / (WrapperRef.current.scrollHeight - window.innerHeight);
-
-            // console.log(ayy);
-            // console.log(` percentage: ${percentage}`);
-            // console.log(` percentage: ${lmao}`);
-            // console.log(window.scrollY);
-
-            if (ayy > 0 && ayy < 1) {
-                setPercent(ayy);
+            if (RefScrollDecimal > 0 && RefScrollDecimal < 1) {
+                setPercent(RefScrollDecimal);
             }
         };
 
