@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Text from './Text';
+import theme from '../utils/theme';
 
 const Wrapper = styled.div`
     position: relative;
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
 const StyledButton = styled.button`
     background-color: #ffc901;
     width: 100%;
-    height: ${(props) => (props.isHero ? '90px' : '70px')};
+    height: ${(props) => (props.isHero ? '64px' : '50px')};
     transition: 150ms;
     border: 4px solid black;
     border-radius: 8px;
@@ -32,22 +33,30 @@ const StyledButton = styled.button`
     &:focus {
         outline: none;
     }
+
+    ${theme.bp.desktop} {
+        height: ${(props) => (props.isHero ? '90px' : '70px')};
+    }
 `;
 
 const HiddenButton = styled.div`
     width: 100%;
-    height: ${(props) => (props.isHero ? '90px' : '70px')};
+    height: ${(props) => (props.isHero ? '64px' : '50px')};
     background-color: ${(props) => (props.isBlue ? '#4693DF' : 'red')};
     position: absolute;
     left: ${(props) => (props.isHero ? '-6px' : '-4px')};
     top: ${(props) => (props.isHero ? '-2px' : '0')};
     border: 4px solid black;
     border-radius: 8px;
+
+    ${theme.bp.desktop} {
+        height: ${(props) => (props.isHero ? '90px' : '70px')};
+    }
 `;
 
 const Dot = styled.div`
-    width: 7px;
-    height: 7px;
+    width: 5px;
+    height: 5px;
     background-color: black;
     border-radius: 50%;
     position: absolute;
@@ -56,6 +65,11 @@ const Dot = styled.div`
     bottom: ${(props) => props.bottom && '6px'};
     right: ${(props) => props.right && '6px'};
     z-index: 1;
+
+    ${theme.bp.desktop} {
+        width: 7px;
+        height: 7px;
+    }
 `;
 
 const Button = ({ isHero, isBlue }) => {
@@ -68,11 +82,10 @@ const Button = ({ isHero, isBlue }) => {
                 <Dot bottom left />
                 <Dot bottom right />
                 <Text
-                    align="center"
+                    fontSize={['22px', '28px']}
                     transform="uppercase"
                     color="black"
-                    weight="600"
-                    size="28px"
+                    fontWeight="600"
                 >
                     Join Event
                 </Text>

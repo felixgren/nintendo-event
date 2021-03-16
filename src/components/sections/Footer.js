@@ -106,7 +106,7 @@ const Footer = ({ setPopupState }) => {
     return (
         <Wrapper>
             <FooterComp>
-                <TopIcons src={iconImage} />
+                <TopIcons src={iconImage} alt="Icons of mario characters" />
 
                 <Div>
                     <TextWrapper>
@@ -138,19 +138,19 @@ const Footer = ({ setPopupState }) => {
                         <ButtonWrapper onClick={() => setPopupState(true)}>
                             <Button isBlue />
                         </ButtonWrapper>
-                        <Image src={marioImage} alt="mario and friends" />
+                        <Image src={marioImage} alt="Mario and friends" />
                     </ImageWrapper>
                 </Div>
             </FooterComp>
             <BottomWrapper>
                 <SocialsWrapper>
                     <SocialDiv>
-                        <SocialIcon src={twitterLogo} alt="twitter" />
-                        <SocialIcon src={facebookLogo} alt="facebook" />
-                        <SocialIcon src={instagramLogo} alt="instagram" />
-                        <SocialIcon src={youtubeLogo} alt="youtube" />
+                        <SocialIcon src={twitterLogo} alt="Twitter" />
+                        <SocialIcon src={facebookLogo} alt="Facebook" />
+                        <SocialIcon src={instagramLogo} alt="Instagram" />
+                        <SocialIcon src={youtubeLogo} alt="Youtube" />
                     </SocialDiv>
-                    <SocialIcon src={nintendoLogo} alt="nintendo logo" />
+                    <SocialIcon src={nintendoLogo} alt="Nintendo logo" />
                 </SocialsWrapper>
             </BottomWrapper>
         </Wrapper>

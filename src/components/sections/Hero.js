@@ -4,31 +4,44 @@ import heroLogo from '../../images/hero-logo.webp';
 import Button from '../Button';
 import EventTitle from '../EventTitle';
 import Text from '../Text';
+import theme from '../../utils/theme';
 
 const Wrapper = styled.div`
     width: 100%;
-    height: 1024px;
+    height: 100vh;
     background: #ff0000;
     text-align: center;
-    color: #ffffff;
+
+    ${theme.bp.desktop} {
+        height: 1024px;
+    }
 `;
 
 const Icons = styled.div`
+    width: 100%;
     height: 100%;
     background: no-repeat url(${heroBackground});
     background-position: top;
-    z-index: -100;
 `;
 
 const Logo = styled.div`
-    height: 50%;
+    width: 100%;
+    height: 55%;
     background: no-repeat url(${heroLogo});
-    background-position: 50% 30%;
+    background-position: 50% 50%;
+    background-size: 90% auto;
+
+    ${theme.bp.desktop} {
+        background-position: 50% 80%;
+        background-size: 600px auto;
+    }
 `;
 
 const InfoWrapper = styled.div`
+    width: auto;
+    max-width: 700px;
+    padding: 0 24px;
     margin: auto;
-    width: 700px;
     background: linear-gradient(
         270deg,
         rgba(255, 0, 0, 0) 0%,
@@ -51,7 +64,12 @@ const InviteText = () => {
     const country = params.get('country');
 
     return (
-        <StyledText color="white" align="center" fontStyle="italic">
+        <StyledText
+            color="white"
+            fontSize={['16px', '24px']}
+            textAlign="center"
+            fontFamily="Montserrat-Italic"
+        >
             {name && `${name}!`} You are invited to travel{' '}
             {country ? `from ${country} to 🇯🇵 to` : 'to 🇯🇵 and'} participate
             in...
@@ -71,9 +89,9 @@ const Hero = ({ setPopupState }) => {
                     <InviteText />
                     <EventTitle
                         color="white"
-                        align="center"
-                        size="40px"
-                        m="4px 0 20px"
+                        textAlign="center"
+                        m="6px 0 20px"
+                        fontSize="24px"
                     />
                     <ButtonWrapper onClick={() => setPopupState(true)}>
                         <Button isHero isBlue />

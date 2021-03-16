@@ -1,12 +1,11 @@
 // eslint-disable-next-line
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import colors from '../../utils/colors';
 import anime from 'animejs/lib/anime.es.js';
 
 const Wrapper = styled.div`
     height: 300px;
-    background-color: ${colors.darkRed};
+    background-color: #a50505;
 `;
 
 const YayCube = styled.div`
