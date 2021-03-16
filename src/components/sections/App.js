@@ -15,6 +15,8 @@ import SignUpPopup from './SignUpPopup';
 // eslint-disable-next-line
 import SessionTester from './SessionTester';
 // eslint-disable-next-line
+import AnimationTest from './AnimationTest';
+// eslint-disable-next-line
 import Bowser from './Bowser';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../utils/theme';
@@ -27,20 +29,22 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <PageWrapper>
-                {/* <Bowser /> */}
+                {/* <AnimationTest /> */}
                 {/* <SessionTester /> */}
+
                 <Hero setPopupState={setPopupState} />
+                <GameInfo />
+                <GameGallery />
+                <Bowser />
+                <SignUp />
                 <VideoGallery />
-                {/* <GameInfo /> */}
-                {/* <GameGallery /> */}
                 {showPopup && (
                     <SignUpPopup
                         showPopup={showPopup}
                         setPopupState={setPopupState}
                     />
                 )}
-                {/* <SignUp /> */}
-                {/* <Footer setPopupState={setPopupState} /> */}
+                <Footer setPopupState={setPopupState} />
             </PageWrapper>
         </ThemeProvider>
     );

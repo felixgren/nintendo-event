@@ -8,11 +8,11 @@ const colors = {
     yellow: '#ffc901',
 };
 
-const breakpoints = ['1200px', '1440px'];
+const breakpoints = ['900px', '1440px'];
 
 const bp = {
-    desktop: `@media screen and (min-width: ${breakpoints[1]})`,
-    xl: `@media screen and (min-width: ${breakpoints[2]})`,
+    desktop: `@media screen and (min-width: ${breakpoints[0]})`,
+    xl: `@media screen and (min-width: ${breakpoints[1]})`,
 };
 
 // eslint-disable-next-line

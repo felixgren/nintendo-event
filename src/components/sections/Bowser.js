@@ -1,42 +1,67 @@
 // eslint-disable-next-line
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import anime from 'animejs/lib/anime.es.js';
 
 const Wrapper = styled.div`
-    height: 300px;
-    background-color: #a50505;
+    height: 5000px;
+    /* background-color: #a50505; */
+
+    background-color: ${(props) =>
+        // `rgba(${255 * props.divPercentage}, 0, 0, 1)`};
+        `rgba(${(1 - props.divPercentage * 2) * 255}, 0, 0, 1)`};
 `;
 
-const YayCube = styled.div`
+const Sticky = styled.div`
+    position: sticky;
+    top: 0;
+    right: 0;
     height: 50px;
-    width: 50px;
-    background-color: green;
+    width: 200px;
+    background: lime;
+    opacity: 0.5;
 `;
 
 const Bowser = () => {
-    const animationRef = useRef(null);
+    const WrapperRef = useRef(null);
+    const [percentage, setPercent] = useState('255');
 
     useEffect(() => {
-        animationRef.current = anime({
-            translateX: 1000,
-            targets: `${YayCube}`,
-            rotate: '1turn',
-            backgroundColor: '#FFF',
-            duration: 1000,
-            direction: 'alternate',
-            loop: true,
-            easing: 'easeInOutSine',
-        });
-    });
+        console.log(WrapperRef.current);
+        console.log(window.innerHeight);
+        // console.log(WrapperRef.current.offsetTop);
+        const onScroll = () => {
+            // console.log(window);
+            // console.log(window.scrollY);
+
+            const offsetTop = WrapperRef.current.offsetTop;
+            const end = offsetTop + WrapperRef.current.offsetHeight;
+
+            const yipie = window.scrollY - offsetTop;
+
+            // const percentage = (yipie / WrapperRef.current.scrollHeight) * 100;
+            const ayy =
+                yipie / (WrapperRef.current.scrollHeight - window.innerHeight);
+
+            // console.log(ayy);
+            // console.log(` percentage: ${percentage}`);
+            // console.log(` percentage: ${lmao}`);
+            // console.log(window.scrollY);
+
+            if (ayy > 0 && ayy < 1) {
+                setPercent(ayy);
+            }
+        };
+
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     return (
-        <Wrapper>
+        <Wrapper ref={WrapperRef} divPercentage={percentage}>
+            <Sticky>
+                <p> {percentage}</p>
+            </Sticky>
             <p>yo i don't watch that stuff, these cubes though 🐉🐉🐉</p>
-            <YayCube />
-            <button onClick={() => animationRef.current.restart()}>
-                reset
-            </button>
         </Wrapper>
     );
 };
