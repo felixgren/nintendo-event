@@ -30,7 +30,7 @@ function App() {
                 {/* <Bowser /> */}
                 {/* <SessionTester /> */}
                 <Hero setPopupState={setPopupState} />
-                {/* <VideoGallery /> */}
+                <VideoGallery />
                 {/* <GameInfo /> */}
                 {/* <GameGallery /> */}
                 {showPopup && (

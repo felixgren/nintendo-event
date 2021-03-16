@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import theme from '../utils/theme';
+import Text from './Text';
 
 const Wrapper = styled.div`
     & > p,
@@ -17,15 +19,15 @@ const Wrapper = styled.div`
 `;
 
 const StyledVideo = styled.video`
-    width: 180px;
+    width: 150px;
+    margin-right: 12px;
     filter: ${(props) => props.active && 'brightness(50%)'};
     cursor: pointer;
-    margin-right: 24px;
-`;
 
-const Text = styled.p`
-    color: white;
-    user-select: none;
+    ${theme.bp.desktop} {
+        width: 180px;
+        margin-right: 24px;
+    }
 `;
 
 const Source = styled.source``;
@@ -43,7 +45,9 @@ const VideoThumbnail = ({ vidSrc, description, active }) => {
             >
                 <Source src={vidSrc} type="video/mp4" />
             </StyledVideo>
-            <Text>{description}</Text>
+            <Text color="white" fontSize={['14px', '16px']} userSelect="none">
+                {description}
+            </Text>
         </Wrapper>
     );
 };

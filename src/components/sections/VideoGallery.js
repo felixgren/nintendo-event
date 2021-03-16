@@ -5,15 +5,19 @@ import video1 from '../../videos/video1.mp4';
 import video2 from '../../videos/video2.mp4';
 import video3 from '../../videos/video1.mp4';
 import Text from '../Text';
+import theme from '../../utils/theme';
 
 const Wrapper = styled.div`
     width: 100%;
-    height: 55vw;
+    height: 550px;
     position: relative;
     background: black;
     color: #ffffff;
     max-height: 100vh;
-    box-shadow: inset 10px 10px 250px #000000;
+
+    ${theme.bp.desktop} {
+        height: 55vw;
+    }
 `;
 
 const ActiveVideo = styled.video`
@@ -21,8 +25,12 @@ const ActiveVideo = styled.video`
     opacity: ${(props) => (props.activeFade ? '0' : '1')};
     width: 100%;
     max-height: 100vh;
-    height: 55vw;
+    height: 550px;
     object-fit: cover;
+
+    ${theme.bp.desktop} {
+        height: 55vw;
+    }
 `;
 
 const Div = styled.div``;
@@ -32,26 +40,55 @@ const Source = styled.source``;
 const ThumbnailWrapper = styled.div`
     display: flex;
     position: absolute;
-    bottom: 32px;
-    left: 64px;
+    bottom: 16px;
+    padding-left: 24px;
+    overflow-x: auto;
+    max-width: 100vw;
+    min-height: 110px;
+
+    ${theme.bp.desktop} {
+        bottom: 32px;
+        padding-left: 64px;
+        min-height: 130px;
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+        scrollbar-width: none; /* Firefox */
+    }
 `;
 
 const TextWrapper = styled.div`
     position: absolute;
-    left: 64px;
-    top: 64px;
+    left: 24px;
+    top: 24px;
+
+    ${theme.bp.desktop} {
+        left: 64px;
+        top: 64px;
+    }
 `;
 
 const Fade = styled.div`
     position: absolute;
     top: 0;
-    width: 60%;
-    height: 100%;
+    width: 100%;
+    height: 550px;
     background: linear-gradient(
         72.66deg,
         #000000 -7.66%,
-        rgba(0, 0, 0, 0) 78.29%
+        rgba(0, 0, 0, 0) 58.29%
     );
+
+    ${theme.bp.desktop} {
+        width: 60%;
+        height: 100%;
+        background: linear-gradient(
+            72.66deg,
+            #000000 -7.66%,
+            rgba(0, 0, 0, 0) 78.29%
+        );
+    }
 `;
 
 const VideoGallery = () => {
@@ -98,20 +135,20 @@ const VideoGallery = () => {
             <Fade activeFade={activeFade} />
             <TextWrapper>
                 <Text
-                    size="50px"
-                    lineHeight="80px"
-                    weight="800"
+                    fontSize={['28px', '50px']}
+                    lineHeight={['60px', '80px']}
+                    fontWeight={['700', '800']}
                     color="white"
                     transform="uppercase"
                 >
                     {activeVideo.title}
                 </Text>
                 <Text
-                    size="24px"
+                    fontSize={['16px', '24px']}
                     lineHeight="1.4em"
-                    weight="500"
+                    fontWeight={['400', '500']}
                     color="white"
-                    maxWidth="470px"
+                    maxWidth={['320px', '470px']}
                 >
                     {activeVideo.description}
                 </Text>
