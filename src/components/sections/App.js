@@ -27,17 +27,6 @@ const PageWrapper = styled.div``;
 
 function App() {
     const [showPopup, setPopupState] = useState(false);
-
-    console.log('here it comes..');
-
-    // BowserState(true)
-    //     ? console.log('BowserState bool TRUE')
-    //     : console.log('BowserState bool FALSE');
-
-    BowserState()
-        ? console.log('BowserState bool TRUE')
-        : console.log('BowserState bool FALSE');
-
     return (
         <ThemeProvider theme={theme}>
             <PageWrapper>

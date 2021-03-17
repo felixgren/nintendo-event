@@ -1,25 +1,62 @@
 // eslint-disable-next-line
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import SessionTester from './old-SessionTester';
+import Text from '../Text';
+import BowserState from '../../utils/bowserState';
+import darkBowserImg from '../../images/bowser/bowser-dark.webp';
+
+BowserState()
+    ? console.log('BowserState bool TRUE')
+    : console.log('BowserState bool FALSE');
 
 const Wrapper = styled.div`
-    height: 5000px;
-    /* background-color: #a50505; */
-
+    height: 250vh;
     background-color: ${(props) =>
-        // `rgba(${(1 - props.divPercentage) * 255}, 0, 0, 1)`};
-        `rgba(${props.scrollBg * 255}, 0, 0, 1)`};
+        `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
+    position: relative;
+    display: flex;
+    justify-content: center;
 `;
 
-const Sticky = styled.div`
-    position: sticky;
+const DebugBar = styled.div`
+    z-index: 1337;
+    position: fixed;
     top: 0;
     left: 300px;
     height: 100px;
     width: 200px;
     background: lime;
     opacity: 0.5;
+`;
+
+const StyledText = styled(Text)`
+    position: sticky;
+    z-index: 100;
+    top: 70px;
+    margin-top: 300px;
+    height: 100px;
+    color: ${(props) => `rgba(${props.refScrollDecimal * 1.5 * 200}, 0, 0, 1)`};
+`;
+
+const Fade = styled.div`
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+    width: 100%;
+    height: 500px;
+    max-width: 1440px;
+    position: absolute;
+    bottom: 500px;
+    z-index: 10;
+    /* border: 3px solid tomato; */
+`;
+
+const BeegBowser = styled.img`
+    width: 80%;
+    max-width: 1440px;
+    position: absolute;
+    bottom: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: 0.6;
 `;
 
 const Bowser = () => {
@@ -34,10 +71,10 @@ const Bowser = () => {
 
     const WrapperRef = useRef(null);
     const [scrollBg, setScrollBg] = useState('255');
-    // const [scrollLock, setScrollLock] = useState(false);
+    const [scrollLock, setScrollLock] = useState(false);
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
-    // document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
+    document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
 
     useEffect(() => {
         const onScroll = () => {
@@ -57,30 +94,38 @@ const Bowser = () => {
                 setScrollDecimal(refScrollDecimal);
             }
 
-            // if (refScrollDecimal > 0.7) {
-            //     setScrollLock(true);
-            //     setTimeout(() => {
-            //         setScrollLock(false);
-            //     }, 5000);
-            // }
+            if (refScrollDecimal > 0.7 && !BowserState()) {
+                setScrollLock(true);
+                BowserState(true);
+
+                setTimeout(() => {
+                    setScrollLock(false);
+                }, 5000);
+            }
         };
-
-        // setTimeout(() => {
-        //     console.log(scrollLock);
-        // }, 1000);
-
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     return (
         <Wrapper ref={WrapperRef} scrollBg={scrollBg}>
-            <SessionTester />
-            <Sticky>
+            <DebugBar>
                 <p> scrollBg: {scrollBg}</p>
                 <p> scrollRef: {refScrollDecimal}</p>
-            </Sticky>
-            <p>yo i don't watch that stuff, these cubes though 🐉🐉🐉</p>
+            </DebugBar>
+            <StyledText
+                refScrollDecimal={refScrollDecimal}
+                transform="uppercase"
+                fontSize="120px"
+                userSelect="none"
+                fontWeight="750"
+                textAlign="center"
+            >
+                Introducing...
+            </StyledText>
+
+            <Fade />
+            <BeegBowser src={darkBowserImg} alt="Mega Bowser" />
         </Wrapper>
     );
 };
