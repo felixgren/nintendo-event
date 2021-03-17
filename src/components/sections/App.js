@@ -30,7 +30,7 @@ function App() {
         <ThemeProvider theme={theme}>
             <PageWrapper>
                 {/* <AnimationTest /> */}
-                {/* <SessionTester /> */}
+                <SessionTester />
 
                 <Hero setPopupState={setPopupState} />
                 <GameInfo />
