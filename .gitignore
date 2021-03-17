@@ -25,3 +25,4 @@ yarn-error.log*
 # unfinished
 /src/components/HeroTest.js
 /src/components/Default.js
+/src/components/sections/old-SessionTester.js

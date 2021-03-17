@@ -17,7 +17,7 @@ Text.propTypes = {
     as: PropTypes.oneOf(['p', 'span', 'h1', 'h2', 'h3']),
     children: PropTypes.node.isRequired,
     fontFamily: PropTypes.string,
-    lineHeight: PropTypes.string,
+    lineHeight: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     transform: PropTypes.string,
     userSelect: PropTypes.string,
     fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),

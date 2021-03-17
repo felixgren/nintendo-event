@@ -6,7 +6,7 @@ const Wrapper = styled.div`
     z-index: 1337;
     opacity: 0.8;
     width: 300px;
-    height: 100px;
+    height: 120px;
     background-color: #00ffffff;
     color: black;
     cursor: help;
@@ -22,33 +22,44 @@ const StyledText = styled(Text)`
 `;
 
 const SessionTester = () => {
-    let mykey = 'hej';
+    let mykey = 'bowserMode';
     let data = sessionStorage.getItem({ mykey });
     return (
         <Wrapper>
             <StyledText
                 color="green"
                 onClick={() => {
-                    sessionStorage.setItem(`${mykey}`, 'omg guys i work!!!11');
-                    console.log(`i set.. `);
+                    sessionStorage.setItem(`${mykey}`, true);
+                    console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}
             >
-                set sessionstorage
+                set true
             </StyledText>
             <StyledText
                 color="blue"
                 onClick={() => {
+                    sessionStorage.setItem(`${mykey}`, false);
+                    console.log(`Set: ${sessionStorage.getItem(mykey)}`);
+                }}
+            >
+                set false
+            </StyledText>
+            <StyledText
+                color="purple"
+                onClick={() => {
                     data = sessionStorage.getItem(`${mykey}`);
-                    console.log(`i am reading: ${data}`);
+                    console.log(`Read: ${data}`);
                 }}
             >
                 read session
             </StyledText>
             <StyledText
-                color="yellow"
+                color="red"
                 onClick={() => {
+                    console.log(`Deleting ${mykey}...`);
                     data = sessionStorage.removeItem(`${mykey}`);
-                    console.log(`i have deleted...`);
+                    console.log(`${mykey}: ${sessionStorage.getItem(mykey)}`);
+                    console.log(sessionStorage.getItem(mykey));
                 }}
             >
                 reset session

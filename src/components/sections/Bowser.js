@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import SessionTester from './SessionTester';
+import SessionTester from './old-SessionTester';
 
 const Wrapper = styled.div`
     height: 5000px;
@@ -34,14 +34,15 @@ const Bowser = () => {
 
     const WrapperRef = useRef(null);
     const [scrollBg, setScrollBg] = useState('255');
-    const [scrollLock, setScrollLock] = useState(false);
+    // const [scrollLock, setScrollLock] = useState(false);
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
-    document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
+    // document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
 
     useEffect(() => {
         const onScroll = () => {
             const offsetTop = WrapperRef.current.offsetTop;
+            // eslint-disable-next-line
             const offsetTopRefEnd = offsetTop + WrapperRef.current.offsetHeight;
             const refScrollY = window.scrollY - offsetTop;
             const refHeight = WrapperRef.current.scrollHeight;

@@ -18,6 +18,8 @@ import SessionTester from './SessionTester';
 import AnimationTest from './AnimationTest';
 // eslint-disable-next-line
 import Bowser from './Bowser';
+// eslint-disable-next-line
+import BowserState from '../../utils/bowserState';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../utils/theme';
 
@@ -25,6 +27,16 @@ const PageWrapper = styled.div``;
 
 function App() {
     const [showPopup, setPopupState] = useState(false);
+
+    console.log('here it comes..');
+
+    // BowserState(true)
+    //     ? console.log('BowserState bool TRUE')
+    //     : console.log('BowserState bool FALSE');
+
+    BowserState()
+        ? console.log('BowserState bool TRUE')
+        : console.log('BowserState bool FALSE');
 
     return (
         <ThemeProvider theme={theme}>
