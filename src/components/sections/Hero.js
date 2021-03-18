@@ -5,8 +5,9 @@ import heroLogo from '../../images/hero-logo.webp';
 import Button from '../Button';
 import EventTitle from '../EventTitle';
 import Text from '../Text';
-import bowserState from '../../utils/bowserState';
+import BowserState from '../../utils/bowserState';
 import theme from '../../utils/theme';
+// import BowserState from '../../utils/bowserState';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -85,10 +86,10 @@ const InviteText = () => {
 
 const Hero = ({ setPopupState }) => {
     return (
-        <Wrapper bowser={bowserState()}>
-            <Icons bowser={bowserState()}>
+        <Wrapper bowser={BowserState()}>
+            <Icons bowser={BowserState()}>
                 <Logo />
-                <InfoWrapper bowser={bowserState()}>
+                <InfoWrapper bowser={BowserState()}>
                     <InviteText />
                     <EventTitle color="white" textAlign="center" m="6px 0 20px" fontSize="24px" />
                     <ButtonWrapper onClick={() => setPopupState(true)}>

@@ -1,5 +1,8 @@
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Text from '../Text';
+import Bowser from './Bowser';
+import BowserState from '../../utils/bowserState';
 
 const Wrapper = styled.div`
     position: fixed;
@@ -22,6 +25,11 @@ const StyledText = styled(Text)`
 `;
 
 const SessionTester = () => {
+    // const isBowser = useContext(BowserState);
+    // console.log(isBowser);
+    // console.log(BowserState());
+    const isBowser = BowserState();
+    // console.log(isBowser);
     let mykey = 'bowserMode';
     let data = sessionStorage.getItem({ mykey });
     return (
@@ -29,8 +37,10 @@ const SessionTester = () => {
             <StyledText
                 color="green"
                 onClick={() => {
-                    sessionStorage.setItem(`${mykey}`, true);
-                    console.log(`Set: ${sessionStorage.getItem(mykey)}`);
+                    // sessionStorage.setItem(`${mykey}`, true);
+                    // console.log(`Set: ${sessionStorage.getItem(mykey)}`);
+                    BowserState(true);
+                    console.log(BowserState());
                 }}
             >
                 set true
@@ -38,8 +48,10 @@ const SessionTester = () => {
             <StyledText
                 color="blue"
                 onClick={() => {
-                    sessionStorage.setItem(`${mykey}`, false);
-                    console.log(`Set: ${sessionStorage.getItem(mykey)}`);
+                    // sessionStorage.setItem(`${mykey}`, false);
+                    // console.log(`Set: ${sessionStorage.getItem(mykey)}`);
+                    BowserState(false);
+                    console.log(BowserState());
                 }}
             >
                 set false
