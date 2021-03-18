@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Hero from './Hero';
 // eslint-disable-next-line
@@ -16,6 +16,7 @@ import SignUpPopup from './SignUpPopup';
 import SessionTester from './SessionTester';
 // eslint-disable-next-line
 import AnimationTest from './AnimationTest';
+import TestyTest from './TestyTest';
 // eslint-disable-next-line
 import Bowser from './Bowser';
 // eslint-disable-next-line
@@ -26,27 +27,25 @@ import theme from '../../utils/theme';
 const PageWrapper = styled.div``;
 
 function App() {
+    const yay = React.createContext('hej');
     const [showPopup, setPopupState] = useState(false);
     return (
         <ThemeProvider theme={theme}>
-            <PageWrapper>
-                {/* <AnimationTest /> */}
-                <SessionTester />
-
-                <Hero setPopupState={setPopupState} />
-                <GameInfo />
-                <GameGallery />
-                <Bowser />
-                <SignUp />
-                <VideoGallery />
-                {showPopup && (
-                    <SignUpPopup
-                        showPopup={showPopup}
-                        setPopupState={setPopupState}
-                    />
-                )}
-                <Footer setPopupState={setPopupState} />
-            </PageWrapper>
+            <yay.Provider value="då">
+                <PageWrapper>
+                    <TestyTest />
+                    {/* <AnimationTest /> */}
+                    <SessionTester />
+                    <Hero setPopupState={setPopupState} />
+                    <GameInfo />
+                    <GameGallery />
+                    <Bowser />
+                    <SignUp />
+                    <VideoGallery />
+                    {showPopup && <SignUpPopup showPopup={showPopup} setPopupState={setPopupState} />}
+                    <Footer setPopupState={setPopupState} />
+                </PageWrapper>
+            </yay.Provider>
         </ThemeProvider>
     );
 }
