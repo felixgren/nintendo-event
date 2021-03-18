@@ -4,15 +4,13 @@ import styled from 'styled-components';
 import Text from '../Text';
 import BowserState from '../../utils/bowserState';
 import darkBowserImg from '../../images/bowser/bowser-dark.webp';
+import brightBowserImg from '../../images/bowser/bowser.webp';
 
-BowserState()
-    ? console.log('BowserState bool TRUE')
-    : console.log('BowserState bool FALSE');
+BowserState() ? console.log('BowserState bool TRUE') : console.log('BowserState bool FALSE');
 
 const Wrapper = styled.div`
     height: 250vh;
-    background-color: ${(props) =>
-        `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
+    background-color: ${(props) => `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
     position: relative;
     display: flex;
     justify-content: center;
@@ -32,10 +30,11 @@ const DebugBar = styled.div`
 const StyledText = styled(Text)`
     position: sticky;
     z-index: 100;
-    top: 70px;
-    margin-top: 300px;
+    top: 100px;
+    margin-top: 100px;
+    margin-bottom: 125vh;
     height: 100px;
-    color: ${(props) => `rgba(${props.refScrollDecimal * 1.5 * 200}, 0, 0, 1)`};
+    color: ${(props) => `rgba(${(props.refScrollDecimal - 0.3) * 200}, 0, 0, 0.9)`};
 `;
 
 const Fade = styled.div`
@@ -46,7 +45,6 @@ const Fade = styled.div`
     position: absolute;
     bottom: 500px;
     z-index: 10;
-    /* border: 3px solid tomato; */
 `;
 
 const BeegBowser = styled.img`
@@ -56,7 +54,20 @@ const BeegBowser = styled.img`
     bottom: 500px;
     margin-right: auto;
     margin-left: auto;
-    opacity: 0.6;
+    opacity: 0.4;
+    transition: 500ms;
+`;
+
+const BrightBeegBowser = styled.img`
+    z-index: 5;
+    width: 80%;
+    max-width: 1440px;
+    position: absolute;
+    bottom: 500px;
+    margin-right: auto;
+    margin-left: auto;
+    opacity: ${(props) => (props.bowserState ? 1 : 0)};
+    transition: 500ms;
 `;
 
 const Bowser = () => {
@@ -69,8 +80,22 @@ const Bowser = () => {
     // current.scrollHeight: object pixel height?
     // window.scrollY: pixels scrolled from top
 
+    // WIP
+    const sessionScrollBgState = (scrollBg) => {
+        let key = 'ScrollBgState';
+
+        if (scrollBg != null) {
+            sessionStorage.setItem(`${key}`, `${JSON.stringify(scrollBg)}`);
+        }
+        if (sessionStorage.getItem(`${key}`) === null) {
+            sessionStorage.setItem(`${key}`, false);
+            return console.log('OH NO!');
+        }
+        return JSON.parse(sessionStorage.getItem(`${key}`));
+    };
+
     const WrapperRef = useRef(null);
-    const [scrollBg, setScrollBg] = useState('255');
+    const [scrollBg, setScrollBg] = useState(sessionScrollBgState());
     const [scrollLock, setScrollLock] = useState(false);
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
@@ -91,21 +116,22 @@ const Bowser = () => {
                 // const percentage = Math.round(RefScrollDecimal * 100);
                 // setPercent(RefScrollDecimal);
                 setScrollBg(1 - refScrollDecimal);
+                sessionScrollBgState(scrollBg);
                 setScrollDecimal(refScrollDecimal);
             }
 
-            if (refScrollDecimal > 0.7 && !BowserState()) {
+            if (refScrollDecimal > 0.75 && !BowserState()) {
                 setScrollLock(true);
                 BowserState(true);
 
                 setTimeout(() => {
                     setScrollLock(false);
-                }, 5000);
+                }, 2000);
             }
         };
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
-    }, []);
+    }, [scrollBg]);
 
     return (
         <Wrapper ref={WrapperRef} scrollBg={scrollBg}>
@@ -125,7 +151,12 @@ const Bowser = () => {
             </StyledText>
 
             <Fade />
+            {/* <BeegBowser
+                src={BowserState() ? brightBowserImg : darkBowserImg}
+                alt="Mega Bowser"
+            /> */}
             <BeegBowser src={darkBowserImg} alt="Mega Bowser" />
+            <BrightBeegBowser src={brightBowserImg} alt="Mega Bowser" bowserState={BowserState()} />
         </Wrapper>
     );
 };

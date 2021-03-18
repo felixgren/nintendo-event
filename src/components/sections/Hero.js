@@ -1,15 +1,17 @@
 import styled from 'styled-components';
 import heroBackground from '../../images/hero-background.webp';
+import evilHeroBackground from '../../images/bowser/hero-evilbackground.webp';
 import heroLogo from '../../images/hero-logo.webp';
 import Button from '../Button';
 import EventTitle from '../EventTitle';
 import Text from '../Text';
+import bowserState from '../../utils/bowserState';
 import theme from '../../utils/theme';
 
 const Wrapper = styled.div`
     width: 100%;
     height: 100vh;
-    background: #ff0000;
+    background: ${(props) => `${props.bowser ? '#000000' : '#ff0000'}`};
     text-align: center;
 
     ${theme.bp.desktop} {
@@ -20,7 +22,8 @@ const Wrapper = styled.div`
 const Icons = styled.div`
     width: 100%;
     height: 100%;
-    background: no-repeat url(${heroBackground});
+    /* background: no-repeat url(${heroBackground}); */
+    background: ${(props) => `no-repeat url(${props.bowser ? evilHeroBackground : heroBackground})`};
     background-position: top;
 `;
 
@@ -42,12 +45,18 @@ const InfoWrapper = styled.div`
     max-width: 700px;
     padding: 0 24px;
     margin: auto;
-    background: linear-gradient(
-        270deg,
-        rgba(255, 0, 0, 0) 0%,
-        #ff0000 52.08%,
-        rgba(255, 0, 0, 0) 100%
-    );
+
+    ${(props) =>
+        props.bowser
+            ? `
+            background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #000000 52.08%, rgba(0, 0, 0, 0) 100%);
+            `
+            : `
+            background: linear-gradient(270deg, rgba(255, 0, 0, 0) 0%, #ff0000 52.08%, rgba(255, 0, 0, 0) 100%);
+    `};
+
+    /* background: linear-gradient(270deg, rgba(255, 0, 0, 0) 0%, #ff0000 52.08%, rgba(255, 0, 0, 0) 100%); */
+    /* background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #000000 52.08%, rgba(0, 0, 0, 0) 100%); */
 `;
 
 const StyledText = styled(Text)`
@@ -64,15 +73,9 @@ const InviteText = () => {
     const country = params.get('country');
 
     return (
-        <StyledText
-            color="white"
-            fontSize={['16px', '24px']}
-            textAlign="center"
-            fontFamily="Montserrat-Italic"
-        >
-            {name && `${name}!`} You are invited to travel{' '}
-            {country ? `from ${country} to 🇯🇵 to` : 'to 🇯🇵 and'} participate
-            in...
+        <StyledText color="white" fontSize={['16px', '24px']} textAlign="center" fontFamily="Montserrat-Italic">
+            {name && `${name}!`} You are invited to travel {country ? `from ${country} to 🇯🇵 to` : 'to 🇯🇵 and'}{' '}
+            participate in...
             {/* You are invited to travel to Japan and participate in... */}
             {/* You are invited to travel from Sweden to Japan to participate in... */}
             {/* Kanye! You are invited to travel from Sweden to Japan to participate in... */}
@@ -82,17 +85,12 @@ const InviteText = () => {
 
 const Hero = ({ setPopupState }) => {
     return (
-        <Wrapper>
-            <Icons>
+        <Wrapper bowser={bowserState()}>
+            <Icons bowser={bowserState()}>
                 <Logo />
-                <InfoWrapper>
+                <InfoWrapper bowser={bowserState()}>
                     <InviteText />
-                    <EventTitle
-                        color="white"
-                        textAlign="center"
-                        m="6px 0 20px"
-                        fontSize="24px"
-                    />
+                    <EventTitle color="white" textAlign="center" m="6px 0 20px" fontSize="24px" />
                     <ButtonWrapper onClick={() => setPopupState(true)}>
                         <Button isHero isBlue />
                     </ButtonWrapper>
