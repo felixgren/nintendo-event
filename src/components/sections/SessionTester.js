@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import { HejContext, HejUpdateContext } from './App';
+import { React, useContext } from 'react';
+import { HejContext, HejUpdateContext } from './HejContext';
+
 import styled from 'styled-components';
 import Text from '../Text';
 
@@ -45,6 +46,7 @@ const SessionTester = () => {
                 color="blue"
                 onClick={() => {
                     updatehejTest('amazing');
+                    // useHejUpdate('wow');
                     sessionStorage.setItem(`${mykey}`, false);
                     console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}

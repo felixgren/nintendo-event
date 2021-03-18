@@ -1,17 +1,21 @@
 // eslint-disable-next-line
 import React, { useState, useRef, useEffect, useContext } from 'react';
-import { HejContext } from './App';
+// import { HejContext } from './HejContext';
 import styled from 'styled-components';
 import Text from '../Text';
 import BowserState from '../../utils/bowserState';
 import darkBowserImg from '../../images/bowser/bowser-dark.webp';
 import brightBowserImg from '../../images/bowser/bowser.webp';
+import { HejContext, HejUpdateContext } from './HejContext';
 
-BowserState() ? console.log('BowserState bool TRUE') : console.log('BowserState bool FALSE');
+BowserState()
+    ? console.log('BowserState bool TRUE')
+    : console.log('BowserState bool FALSE');
 
 const Wrapper = styled.div`
     height: 250vh;
-    background-color: ${(props) => `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
+    background-color: ${(props) =>
+        `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
     position: relative;
     display: flex;
     justify-content: center;
@@ -35,7 +39,8 @@ const StyledText = styled(Text)`
     margin-top: 100px;
     margin-bottom: 125vh;
     height: 100px;
-    color: ${(props) => `rgba(${(props.refScrollDecimal - 0.3) * 200}, 0, 0, 0.9)`};
+    color: ${(props) =>
+        `rgba(${(props.refScrollDecimal - 0.3) * 200}, 0, 0, 0.9)`};
 `;
 
 const Fade = styled.div`
@@ -100,9 +105,11 @@ const Bowser = () => {
     const [scrollLock, setScrollLock] = useState(false);
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
-    const hejState = useContext(HejContext);
+    // const hejState = useContext(HejContext);
 
     document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
+    const hejTest = useContext(HejContext);
+    const updatehejTest = useContext(HejUpdateContext);
 
     useEffect(() => {
         const onScroll = () => {
@@ -141,7 +148,7 @@ const Bowser = () => {
             <DebugBar>
                 <p> scrollBg: {scrollBg}</p>
                 <p> scrollRef: {refScrollDecimal}</p>
-                <p> hejState: {hejState}</p>
+                <p> hejState: {hejTest}</p>
             </DebugBar>
             <StyledText
                 refScrollDecimal={refScrollDecimal}
@@ -160,7 +167,11 @@ const Bowser = () => {
                 alt="Mega Bowser"
             /> */}
             <BeegBowser src={darkBowserImg} alt="Mega Bowser" />
-            <BrightBeegBowser src={brightBowserImg} alt="Mega Bowser" bowserState={BowserState()} />
+            <BrightBeegBowser
+                src={brightBowserImg}
+                alt="Mega Bowser"
+                bowserState={BowserState()}
+            />
         </Wrapper>
     );
 };

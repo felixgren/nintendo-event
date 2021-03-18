@@ -22,38 +22,33 @@ import Bowser from './Bowser';
 import BowserState from '../../utils/bowserState';
 import { ThemeProvider } from 'styled-components';
 import theme from '../../utils/theme';
+import { HejHejProvider } from './HejContext';
 
 const PageWrapper = styled.div``;
 
-export const HejContext = React.createContext();
-export const HejUpdateContext = React.createContext();
-
 function App() {
-    const [hejState, setHejState] = useState('hej');
-
-    function setTestStateFunc(arg1) {
-        setHejState(() => `hejhej! ${arg1}`);
-    }
-
     const [showPopup, setPopupState] = useState(false);
     return (
         <ThemeProvider theme={theme}>
-            <HejContext.Provider value={hejState}>
-                <HejUpdateContext.Provider value={setTestStateFunc}>
-                    <PageWrapper>
-                        {/* <AnimationTest /> */}
-                        <SessionTester />
-                        <Hero setPopupState={setPopupState} />
-                        <GameInfo />
-                        <GameGallery />
-                        <Bowser />
-                        <SignUp />
-                        <VideoGallery />
-                        {showPopup && <SignUpPopup showPopup={showPopup} setPopupState={setPopupState} />}
-                        <Footer setPopupState={setPopupState} />
-                    </PageWrapper>
-                </HejUpdateContext.Provider>
-            </HejContext.Provider>
+            <HejHejProvider>
+                <PageWrapper>
+                    {/* <AnimationTest /> */}
+                    <SessionTester />
+                    <Hero setPopupState={setPopupState} />
+                    <GameInfo />
+                    <GameGallery />
+                    <Bowser />
+                    <SignUp />
+                    <VideoGallery />
+                    {showPopup && (
+                        <SignUpPopup
+                            showPopup={showPopup}
+                            setPopupState={setPopupState}
+                        />
+                    )}
+                    <Footer setPopupState={setPopupState} />
+                </PageWrapper>
+            </HejHejProvider>
         </ThemeProvider>
     );
 }
