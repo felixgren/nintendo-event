@@ -1,3 +1,5 @@
+import React, { useContext } from 'react';
+import { HejContext, HejUpdateContext } from './App';
 import styled from 'styled-components';
 import Text from '../Text';
 
@@ -22,6 +24,9 @@ const StyledText = styled(Text)`
 `;
 
 const SessionTester = () => {
+    const hejTest = useContext(HejContext);
+    const updatehejTest = useContext(HejUpdateContext);
+
     let mykey = 'bowserMode';
     let data = sessionStorage.getItem({ mykey });
     return (
@@ -29,6 +34,7 @@ const SessionTester = () => {
             <StyledText
                 color="green"
                 onClick={() => {
+                    console.log(`yeee: ${hejTest}`);
                     sessionStorage.setItem(`${mykey}`, true);
                     console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}
@@ -38,11 +44,12 @@ const SessionTester = () => {
             <StyledText
                 color="blue"
                 onClick={() => {
+                    updatehejTest('amazing');
                     sessionStorage.setItem(`${mykey}`, false);
                     console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}
             >
-                set false
+                UPDATE HEJ
             </StyledText>
             <StyledText
                 color="purple"

@@ -1,5 +1,6 @@
 // eslint-disable-next-line
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
+import { HejContext } from './App';
 import styled from 'styled-components';
 import Text from '../Text';
 import BowserState from '../../utils/bowserState';
@@ -99,6 +100,8 @@ const Bowser = () => {
     const [scrollLock, setScrollLock] = useState(false);
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
+    const hejState = useContext(HejContext);
+
     document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
 
     useEffect(() => {
@@ -138,6 +141,7 @@ const Bowser = () => {
             <DebugBar>
                 <p> scrollBg: {scrollBg}</p>
                 <p> scrollRef: {refScrollDecimal}</p>
+                <p> hejState: {hejState}</p>
             </DebugBar>
             <StyledText
                 refScrollDecimal={refScrollDecimal}
