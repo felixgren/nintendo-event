@@ -1,4 +1,4 @@
-const BowserState = (arg1) => {
+const BowserSession = (arg1) => {
     let key = 'bowserMode';
 
     // If a value is supplied to the function, update.
@@ -15,4 +15,4 @@ const BowserState = (arg1) => {
     return JSON.parse(sessionStorage.getItem(`${key}`));
 };
 
-export default BowserState;
+export default BowserSession;

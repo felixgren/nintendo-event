@@ -6,13 +6,14 @@ import evilLogo from '../../images/bowser/bowser-logo.webp';
 import Button from '../Button';
 import EventTitle from '../EventTitle';
 import Text from '../Text';
-import bowserState from '../../utils/bowserState';
 import theme from '../../utils/theme';
+import bowserSession from '../../utils/bowserSession';
+import { useBowser, useBowserUpdate } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
     height: 100vh;
-    background: ${(props) => `${props.bowser ? '#000000' : '#ff0000'}`};
+    background: ${(props) => `${props.isEvil ? '#000000' : '#ff0000'}`};
     text-align: center;
 
     ${theme.bp.desktop} {
@@ -23,14 +24,16 @@ const Wrapper = styled.div`
 const Icons = styled.div`
     width: 100%;
     height: 100%;
-    background: ${(props) => `no-repeat url(${props.bowser ? evilHeroBackground : heroBackground})`};
+    background: ${(props) =>
+        `no-repeat url(${props.isEvil ? evilHeroBackground : heroBackground})`};
     background-position: top;
 `;
 
 const Logo = styled.div`
     width: 100%;
     height: 55%;
-    background: ${(props) => `no-repeat url(${props.bowser ? evilLogo : heroLogo})`};
+    background: ${(props) =>
+        `no-repeat url(${props.isEvil ? evilLogo : heroLogo})`};
     background-position: 50% 50%;
     background-size: 90% auto;
 
@@ -47,7 +50,7 @@ const InfoWrapper = styled.div`
     margin: auto;
 
     ${(props) =>
-        props.bowser
+        props.isEvil
             ? `
             background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #000000 52.08%, rgba(0, 0, 0, 0) 100%);
             `
@@ -70,9 +73,15 @@ const InviteText = () => {
     const country = params.get('country');
 
     return (
-        <StyledText color="white" fontSize={['16px', '24px']} textAlign="center" fontFamily="Montserrat-Italic">
-            {name && `${name}!`} You are invited to travel {country ? `from ${country} to 🇯🇵 to` : 'to 🇯🇵 and'}{' '}
-            participate in...
+        <StyledText
+            color="white"
+            fontSize={['16px', '24px']}
+            textAlign="center"
+            fontFamily="Montserrat-Italic"
+        >
+            {name && `${name}!`} You are invited to travel{' '}
+            {country ? `from ${country} to 🇯🇵 to` : 'to 🇯🇵 and'} participate
+            in...
             {/* You are invited to travel to Japan and participate in... */}
             {/* You are invited to travel from Sweden to Japan to participate in... */}
             {/* Kanye! You are invited to travel from Sweden to Japan to participate in... */}
@@ -81,13 +90,20 @@ const InviteText = () => {
 };
 
 const Hero = ({ setPopupState }) => {
+    const isEvil = useBowser();
+    const setEvil = useBowserUpdate();
     return (
-        <Wrapper bowser={bowserState()}>
-            <Icons bowser={bowserState()}>
-                <Logo bowser={bowserState()} />
-                <InfoWrapper bowser={bowserState()}>
+        <Wrapper isEvil={isEvil}>
+            <Icons isEvil={isEvil}>
+                <Logo isEvil={isEvil} />
+                <InfoWrapper isEvil={isEvil}>
                     <InviteText />
-                    <EventTitle color="white" textAlign="center" m="6px 0 20px" fontSize="24px" />
+                    <EventTitle
+                        color="white"
+                        textAlign="center"
+                        m="6px 0 20px"
+                        fontSize="24px"
+                    />
                     <ButtonWrapper onClick={() => setPopupState(true)}>
                         <Button isHero isBlue />
                     </ButtonWrapper>

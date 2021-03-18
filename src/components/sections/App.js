@@ -19,18 +19,17 @@ import AnimationTest from './AnimationTest';
 // eslint-disable-next-line
 import Bowser from './Bowser';
 // eslint-disable-next-line
-import BowserState from '../../utils/bowserState';
 import { ThemeProvider } from 'styled-components';
+import { BowserProvider } from './BowserContext';
 import theme from '../../utils/theme';
-import { HejHejProvider } from './HejContext';
 
 const PageWrapper = styled.div``;
 
 function App() {
     const [showPopup, setPopupState] = useState(false);
     return (
-        <ThemeProvider theme={theme}>
-            <HejHejProvider>
+        <BowserProvider>
+            <ThemeProvider theme={theme}>
                 <PageWrapper>
                     {/* <AnimationTest /> */}
                     <SessionTester />
@@ -48,8 +47,8 @@ function App() {
                     )}
                     <Footer setPopupState={setPopupState} />
                 </PageWrapper>
-            </HejHejProvider>
-        </ThemeProvider>
+            </ThemeProvider>
+        </BowserProvider>
     );
 }
 

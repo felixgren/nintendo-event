@@ -1,16 +1,16 @@
 // eslint-disable-next-line
 import React, { useState, useRef, useEffect, useContext } from 'react';
-// import { HejContext } from './HejContext';
+import { useBowser, useBowserUpdate } from './BowserContext';
+
 import styled from 'styled-components';
 import Text from '../Text';
-import BowserState from '../../utils/bowserState';
+import BowserSession from '../../utils/bowserSession';
 import darkBowserImg from '../../images/bowser/bowser-dark.webp';
 import brightBowserImg from '../../images/bowser/bowser.webp';
-import { HejContext, HejUpdateContext } from './HejContext';
 
-BowserState()
-    ? console.log('BowserState bool TRUE')
-    : console.log('BowserState bool FALSE');
+BowserSession()
+    ? console.log('BowserSession bool TRUE')
+    : console.log('BowserSession bool FALSE');
 
 const Wrapper = styled.div`
     height: 250vh;
@@ -72,7 +72,7 @@ const BrightBeegBowser = styled.img`
     bottom: 500px;
     margin-right: auto;
     margin-left: auto;
-    opacity: ${(props) => (props.bowserState ? 1 : 0)};
+    opacity: ${(props) => (props.isEvil ? 1 : 0)};
     transition: 500ms;
 `;
 
@@ -105,11 +105,10 @@ const Bowser = () => {
     const [scrollLock, setScrollLock] = useState(false);
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
-    // const hejState = useContext(HejContext);
+    const isEvil = useBowser();
+    const setEvil = useBowserUpdate();
 
     document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
-    const hejTest = useContext(HejContext);
-    const updatehejTest = useContext(HejUpdateContext);
 
     useEffect(() => {
         const onScroll = () => {
@@ -130,9 +129,9 @@ const Bowser = () => {
                 setScrollDecimal(refScrollDecimal);
             }
 
-            if (refScrollDecimal > 0.75 && !BowserState()) {
+            if (refScrollDecimal > 0.75 && !isEvil) {
                 setScrollLock(true);
-                BowserState(true);
+                setEvil(true);
 
                 setTimeout(() => {
                     setScrollLock(false);
@@ -146,9 +145,9 @@ const Bowser = () => {
     return (
         <Wrapper ref={WrapperRef} scrollBg={scrollBg}>
             <DebugBar>
+                <p> isEvil bool: {isEvil ? 'TRUE' : 'FALSE'}</p>
                 <p> scrollBg: {scrollBg}</p>
                 <p> scrollRef: {refScrollDecimal}</p>
-                <p> hejState: {hejTest}</p>
             </DebugBar>
             <StyledText
                 refScrollDecimal={refScrollDecimal}
@@ -162,15 +161,11 @@ const Bowser = () => {
             </StyledText>
 
             <Fade />
-            {/* <BeegBowser
-                src={BowserState() ? brightBowserImg : darkBowserImg}
-                alt="Mega Bowser"
-            /> */}
             <BeegBowser src={darkBowserImg} alt="Mega Bowser" />
             <BrightBeegBowser
                 src={brightBowserImg}
                 alt="Mega Bowser"
-                bowserState={BowserState()}
+                isEvil={isEvil}
             />
         </Wrapper>
     );

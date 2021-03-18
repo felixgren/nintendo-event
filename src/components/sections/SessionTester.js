@@ -1,5 +1,5 @@
-import { React, useContext } from 'react';
-import { HejContext, HejUpdateContext } from './HejContext';
+import React from 'react';
+import { useBowser, useBowserUpdate } from './BowserContext';
 
 import styled from 'styled-components';
 import Text from '../Text';
@@ -25,8 +25,8 @@ const StyledText = styled(Text)`
 `;
 
 const SessionTester = () => {
-    const hejTest = useContext(HejContext);
-    const updatehejTest = useContext(HejUpdateContext);
+    const isEvil = useBowser();
+    const setEvil = useBowserUpdate();
 
     let mykey = 'bowserMode';
     let data = sessionStorage.getItem({ mykey });
@@ -35,25 +35,25 @@ const SessionTester = () => {
             <StyledText
                 color="green"
                 onClick={() => {
-                    console.log(`yeee: ${hejTest}`);
-                    sessionStorage.setItem(`${mykey}`, true);
-                    console.log(`Set: ${sessionStorage.getItem(mykey)}`);
+                    setEvil(true);
+                    // sessionStorage.setItem(`${mykey}`, true);
+                    // console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}
             >
-                set true
+                set true (context)
             </StyledText>
             <StyledText
                 color="blue"
                 onClick={() => {
-                    updatehejTest('amazing');
-                    // useHejUpdate('wow');
-                    sessionStorage.setItem(`${mykey}`, false);
-                    console.log(`Set: ${sessionStorage.getItem(mykey)}`);
+                    setEvil(false);
+                    // updatehejTest('amazing');
+                    // sessionStorage.setItem(`${mykey}`, false);
+                    // console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}
             >
-                UPDATE HEJ
+                set false (context)
             </StyledText>
-            <StyledText
+            {/* <StyledText
                 color="purple"
                 onClick={() => {
                     data = sessionStorage.getItem(`${mykey}`);
@@ -72,7 +72,7 @@ const SessionTester = () => {
                 }}
             >
                 reset session
-            </StyledText>
+            </StyledText> */}
         </Wrapper>
     );
 };
