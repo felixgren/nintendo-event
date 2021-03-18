@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Text from './Text';
 import EventTitle from './EventTitle';
+import theme from '../utils/theme';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -14,46 +15,53 @@ const Div = styled.div`
     justify-content: center;
     align-items: center;
     width: 350px;
-    margin-top: 32px;
+    margin-top: 20px;
 
     & > p {
         font-family: 'Montserrat-Italic';
+    }
+    ${theme.bp.desktop} {
+        margin-top: 32px;
     }
 `;
 
 const Bold = styled.b`
     font-weight: 600;
-    font-size: 24px;
+    font-size: 20px;
+
+    ${theme.bp.desktop} {
+        font-size: 24px;
+    }
 `;
 
 const EventInfo = () => {
     return (
         <Wrapper>
             <Div>
-                <EventTitle size="24px" />
-                <Text m="0 8px" size="40px" weight="300">
+                <EventTitle fontSize={['18px', '24px']} />
+                <Text m="0 8px" fontSize={['28px', '40px']} fontWeight="300">
                     |
                 </Text>
-                <Text weight="500" transform="uppercase" size="14px" w="44px">
+                <Text fontSize={['12px', '14px']} fontWeight="500" transform="uppercase" width="44px">
                     Event 2021
                 </Text>
             </Div>
 
             <Div>
-                <Text size="20px" transform="uppercase">
+                <Text fontSize={['16px', '20px']} transform="uppercase">
                     Apr <Bold>27</Bold>
                     <Bold> - </Bold> June <Bold>2</Bold>
                 </Text>
             </Div>
 
             <Div>
-                <Text w="110px" weight="700" size="16px" align="right">
+                <Text width={['92px', '110px']} fontWeight="700" fontSize={['14px', '16px']} textAlign="right">
                     Automobile building
                 </Text>
-                <Text m="0 8px" size="40px" weight="300">
+                <Text m="0 8px" fontSize={['28px', '40px']} fontWeight="300">
                     |
                 </Text>
-                <Text weight="500" w="100px" size="14px">
+                <Text fontWeight="500" width="100px" fontSize="14px">
                     Fair Park Dallas, Texas
                 </Text>
             </Div>

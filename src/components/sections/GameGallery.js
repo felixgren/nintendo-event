@@ -165,42 +165,22 @@ const GameGallery = () => {
                     </Text>
                 </TitleWrapper>
                 <FirstGroup>
-                    <FlyingImg
-                        src={flyingImg}
-                        alt="Mario and friends flying on water dino"
-                    />
-                    <Text
-                        m="0 80px"
-                        color="white"
-                        weight="500"
-                        size="24px"
-                        maxWidth="500px"
-                        lineHeight="1.4em"
-                    >
-                        Bowser is up to his old tricks again and only Mario and
-                        his friends can save the day! Use power-ups like the
-                        Super Bell, which grants catlike abilities like climbing
-                        and scratching, to overcome Bowser and his minions.
+                    <FlyingImg src={flyingImg} alt="Mario and friends flying on water dino" />
+                    <Text m="0 80px" color="white" weight="500" size="24px" maxWidth="500px" lineHeight="1.4em">
+                        Bowser is up to his old tricks again and only Mario and his friends can save the day! Use
+                        power-ups like the Super Bell, which grants catlike abilities like climbing and scratching, to
+                        overcome Bowser and his minions.
                     </Text>
 
                     <FairyStoryImg src={fairyStoryImg} alt="Distressed fairy" />
                 </FirstGroup>
 
                 <SecondGroup>
-                    <BowserImg
-                        src={bowserImg}
-                        alt="Menacing Bowser holding a fairy in a glass bottle"
-                    />
-                    <GlassImg
-                        src={glassImg}
-                        alt="A trapped fairy in a small bottle"
-                    />
+                    <BowserImg src={bowserImg} alt="Menacing Bowser holding a fairy in a glass bottle" />
+                    <GlassImg src={glassImg} alt="A trapped fairy in a small bottle" />
                     <CastleImg src={castleImg} alt="Bowsers castle" />
                     <SmallImageWrapper>
-                        <SmallImg
-                            src={marioImg}
-                            alt="Mario brothers in cat suits"
-                        />
+                        <SmallImg src={marioImg} alt="Mario brothers in cat suits" />
                         <SmallImg src={bigMarioImg} alt="beeg beeg mario" />
                     </SmallImageWrapper>
                     <HiddenStickyStop />

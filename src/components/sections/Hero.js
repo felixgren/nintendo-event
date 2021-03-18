@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import heroBackground from '../../images/hero-background.webp';
 import evilHeroBackground from '../../images/bowser/hero-evilbackground.webp';
 import heroLogo from '../../images/hero-logo.webp';
+import evilLogo from '../../images/bowser/bowser-logo.webp';
 import Button from '../Button';
 import EventTitle from '../EventTitle';
 import Text from '../Text';
@@ -22,7 +23,6 @@ const Wrapper = styled.div`
 const Icons = styled.div`
     width: 100%;
     height: 100%;
-    /* background: no-repeat url(${heroBackground}); */
     background: ${(props) => `no-repeat url(${props.bowser ? evilHeroBackground : heroBackground})`};
     background-position: top;
 `;
@@ -30,7 +30,7 @@ const Icons = styled.div`
 const Logo = styled.div`
     width: 100%;
     height: 55%;
-    background: no-repeat url(${heroLogo});
+    background: ${(props) => `no-repeat url(${props.bowser ? evilLogo : heroLogo})`};
     background-position: 50% 50%;
     background-size: 90% auto;
 
@@ -54,9 +54,6 @@ const InfoWrapper = styled.div`
             : `
             background: linear-gradient(270deg, rgba(255, 0, 0, 0) 0%, #ff0000 52.08%, rgba(255, 0, 0, 0) 100%);
     `};
-
-    /* background: linear-gradient(270deg, rgba(255, 0, 0, 0) 0%, #ff0000 52.08%, rgba(255, 0, 0, 0) 100%); */
-    /* background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #000000 52.08%, rgba(0, 0, 0, 0) 100%); */
 `;
 
 const StyledText = styled(Text)`
@@ -87,7 +84,7 @@ const Hero = ({ setPopupState }) => {
     return (
         <Wrapper bowser={bowserState()}>
             <Icons bowser={bowserState()}>
-                <Logo />
+                <Logo bowser={bowserState()} />
                 <InfoWrapper bowser={bowserState()}>
                     <InviteText />
                     <EventTitle color="white" textAlign="center" m="6px 0 20px" fontSize="24px" />
