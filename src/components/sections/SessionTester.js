@@ -8,8 +8,9 @@ const Wrapper = styled.div`
     position: fixed;
     z-index: 1337;
     opacity: 0.8;
-    width: 300px;
-    height: 120px;
+    width: auto;
+    height: auto;
+    padding: 4px;
     background-color: #00ffffff;
     color: black;
     cursor: help;

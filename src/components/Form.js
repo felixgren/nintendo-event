@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Text from './Text';
 import EventTitle from './EventTitle';
 import Button from './Button';
+import theme from '../utils/theme';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -18,12 +19,14 @@ const Div = styled.div`
 `;
 
 const StyledForm = styled.form`
-    margin-top: 6px;
+    ${theme.bp.desktop} {
+        margin-top: 6px;
+    }
 `;
 
 const Input = styled.input`
     width: 100%;
-    height: 60px;
+    height: 44px;
     border: 2px solid red;
     border-radius: 4px;
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -32,8 +35,8 @@ const Input = styled.input`
     margin-top: 16px;
     box-shadow: -4px -4px 0px red;
     color: red;
-    font-size: 20px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     padding: 0 24px;
     letter-spacing: 0.05em;
     transition: 200ms;
@@ -51,13 +54,24 @@ const Input = styled.input`
         box-shadow: 0 0 0 red;
         outline: none;
     }
+
+    ${theme.bp.desktop} {
+        height: 60px;
+        font-size: 20px;
+        font-weight: 500;
+        border: 3px solid red;
+    }
 `;
 
 const Label = styled.label`
     display: flex;
     align-items: center;
-    padding: 20px 36px 32px;
+    padding: 10px 36px 20px;
     position: relative;
+
+    ${theme.bp.desktop} {
+        padding: 20px 36px 32px;
+    }
 `;
 
 const CheckboxInput = styled.input`
@@ -69,6 +83,10 @@ const CheckboxInput = styled.input`
     height: 25px;
     width: 25px;
     z-index: 2;
+
+    &:checked ~ div {
+        background-color: red;
+    }
 `;
 
 const CheckboxSpan = styled.span`
@@ -81,6 +99,11 @@ const CheckboxSpan = styled.span`
     box-shadow: -4px -4px 0px red;
     margin-right: 8px;
     border-radius: 2px;
+    transition: 0.2s;
+
+    ${theme.bp.desktop} {
+        border: 3px solid red;
+    }
 
     /* &::before {
         content: 'url("https://mdn.mozillademos.org/files/12668/MDN.svg%22)';
@@ -114,18 +137,19 @@ const Form = ({ isPopup }) => {
                     <Text
                         fontFamily="Montserrat-Italic"
                         transform="uppercase"
-                        size="28px"
+                        fontSize={['16px', '28px']}
                     >
                         Event 2021
                     </Text>
-                    <EventTitle size="28px" />
+                    <EventTitle fontSize={['16px', '28px']} />
                 </Div>
             )}
 
             <Text
+                textAlign={['center', 'left']}
                 transform="uppercase"
-                weight="700"
-                size="42px"
+                fontWeight="700"
+                fontSize={isPopup ? ['24px', '42px'] : ['28px', '42px']}
                 userSelect="none"
             >
                 Take the challenge
@@ -158,7 +182,7 @@ const Form = ({ isPopup }) => {
                     <CheckboxInput type="checkbox" />
                     <CheckboxSpan />
                     <Text
-                        size="14px"
+                        fontSize="14px"
                         color="black"
                         fontFamily="Montserrat-Italic"
                     >

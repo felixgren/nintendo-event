@@ -30,6 +30,7 @@ const DebugBar = styled.div`
     width: 200px;
     background: lime;
     opacity: 0.5;
+    pointer-events: none;
 `;
 
 const StyledText = styled(Text)`
