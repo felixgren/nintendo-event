@@ -14,9 +14,9 @@ const Wrapper = styled.div`
 const StyledButton = styled.button`
     background-color: #ffc901;
     width: 100%;
-    height: ${(props) => (props.isHero ? '64px' : '50px')};
+    height: ${(props) => (props.isHero ? '64px' : '54px')};
     transition: 150ms;
-    border: 4px solid black;
+    border: 3px solid black;
     border-radius: 8px;
     margin: 8px 6px;
     position: absolute;
@@ -35,21 +35,23 @@ const StyledButton = styled.button`
     }
 
     ${theme.bp.desktop} {
+        border: 4px solid black;
         height: ${(props) => (props.isHero ? '90px' : '70px')};
     }
 `;
 
 const HiddenButton = styled.div`
     width: 100%;
-    height: ${(props) => (props.isHero ? '64px' : '50px')};
+    height: ${(props) => (props.isHero ? '64px' : '54px')};
     background-color: ${(props) => (props.isBlue ? '#4693DF' : 'red')};
     position: absolute;
     left: ${(props) => (props.isHero ? '-6px' : '-4px')};
     top: ${(props) => (props.isHero ? '-2px' : '0')};
-    border: 4px solid black;
+    border: 3px solid black;
     border-radius: 8px;
 
     ${theme.bp.desktop} {
+        border: 4px solid black;
         height: ${(props) => (props.isHero ? '90px' : '70px')};
     }
 `;
@@ -72,7 +74,7 @@ const Dot = styled.div`
     }
 `;
 
-const Button = ({ isHero, isBlue }) => {
+const Button = ({ isHero, isBlue, isEvil }) => {
     return (
         <Wrapper isHero={isHero}>
             <HiddenButton isHero={isHero} isBlue={isBlue} />
@@ -82,6 +84,7 @@ const Button = ({ isHero, isBlue }) => {
                 <Dot bottom left />
                 <Dot bottom right />
                 <Text
+                    fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                     fontSize={['22px', '28px']}
                     transform="uppercase"
                     color="black"

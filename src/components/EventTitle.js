@@ -7,12 +7,12 @@ const Span = styled.span`
     text-transform: lowercase;
 `;
 
-const EventTitle = ({ color, fontSize, textAlign, m }) => {
+const EventTitle = ({ color, fontSize, textAlign, m, fontFamily }) => {
     return (
         <Text
             color={color}
             fontSize={fontSize}
-            fontFamily="Montserrat-Italic"
+            fontFamily={fontFamily}
             textAlign={textAlign}
             fontWeight="600"
             transform="uppercase"
@@ -24,6 +24,7 @@ const EventTitle = ({ color, fontSize, textAlign, m }) => {
 };
 
 EventTitle.propTypes = {
+    fontFamily: PropTypes.string,
     color: PropTypes.string,
     fontSize: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
     textAlign: PropTypes.string,

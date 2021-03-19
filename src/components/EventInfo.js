@@ -14,7 +14,7 @@ const Div = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 350px;
+    width: 360px;
     margin-top: 20px;
 
     & > p {
@@ -22,6 +22,7 @@ const Div = styled.div`
     }
     ${theme.bp.desktop} {
         margin-top: 32px;
+        width: 380px;
     }
 `;
 
@@ -42,26 +43,36 @@ const EventInfo = () => {
                 <Text m="0 8px" fontSize={['28px', '40px']} fontWeight="300">
                     |
                 </Text>
-                <Text fontSize={['12px', '14px']} fontWeight="500" transform="uppercase" width="44px">
+                <Text
+                    fontSize={['12px', '16px']}
+                    fontWeight="500"
+                    transform="uppercase"
+                    width="60px"
+                >
                     Event 2021
                 </Text>
             </Div>
 
             <Div>
-                <Text fontSize={['16px', '20px']} transform="uppercase">
+                <Text fontSize={['16px', '22px']} transform="uppercase">
                     Apr <Bold>27</Bold>
                     <Bold> - </Bold> June <Bold>2</Bold>
                 </Text>
             </Div>
 
             <Div>
-                <Text width={['92px', '110px']} fontWeight="700" fontSize={['14px', '16px']} textAlign="right">
+                <Text
+                    width={['92px', '110px']}
+                    fontWeight="700"
+                    fontSize={['14px', '18px']}
+                    textAlign="right"
+                >
                     Automobile building
                 </Text>
                 <Text m="0 8px" fontSize={['28px', '40px']} fontWeight="300">
                     |
                 </Text>
-                <Text fontWeight="500" width="100px" fontSize="14px">
+                <Text fontWeight="500" width="120px" fontSize="16px">
                     Fair Park Dallas, Texas
                 </Text>
             </Div>

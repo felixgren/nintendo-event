@@ -1,33 +1,28 @@
 import styled from 'styled-components';
 import EventInfo from '../EventInfo';
 import Text from '../Text';
-// import ShapeDivider from '../../icons/ShapeDivider';
 import marioImg from '../../images/about-cats.webp';
 import toadImg from '../../images/about-toad.webp';
+import bow2 from '../../images/bowser/mario-bowserjr.webp';
+import bows from '../../images/bowser/bowser.webp';
 import theme from '../../utils/theme';
+import { useBowser, useBowserUpdate } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
     position: relative;
+    background-color: ${(props) => (props.isEvil ? 'black' : 'white')};
 `;
-
-// const ShapeWrapper = styled.div`
-//     position: absolute;
-//     left: 0;
-//     width: 100%;
-//     bottom: 0;
-//     transform: rotate(180deg);
-//     z-index: 2;
-// `;
 
 const EventInfoWrapper = styled.div`
     padding: 44px 0;
     padding-bottom: 0;
-    max-width: 1600px;
+    max-width: 1400px;
     margin: auto;
 
     ${theme.bp.desktop} {
-        padding: 64px;
+        padding: 64px 64px 0;
+        margin-bottom: -30px;
     }
 `;
 
@@ -74,26 +69,29 @@ const Image = styled.img`
     }
 
     ${theme.bp.desktop} {
-        max-width: 500px;
-        max-height: 460px;
-        margin-right: -64px;
+        height: auto;
+        max-width: 540px;
+        max-height: 440px;
+        margin-right: -84px;
+        margin-bottom: 28px;
+        z-index: 0;
         transform: none;
 
         &:first-of-type {
             margin-right: -50px;
             align-self: flex-end;
+            margin-bottom: 0;
         }
     }
 `;
 
 const GameInfo = () => {
+    const isEvil = useBowser();
     return (
-        <Wrapper>
-            {/* <ShapeWrapper>
-                <ShapeDivider />
-            </ShapeWrapper> */}
+        <Wrapper isEvil={isEvil}>
             <EventInfoWrapper>
                 <Text
+                    fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                     textAlign="center"
                     fontWeight={['600', '400']}
                     fontSize={['14px', '38px']}
@@ -104,30 +102,41 @@ const GameInfo = () => {
                 </Text>
                 <EventInfo />
                 <Text
-                    m={['40px 12px 6px', '80px 0 24px']}
+                    fontFamily={isEvil ? 'NewRocker' : 'MontSerrat'}
+                    m={['40px 12px 6px', '50px 0 16px']}
                     lineHeight="1.1em"
                     fontSize={['38px', '60px']}
                     fontWeight="800"
-                    color="#ffb3b3"
                     maxWidth="890px"
+                    color={isEvil ? 'white' : 'red'}
                 >
-                    Team up for a paws-itively adorable adventure!
+                    {isEvil
+                        ? 'It’s a real cat-tastrophe!'
+                        : 'Team up for a paws-itively adorable adventure!'}
                 </Text>
 
                 <ImageWrapper>
                     <Text
-                        m={['8px 12px 40px', '0']}
-                        fontWeight="500"
-                        fontSize={['16px', '24px']}
+                        m={['8px 12px 20px', '0']}
+                        fontWeight="600"
+                        fontSize={['16px', '22px']}
                         maxWidth="480px"
                         lineHeight="1.4em"
+                        color={isEvil ? 'white' : 'red'}
                     >
-                        Bowser is up to his old tricks again and only Mario and his friends can save the day! Use
-                        power-ups like the Super Bell, which grants catlike abilities like climbing and scratching, to
-                        overcome Bowser and his minions.
+                        Bowser is up to his old tricks again and only Mario and
+                        his friends can save the day! Use power-ups like the
+                        Super Bell, which grants catlike abilities like climbing
+                        and scratching, to overcome Bowser and his minions.
                     </Text>
-                    <Image src={marioImg} alt="Mario and friends in cat suits" />
-                    <Image src={toadImg} alt="Captain Toad waving" />
+                    <Image
+                        src={isEvil ? bow2 : marioImg}
+                        alt="Mario and friends in cat suits"
+                    />
+                    <Image
+                        src={isEvil ? bows : toadImg}
+                        alt="Captain Toad waving"
+                    />
                 </ImageWrapper>
             </EventInfoWrapper>
         </Wrapper>
