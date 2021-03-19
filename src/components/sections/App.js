@@ -34,11 +34,11 @@ function App() {
                     {/* <AnimationTest /> */}
                     <SessionTester />
                     <Hero setPopupState={setPopupState} />
+                    <VideoGallery />
                     <GameInfo />
                     <GameGallery />
-                    <Bowser />
                     <SignUp />
-                    <VideoGallery />
+                    <Bowser />
                     {showPopup && (
                         <SignUpPopup
                             showPopup={showPopup}

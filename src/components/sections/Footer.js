@@ -9,6 +9,8 @@ import nintendoLogo from '../../images/sponsors-nintendo-logo.webp';
 import Button from '../Button';
 import Text from '../Text';
 import EventTitle from '../EventTitle';
+import theme from '../../utils/theme';
+import { useBowser, useBowserUpdate } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -20,26 +22,46 @@ const FooterComp = styled.footer`
     max-width: 1648px;
     margin: auto;
     padding: 0 24px;
+
+    ${theme.bp.desktop} {
+        padding: 0 24px;
+    }
 `;
 
 const Div = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
+    padding: 0 12px;
+
+    ${theme.bp.desktop} {
+        flex-direction: row;
+        justify-content: space-between;
+    }
 `;
 
 const TopIcons = styled.img`
     width: 100%;
-    height: auto;
+    height: 90px;
     object-fit: cover;
     padding: 20px 0;
+
+    ${theme.bp.desktop} {
+        max-width: 1500px;
+        height: auto;
+    }
 `;
 
 const TextWrapper = styled.div`
     display: flex;
     position: relative;
-    width: auto;
-    min-width: 800px;
-    height: 300px;
+    /* width: auto; */
+    /* min-width: 800px; */
+    /* height: 300px; */
+
+    ${theme.bp.desktop} {
+        min-width: 62%;
+    }
 `;
 
 const Dates = styled.div`
@@ -83,7 +105,7 @@ const BottomWrapper = styled.div`
 
 const SocialsWrapper = styled.div`
     max-width: 1648px;
-    padding: 0 24px;
+    padding: 0 12px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -94,8 +116,12 @@ const SocialDiv = styled.div``;
 
 const SocialIcon = styled.img`
     padding-right: 16px;
-    height: 29px;
+    height: 20px;
     cursor: pointer;
+
+    ${theme.bp.desktop} {
+        height: 29px;
+    }
 `;
 
 const ButtonWrapper = styled.div`
@@ -103,6 +129,7 @@ const ButtonWrapper = styled.div`
 `;
 
 const Footer = ({ setPopupState }) => {
+    const isEvil = useBowser();
     return (
         <Wrapper>
             <FooterComp>
@@ -111,16 +138,17 @@ const Footer = ({ setPopupState }) => {
                 <Div>
                     <TextWrapper>
                         <Text
-                            size="min(9.5vw, 160px)"
-                            weight="800"
+                            fontSize={['60px', 'min(9.5vw, 160px)']}
+                            fontWeight="800"
                             color="#a50505"
                             transform="uppercase"
-                            lineHeight="144px"
+                            lineHeight={['54px', '0.9em']}
                             userSelect="none"
+                            fontFamily={isEvil && 'NewRocker'}
                         >
                             It’s game time!
                         </Text>
-                        <Dates>
+                        {/* <Dates>
                             <EventTitle color="#FFFFFF" size="28px" />
                             <Text
                                 fontFamily="Montserrat-Italic"
@@ -131,12 +159,12 @@ const Footer = ({ setPopupState }) => {
                             >
                                 Apr <Bold>27 - </Bold> June <Bold>2</Bold>
                             </Text>
-                        </Dates>
+                        </Dates> */}
                     </TextWrapper>
 
                     <ImageWrapper>
                         <ButtonWrapper onClick={() => setPopupState(true)}>
-                            <Button isBlue />
+                            <Button isBlue isEvil={isEvil} />
                         </ButtonWrapper>
                         <Image src={marioImage} alt="Mario and friends" />
                     </ImageWrapper>

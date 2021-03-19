@@ -19,6 +19,7 @@ const Wrapper = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
+    transition: 0.3s;
 `;
 
 const DebugBar = styled.div`
@@ -40,6 +41,7 @@ const StyledText = styled(Text)`
     margin-top: 100px;
     margin-bottom: 125vh;
     height: 100px;
+    transition: 0.3s;
     color: ${(props) =>
         `rgba(${(props.refScrollDecimal - 0.3) * 200}, 0, 0, 0.9)`};
 `;
@@ -131,12 +133,18 @@ const Bowser = () => {
             }
 
             if (refScrollDecimal > 0.75 && !isEvil) {
-                setScrollLock(true);
-                setEvil(true);
+                // setScrollLock(true);
+                document.body.style.opacity = 0;
+                document.body.style.overflowY = 'hidden';
+                document.body.style.transition = 'opacity 800ms';
 
                 setTimeout(() => {
-                    setScrollLock(false);
-                }, 2000);
+                    setEvil(true);
+                    // setScrollLock(false);
+                    window.scrollTo({ top: 0, left: 0 });
+                    document.body.style.overflowY = 'auto';
+                    document.body.style.opacity = 1;
+                }, 800);
             }
         };
         window.addEventListener('scroll', onScroll);
