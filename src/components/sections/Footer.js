@@ -8,9 +8,8 @@ import facebookLogo from '../../images/footer-facebook.webp';
 import nintendoLogo from '../../images/sponsors-nintendo-logo.webp';
 import Button from '../Button';
 import Text from '../Text';
-import EventTitle from '../EventTitle';
 import theme from '../../utils/theme';
-import { useBowser, useBowserUpdate } from './BowserContext';
+import { useBowser } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -64,17 +63,17 @@ const TextWrapper = styled.div`
     }
 `;
 
-const Dates = styled.div`
-    position: absolute;
-    right: 18%;
-    bottom: 38px;
-    height: 80px;
-`;
+// const Dates = styled.div`
+//     position: absolute;
+//     right: 18%;
+//     bottom: 38px;
+//     height: 80px;
+// `;
 
-const Bold = styled.b`
-    font-weight: 600;
-    font-size: 24px;
-`;
+// const Bold = styled.b`
+//     font-weight: 600;
+//     font-size: 24px;
+// `;
 
 const ImageWrapper = styled.div`
     width: 100%;

@@ -7,7 +7,7 @@ import Button from '../Button';
 import EventTitle from '../EventTitle';
 import Text from '../Text';
 import theme from '../../utils/theme';
-import { useBowser, useBowserUpdate } from './BowserContext';
+import { useBowser } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -101,7 +101,6 @@ const InviteText = () => {
 
 const Hero = ({ setPopupState }) => {
     const isEvil = useBowser();
-    const setEvil = useBowserUpdate();
     return (
         <Wrapper isEvil={isEvil}>
             <Icons isEvil={isEvil}>

@@ -1,7 +1,5 @@
-// eslint-disable-next-line
-import React, { useState, useRef, useEffect, useContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useBowser, useBowserUpdate } from './BowserContext';
-
 import styled from 'styled-components';
 import Text from '../Text';
 import BowserSession from '../../utils/bowserSession';
@@ -97,7 +95,7 @@ const Bowser = () => {
             sessionStorage.setItem(`${key}`, `${JSON.stringify(scrollBg)}`);
         }
         if (sessionStorage.getItem(`${key}`) === null) {
-            sessionStorage.setItem(`${key}`, false);
+            sessionStorage.setItem(`${key}`, 0);
             return console.log('OH NO!');
         }
         return JSON.parse(sessionStorage.getItem(`${key}`));
@@ -105,13 +103,10 @@ const Bowser = () => {
 
     const WrapperRef = useRef(null);
     const [scrollBg, setScrollBg] = useState(sessionScrollBgState());
-    const [scrollLock, setScrollLock] = useState(false);
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
     const isEvil = useBowser();
     const setEvil = useBowserUpdate();
-
-    document.body.style.overflowY = scrollLock ? 'hidden' : 'auto';
 
     useEffect(() => {
         const onScroll = () => {
@@ -125,22 +120,18 @@ const Bowser = () => {
             const refScrollDecimal = refScrollY / (refHeight - viewHeight);
 
             if (refScrollDecimal > 0 && refScrollDecimal < 1) {
-                // const percentage = Math.round(RefScrollDecimal * 100);
-                // setPercent(RefScrollDecimal);
                 setScrollBg(1 - refScrollDecimal);
                 sessionScrollBgState(scrollBg);
                 setScrollDecimal(refScrollDecimal);
             }
 
             if (refScrollDecimal > 0.75 && !isEvil) {
-                // setScrollLock(true);
                 document.body.style.opacity = 0;
                 document.body.style.overflowY = 'hidden';
                 document.body.style.transition = 'opacity 800ms';
 
                 setTimeout(() => {
                     setEvil(true);
-                    // setScrollLock(false);
                     window.scrollTo({ top: 0, left: 0 });
                     document.body.style.overflowY = 'auto';
                     document.body.style.opacity = 1;
@@ -149,6 +140,7 @@ const Bowser = () => {
         };
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [scrollBg]);
 
     return (

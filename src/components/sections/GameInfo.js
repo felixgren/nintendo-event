@@ -6,7 +6,7 @@ import toadImg from '../../images/about-toad.webp';
 import bow2 from '../../images/bowser/mario-bowserjr.webp';
 import bows from '../../images/bowser/bowser.webp';
 import theme from '../../utils/theme';
-import { useBowser, useBowserUpdate } from './BowserContext';
+import { useBowser } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;

@@ -279,6 +279,7 @@ const GameGallery = () => {
     const WrapperRef = useRef(null);
     const isEvil = useBowser();
     const [scrollBg, setScrollBg] = useState('0');
+    // eslint-disable-next-line
     const [refScrollDecimal, setScrollDecimal] = useState(false);
 
     useEffect(() => {

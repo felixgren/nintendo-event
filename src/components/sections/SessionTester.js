@@ -26,10 +26,12 @@ const StyledText = styled(Text)`
 `;
 
 const SessionTester = () => {
+    // eslint-disable-next-line
     const isEvil = useBowser();
     const setEvil = useBowserUpdate();
 
     let mykey = 'bowserMode';
+    // eslint-disable-next-line
     let data = sessionStorage.getItem({ mykey });
     return (
         <Wrapper>
