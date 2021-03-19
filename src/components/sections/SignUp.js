@@ -11,11 +11,13 @@ import swicthImg from '../../images/sponsors-switch.webp';
 
 const Wrapper = styled.div`
     display: flex;
+    z-index: 4;
     flex-direction: column;
     align-items: center;
     width: 100%;
     max-width: 1600px;
     margin: auto;
+    background-color: white;
     color: #ff0000;
     position: relative;
 `;
