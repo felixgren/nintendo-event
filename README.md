@@ -4,6 +4,8 @@
 
 <strong> LIVE: https://www.marioevent.live </strong>
 
+<b>LIVE WIP: https://60586c699656e0000885e499--nintendo-event.netlify.app/ </b>
+
 Created using React and styled components. Designed in Figma.
 
 ## Installation
