@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Text from './Text';
 import EventTitle from './EventTitle';
 import theme from '../utils/theme';

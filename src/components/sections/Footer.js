@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import iconImage from '../../images/footer-icons.webp';
 import marioImage from '../../images/footer-cats.webp';
 import youtubeLogo from '../../images/footer-youtube.webp';

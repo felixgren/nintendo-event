@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import EventInfo from '../EventInfo';
 import Form from '../Form';
 import Text from '../Text';

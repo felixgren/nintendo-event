@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Form from '../Form';
 import Text from '../Text';
 import marioPole from '../../images/form-mario.webp';

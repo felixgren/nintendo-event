@@ -1,7 +1,7 @@
 import React from 'react';
 import { useBowser, useBowserUpdate } from './BowserContext';
 
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Text from '../Text';
 
 const Wrapper = styled.div`

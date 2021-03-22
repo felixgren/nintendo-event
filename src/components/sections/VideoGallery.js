@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Thumbnail from './../VideoThumbnail';
 import video1 from '../../videos/video1.mp4';
 import video2 from '../../videos/video2.mp4';

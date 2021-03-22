@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useBowser } from './BowserContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Text from '../Text';
 import ShapeDivider from '../../icons/ShapeDivider';
 import flyingImg from '../../images/gallery-flying.webp';

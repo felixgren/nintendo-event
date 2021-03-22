@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useBowser, useBowserUpdate } from './BowserContext';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Text from '../Text';
 import BowserSession from '../../utils/bowserSession';
 import darkBowserImg from '../../images/bowser/bowser-dark.webp';
@@ -24,12 +24,15 @@ const DebugBar = styled.div`
     z-index: 1337;
     position: fixed;
     top: 0;
-    left: 300px;
-    height: 100px;
-    width: 200px;
+    right: 0;
+    height: 120px;
+    width: 100px;
     background: lime;
     opacity: 0.5;
     pointer-events: none;
+    & > p {
+        padding: 2px;
+    }
 `;
 
 const StyledText = styled(Text)`

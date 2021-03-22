@@ -1,5 +1,5 @@
 import logo from '../../logo512.png';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const AppLol = styled.div`
     text-align: center;

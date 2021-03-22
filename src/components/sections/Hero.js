@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import heroBackground from '../../images/hero-background.webp';
 import evilHeroBackground from '../../images/bowser/hero-evilbackground.webp';
 import heroLogo from '../../images/hero-logo.webp';
