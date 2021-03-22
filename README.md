@@ -2,9 +2,9 @@
 
 # Nintendo Event
 
-<strong> LIVE: https://www.marioevent.live </strong>
+<b>LIVE WIP: https://60587aa4be17ac0007693527--nintendo-event.netlify.app </b>
 
-<b>LIVE WIP: https://60586c699656e0000885e499--nintendo-event.netlify.app/ </b>
+<strong> LIVE: https://www.marioevent.live </strong>
 
 Created using React and styled components. Designed in Figma.
 
