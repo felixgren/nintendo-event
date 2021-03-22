@@ -143,7 +143,7 @@ const Footer = ({ setPopupState }) => {
                             transform="uppercase"
                             lineHeight={['54px', '0.9em']}
                             userSelect="none"
-                            fontFamily={isEvil && 'NewRocker'}
+                            fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                         >
                             It’s game time!
                         </Text>

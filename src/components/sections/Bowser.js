@@ -153,7 +153,7 @@ const Bowser = () => {
             <StyledText
                 refScrollDecimal={refScrollDecimal}
                 transform="uppercase"
-                fontSize="120px"
+                fontSize={['36px', '120px']}
                 userSelect="none"
                 fontWeight="750"
                 textAlign="center"

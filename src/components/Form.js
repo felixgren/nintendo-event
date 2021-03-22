@@ -8,7 +8,6 @@ import theme from '../utils/theme';
 const Wrapper = styled.div`
     width: 100%;
     max-width: 520px;
-    margin: 8px;
 `;
 
 const Div = styled.div`
