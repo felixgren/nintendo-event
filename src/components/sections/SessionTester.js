@@ -56,7 +56,7 @@ const SessionTester = () => {
             >
                 set false (context)
             </StyledText>
-            <StyledText color="green">dev build test</StyledText>
+            <StyledText color="green">dev build</StyledText>
             {/* <StyledText
                 color="purple"
                 onClick={() => {
