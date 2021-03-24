@@ -1,18 +1,19 @@
 const BowserSession = (arg1) => {
-    let key = 'bowserMode';
+    const key = 'bowserMode';
+    const getItem = JSON.parse(sessionStorage.getItem(key));
 
     // If a value is supplied to the function, update.
     if (arg1 != null) {
-        sessionStorage.setItem(`${key}`, `${JSON.stringify(arg1)}`);
-        return JSON.parse(sessionStorage.getItem(`${key}`));
+        sessionStorage.setItem(key, arg1);
+        return arg1;
     }
     // If the session key does not exist. Create & set false.
-    if (sessionStorage.getItem(`${key}`) === null) {
-        sessionStorage.setItem(`${key}`, false);
-        return JSON.parse(sessionStorage.getItem(`${key}`));
+    if (getItem === null) {
+        sessionStorage.setItem(key, false);
+        return false;
     }
     // Else return current state
-    return JSON.parse(sessionStorage.getItem(`${key}`));
+    return getItem;
 };
 
 export default BowserSession;

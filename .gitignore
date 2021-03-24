@@ -23,6 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 # unfinished
-/src/components/HeroTest.js
-/src/components/Default.js
-/src/components/sections/old-SessionTester.js
+# /src/components/HeroTest.js
+# /src/components/Default.js
+
+# unfinished
+src/utils/iconImages.js
+src/images/hero
+src/components/sections/old-Hero.js

@@ -1,5 +1,8 @@
+import React, { useRef } from 'react';
 import styled from 'styled-components/macro';
-import heroBackground from '../../images/hero-background.webp';
+// import heroBackground from '../../images/hero-background.webp';
+import heroIcon1 from '../../images/hero/icon7.png';
+import evilHeroIcon1 from '../../images/hero/icon6.png';
 import evilHeroBackground from '../../images/bowser/hero-evilbackground.webp';
 import heroLogo from '../../images/hero-logo.webp';
 import evilLogo from '../../images/bowser/bowser-logo.webp';
@@ -10,10 +13,12 @@ import theme from '../../utils/theme';
 import { useBowser } from './BowserContext';
 
 const Wrapper = styled.div`
+    /* background: ${(props) => `${props.isEvil ? '#000000' : '#ff0000'}`}; */
+    position: relative;
+    background: transparent;
     width: 100%;
     height: 100vh;
     max-height: 667px;
-    background: ${(props) => `${props.isEvil ? '#000000' : '#ff0000'}`};
     text-align: center;
 
     ${theme.bp.desktop} {
@@ -22,11 +27,40 @@ const Wrapper = styled.div`
     }
 `;
 
-const Icons = styled.div`
+const Grid = styled.div`
+    position: absolute;
+    z-index: -1;
+    display: grid;
+    /* minmax(300px, auto) */
+    /* align-items: center; */
+    grid-template-columns: repeat(8, auto);
+    grid-template-rows: repeat(8, auto);
+    width: 100%;
+    height: 100%;
+    background: blue;
+`;
+
+// const GridWrapper = styled.div`
+//     display: grid;
+//     grid-template-columns: repeat(3, auto);
+//     /* grid-template-rows: 25% 100px auto; */
+//     width: 100%;
+//     height: 100vh;
+//     max-height: 667px;
+//     background: ${(props) => `${props.isEvil ? '#000000' : '#ff0000'}`};
+//     text-align: center;
+
+//     ${theme.bp.desktop} {
+//         height: 1024px;
+//         max-height: unset;
+//     }
+// `;
+
+const Content = styled.div`
     width: 100%;
     height: 100%;
     background: ${(props) =>
-        `url(${props.isEvil ? evilHeroBackground : heroBackground})`};
+        `url(${props.isEvil ? evilHeroIcon1 : heroIcon1})`};
     background-position: top;
     background-position: 50% 110%;
     background-size: 190% auto;
@@ -101,9 +135,46 @@ const InviteText = () => {
 
 const Hero = ({ setPopupState }) => {
     const isEvil = useBowser();
+    const GridRef = useRef(null);
+
+    // this is TRULY amazing
+    const gridStyles = Grid.componentStyle.rules[0];
+    const splitStyles = gridStyles.split(';');
+
+    const digitRegex = /\d+/;
+    const gridRowCount = parseInt(splitStyles[3].match(digitRegex));
+    const gridColCount = parseInt(splitStyles[4].match(digitRegex));
+
+    console.log(`${gridRowCount} rows haHAAaaa`);
+    console.log(`${gridColCount} cols`);
+
+    // const gridRowCount = splitStyles[4].split(':');
+    // const gridColumnCount = splitStyles[3].split(':');
+
+    // const lmaoRow = gridRowCount[1].match(/\d+/)[0];
+    // const lmaoCol = gridColumnCount[1].match(/\d+/)[0];
+
+    // console.log(`${lmaoRow} rows haHAAaaa`);
+    // console.log(`${lmaoCol} columns`);
+
+    console.log(Grid);
+    console.log(splitStyles);
+    console.log(gridRowCount);
+    console.log(gridColCount);
+
+    // test = gridStyles.split();
+    // console.log(test);
+
+    // console.log(GridRef);
+    // console.log(window.GridRef);
+    // console.log(GridRef.div)
+    // console.log(window.getComputedStyle(Grid));
+
+    // console.log(window.getComputedStyle(Grid));
     return (
         <Wrapper isEvil={isEvil}>
-            <Icons isEvil={isEvil}>
+            <Grid ref={GridRef} />
+            <Content isEvil={isEvil}>
                 <Logo isEvil={isEvil} />
                 <InfoWrapper isEvil={isEvil}>
                     <InviteText />
@@ -118,7 +189,7 @@ const Hero = ({ setPopupState }) => {
                         <Button isHero isBlue isEvil={isEvil} />
                     </ButtonWrapper>
                 </InfoWrapper>
-            </Icons>
+            </Content>
         </Wrapper>
     );
 };
