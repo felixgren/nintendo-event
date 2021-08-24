@@ -5,6 +5,7 @@ import marioPole from '../../images/form-mario.webp';
 import popupIcons from '../../images/popup-icons.webp';
 import CrossIcon from '../../icons/CrossIcon';
 import theme from '../../utils/theme';
+import { useBowser } from './BowserContext';
 
 const DarkOverlay = styled.div`
     display: flex;
@@ -86,6 +87,8 @@ const Icons = styled.img`
 `;
 
 const SignUpPopup = ({ showPopup, setPopupState }) => {
+    const isEvil = useBowser();
+
     return (
         <DarkOverlay>
             <Wrapper>
@@ -97,6 +100,7 @@ const SignUpPopup = ({ showPopup, setPopupState }) => {
                         <CrossIcon />
                     </CrossWrapper>
                     <Text
+                        fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                         fontWeight="800"
                         fontSize={['40px', 'min(9vw, 76px)']}
                         transform="uppercase"

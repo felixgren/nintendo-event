@@ -292,9 +292,10 @@ const GameGallery = () => {
 
             const refScrollDecimal = refScrollY / (refHeight - viewHeight);
 
-            if (refScrollDecimal > -0.4 && refScrollDecimal < 1.5) {
+            if (refScrollDecimal > -0.5 && refScrollDecimal < 1.5) {
                 setScrollDecimal(refScrollDecimal);
-                setScrollBg(isEvil ? 1000 : refScrollDecimal * 500);
+                // setScrollBg(isEvil ? 1000 : refScrollDecimal * 500);
+                setScrollBg(refScrollDecimal * 500);
             }
         };
         window.addEventListener('scroll', onScroll);

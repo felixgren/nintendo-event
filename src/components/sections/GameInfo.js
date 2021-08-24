@@ -12,6 +12,7 @@ const Wrapper = styled.div`
     width: 100%;
     position: relative;
     background-color: ${(props) => (props.isEvil ? 'black' : 'white')};
+    border-top: ${(props) => (props.isEvil && '1px solid red')};
 `;
 
 const EventInfoWrapper = styled.div`
@@ -53,7 +54,7 @@ const ImageWrapper = styled.div`
 const Image = styled.img`
     filter: drop-shadow(3px 0px 3px rgba(0, 0, 0, 0.2));
     z-index: 1;
-    max-width: 330px;
+    max-width: 360px;
     max-height: 290px;
     align-self: flex-end;
     margin-right: -68px;
@@ -66,7 +67,7 @@ const Image = styled.img`
         align-self: flex-start;
         padding: 12px;
         transform: none;
-    }
+    }    
 
     ${theme.bp.desktop} {
         height: auto;
@@ -82,6 +83,29 @@ const Image = styled.img`
             align-self: flex-end;
             margin-bottom: 0;
         }
+
+        ${(props) => props.isEvil && `
+            max-width: unset;
+            max-height: unset;
+            width: 80%;
+            padding: 0;
+
+            &:first-of-type {
+                margin-right: -200px;
+            }
+        `};
+    }
+`;
+
+const Line = styled.hr`
+    height: 1px;
+    background-color: red;
+    border: none;
+    width: 110vw;
+    margin-top: 40px;
+
+    ${theme.bp.desktop} {
+        margin-left: -84px;
     }
 `;
 
@@ -98,9 +122,13 @@ const GameInfo = () => {
                     transform="uppercase"
                     m={['0 0 30px', '0']}
                 >
-                    New <Strong>Super Mario 3D</Strong> World
+                    New <Strong>{isEvil ? 'Bowser´s fury' : 'Super Mario 3D'}</Strong> World
                 </Text>
+
                 <EventInfo />
+
+                {isEvil && <Line />}
+
                 <Text
                     fontFamily={isEvil ? 'NewRocker' : 'MontSerrat'}
                     m={['40px 12px 6px', '50px 0 16px']}
@@ -111,14 +139,27 @@ const GameInfo = () => {
                     color={isEvil ? 'white' : 'red'}
                 >
                     {isEvil
-                        ? 'It’s a real cat-tastrophe!'
+                        ? 'It’s a real'
                         : 'Team up for a paws-itively adorable adventure!'}
                 </Text>
+
+                {isEvil &&
+                    <Text
+                        fontFamily="NewRocker"
+                        m={'-20px 0 24px'}
+                        lineHeight="1.1em"
+                        fontSize={['38px', '60px']}
+                        fontWeight="800"
+                        color={isEvil ? 'white' : 'red'}
+                    >
+                        cat-tastrophe!
+                    </Text>
+                }
 
                 <ImageWrapper>
                     <Text
                         m={['8px 12px 20px', '0']}
-                        fontWeight="600"
+                        fontWeight={isEvil ? '500' : '600'}
                         fontSize={['16px', '22px']}
                         maxWidth="480px"
                         lineHeight="1.4em"
@@ -129,13 +170,16 @@ const GameInfo = () => {
                         Super Bell, which grants catlike abilities like climbing
                         and scratching, to overcome Bowser and his minions.
                     </Text>
+                    {!isEvil && 
+                        <Image
+                            src={isEvil ? bow2 : marioImg}
+                            alt="Mario and friends in cat suits"
+                        />
+                    }
                     <Image
-                        src={isEvil ? bow2 : marioImg}
-                        alt="Mario and friends in cat suits"
-                    />
-                    <Image
+                        isEvil={isEvil}
                         src={isEvil ? bows : toadImg}
-                        alt="Captain Toad waving"
+                        alt={isEvil ? "Big angry bowser" : "Captain Toad waving"}
                     />
                 </ImageWrapper>
             </EventInfoWrapper>

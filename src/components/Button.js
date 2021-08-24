@@ -2,6 +2,7 @@ import styled from 'styled-components/macro';
 import PropTypes from 'prop-types';
 import Text from './Text';
 import theme from '../utils/theme';
+import { useBowser } from '../components/sections/BowserContext';
 
 const Wrapper = styled.div`
     position: relative;
@@ -74,10 +75,11 @@ const Dot = styled.div`
     }
 `;
 
-const Button = ({ isHero, isBlue, isEvil }) => {
+const Button = ({ isHero, isBlue }) => {
+    const isEvil = useBowser();
     return (
         <Wrapper isHero={isHero}>
-            <HiddenButton isHero={isHero} isBlue={isBlue} />
+            <HiddenButton isHero={isHero} isBlue={!isEvil && isBlue} />
             <StyledButton isHero={isHero}>
                 <Dot top left />
                 <Dot top right />

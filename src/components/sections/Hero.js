@@ -188,7 +188,7 @@ const Hero = ({ setPopupState }) => {
                         fontSize={['28px', '34px']}
                     />
                     <ButtonWrapper onClick={() => setTimeout(() => setPopupState(true), 200)}>
-                        <Button isHero isBlue isEvil={isEvil} />
+                        <Button isHero isBlue />
                     </ButtonWrapper>
                 </InfoWrapper>
             </Content>

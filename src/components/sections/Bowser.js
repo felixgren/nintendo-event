@@ -5,19 +5,26 @@ import Text from '../Text';
 import BowserSession from '../../utils/bowserSession';
 import darkBowserImg from '../../images/bowser/bowser-dark.webp';
 import brightBowserImg from '../../images/bowser/bowser.webp';
+import theme from '../../utils/theme';
 
 BowserSession()
     ? console.log('BowserSession bool TRUE')
     : console.log('BowserSession bool FALSE');
 
 const Wrapper = styled.div`
-    height: 250vh;
+    height: 160vh;
     background-color: ${(props) =>
         `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
     position: relative;
     display: flex;
     justify-content: center;
     transition: 0.3s;
+    overflow: hidden;
+
+    ${theme.bp.desktop} {
+        overflow: unset;
+        height: 250vh;
+    }
 `;
 
 const DebugBar = styled.div`
@@ -38,46 +45,66 @@ const DebugBar = styled.div`
 const StyledText = styled(Text)`
     position: sticky;
     z-index: 100;
-    top: 100px;
+    top: 40px;
     margin-top: 100px;
-    margin-bottom: 125vh;
+    margin-bottom: 140vh;
     height: 100px;
     transition: 0.3s;
     color: ${(props) =>
         `rgba(${(props.refScrollDecimal - 0.3) * 200}, 0, 0, 0.9)`};
+
+    ${theme.bp.desktop} {
+        top: 60px;
+        margin-top: 220px;
+    }
 `;
 
 const Fade = styled.div`
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
     width: 100%;
-    height: 500px;
+    height: 700px;
     max-width: 1440px;
     position: absolute;
-    bottom: 500px;
+    bottom: 120px;
     z-index: 10;
+
+    ${theme.bp.desktop} {
+        bottom: 150px;
+        height: 500px;
+    }
 `;
 
 const BeegBowser = styled.img`
-    width: 80%;
+    width: 150%;
     max-width: 1440px;
     position: absolute;
-    bottom: 500px;
+    bottom: 200px;
     margin-right: auto;
     margin-left: auto;
-    opacity: 0.4;
     transition: 500ms;
+
+    ${theme.bp.desktop} {
+        bottom: 150px;
+        width: 80%;
+        opacity: 0.5;
+    }
 `;
 
 const BrightBeegBowser = styled.img`
     z-index: 5;
-    width: 80%;
+    width: 150%;
     max-width: 1440px;
     position: absolute;
-    bottom: 500px;
+    bottom: 200px;
     margin-right: auto;
     margin-left: auto;
     opacity: ${(props) => (props.isEvil ? 1 : 0)};
     transition: 500ms;
+
+    ${theme.bp.desktop} {
+        bottom: 150px;
+        width: 80%;
+    }
 `;
 
 const Bowser = () => {
@@ -122,13 +149,13 @@ const Bowser = () => {
 
             const refScrollDecimal = refScrollY / (refHeight - viewHeight);
 
-            if (refScrollDecimal > 0 && refScrollDecimal < 1) {
+            if (refScrollDecimal > -0.05 && refScrollDecimal < 1) {
                 setScrollBg(1 - refScrollDecimal);
                 sessionScrollBgState(scrollBg);
                 setScrollDecimal(refScrollDecimal);
             }
 
-            if (refScrollDecimal > 0.75 && !isEvil) {
+            if (refScrollDecimal > 0.6 && !isEvil) {
                 document.body.style.opacity = 0;
                 document.body.style.overflowY = 'hidden';
                 document.body.style.transition = 'opacity 800ms';

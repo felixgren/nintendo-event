@@ -6,6 +6,7 @@ import video2 from '../../videos/video2.mp4';
 import video3 from '../../videos/video1.mp4';
 import Text from '../Text';
 import theme from '../../utils/theme';
+import { useBowser } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -92,6 +93,8 @@ const Fade = styled.div`
 `;
 
 const VideoGallery = () => {
+    const isEvil = useBowser();
+
     const videos = [
         {
             src: video1,
@@ -135,6 +138,7 @@ const VideoGallery = () => {
             <Fade activeFade={activeFade} />
             <TextWrapper>
                 <Text
+                    fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                     fontSize={['28px', '50px']}
                     lineHeight={['60px', '80px']}
                     fontWeight={['700', '800']}

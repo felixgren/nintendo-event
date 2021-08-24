@@ -163,7 +163,7 @@ const Footer = ({ setPopupState }) => {
 
                     <ImageWrapper>
                         <ButtonWrapper onClick={() => setTimeout(() => setPopupState(true), 200)}>
-                            <Button isBlue isEvil={isEvil} />
+                            <Button isBlue />
                         </ButtonWrapper>
                         <Image src={marioImage} alt="Mario and friends" />
                     </ImageWrapper>
