@@ -37,7 +37,6 @@ const Grid = styled.div`
     grid-template-rows: repeat(8, auto);
     width: 100%;
     height: 100%;
-    background: blue;
 `;
 
 // const GridWrapper = styled.div`
@@ -182,13 +181,13 @@ const Hero = ({ setPopupState }) => {
                 <InfoWrapper isEvil={isEvil}>
                     <InviteText />
                     <EventTitle
-                        fontFamily={isEvil ? 'NewRocker' : 'Montserrat-Italic'}
+                        fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                         color="white"
                         textAlign="center"
                         m="6px 0 20px"
                         fontSize={['28px', '34px']}
                     />
-                    <ButtonWrapper onClick={() => setPopupState(true)}>
+                    <ButtonWrapper onClick={() => setTimeout(() => setPopupState(true), 200)}>
                         <Button isHero isBlue isEvil={isEvil} />
                     </ButtonWrapper>
                 </InfoWrapper>

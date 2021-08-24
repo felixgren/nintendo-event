@@ -13,11 +13,13 @@ import marioImg from '../../images/gallery-mario.webp';
 import tubeImg from '../../images/gallery-pipe.webp';
 import theme from '../../utils/theme';
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs(props => ({
+    style: {
+      background: `rgb(${255 - props.scrollBg}, 0, 0)`,
+    },
+  }))`
     width: 100%;
     position: relative;
-    /* Refactor into variable */
-    background-color: ${(props) => `rgb(${255 - props.scrollBg}, 0, 0)`};
     ${theme.bp.desktop} {
         margin-top: 0;
     }
@@ -290,7 +292,7 @@ const GameGallery = () => {
 
             const refScrollDecimal = refScrollY / (refHeight - viewHeight);
 
-            if (refScrollDecimal > 0 && refScrollDecimal < 1.5) {
+            if (refScrollDecimal > -0.4 && refScrollDecimal < 1.5) {
                 setScrollDecimal(refScrollDecimal);
                 setScrollBg(isEvil ? 1000 : refScrollDecimal * 500);
             }
