@@ -186,7 +186,7 @@ const GameInfo = () => {
 
                 <ImageWrapper isEvil={isEvil}>
                     <Text
-                        m={isEvil ? ['120px 12px 20px', '0'] : ['0 12px 86px', '0']}
+                        m={isEvil ? ['120px 12px 20px', '0'] : ['0 12px 92px', '0']}
                         fontWeight={isEvil ? '500' : '600'}
                         fontSize={['16px', '22px']}
                         maxWidth="500px"

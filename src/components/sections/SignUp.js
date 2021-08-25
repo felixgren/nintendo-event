@@ -56,10 +56,10 @@ const FormWrapper = styled.div`
 
 const FlexWrapper = styled.div`
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    max-width: 160px;
 
     ${theme.bp.desktop} {
         max-width: unset;
@@ -71,7 +71,7 @@ const SponsorsWrapper = styled.div`
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
-    padding: 24px 12px 80px;
+    padding: 80px 12px 80px;
 
     ${theme.bp.desktop} {
         padding: 72px 190px 64px 0;
@@ -84,7 +84,8 @@ const SponsorLogo = styled.img`
     height: auto;
     max-width: 90px;
     max-height: 50px;
-    margin-top: 8px;
+    padding-right: 12px;
+    margin-bottom: -60px;
 
     ${theme.bp.desktop} {
         width: auto;
@@ -92,9 +93,10 @@ const SponsorLogo = styled.img`
 
         max-width: unset;
         max-height: unset;
-        margin-left: 24px;
-        margin-right: 0;
-        margin-top: 0;
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-bottom: 0;
+        padding: 0;
     }
 `;
 
@@ -140,7 +142,7 @@ const SignUp = () => {
             <SponsorsWrapper>
                 <Text
                     transform="uppercase"
-                    fontSize={['30px', 'min(4vw, 48px)']}
+                    fontSize={['24px', 'min(3.6vw, 48px)']}
                     fontWeight="800"
                     color="#FFB3B3"
                     userSelect="none"
