@@ -30,11 +30,10 @@ const ShapeTop = styled.div`
     left: 0;
     width: 100%;
     top: -84px;
-    background-color: white;
+    background-color: transparent;
     transform: rotate(180deg);
 
     ${theme.bp.desktop} {
-        background-color: transparent;
         height: auto;
     }
 `;

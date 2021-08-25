@@ -3,7 +3,7 @@ import EventInfo from '../EventInfo';
 import Text from '../Text';
 import marioImg from '../../images/about-cats.webp';
 import toadImg from '../../images/about-toad.webp';
-import bow2 from '../../images/bowser/mario-bowserjr.webp';
+import angryMarioImg from '../../images/bowser/mario-bowserjr.webp';
 import bows from '../../images/bowser/bowser.webp';
 import theme from '../../utils/theme';
 import { useBowser } from './BowserContext';
@@ -40,7 +40,7 @@ const ImageWrapper = styled.div`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    flex-direction: column-reverse;
+    flex-direction: ${(props) => props.isEvil ? 'column' : 'column-reverse'};
     overflow: hidden;
     margin-top: -130px;
 
@@ -67,7 +67,26 @@ const Image = styled.img`
         align-self: flex-start;
         padding: 12px;
         transform: none;
-    }    
+    }
+
+    ${(props) => props.isEvil && `
+        &:first-of-type {
+            position: absolute;
+            bottom: -130px;
+            width: 60%;
+            max-height: unset;
+        }
+
+        &:last-of-type {
+            transform: none;
+            z-index: 0;
+            width: 114vw;
+            margin-top: -50px;
+            margin-bottom: 20px;
+            max-width: unset;
+            max-height: unset;
+        }
+    `};
 
     ${theme.bp.desktop} {
         height: auto;
@@ -85,13 +104,21 @@ const Image = styled.img`
         }
 
         ${(props) => props.isEvil && `
-            max-width: unset;
+            max-width: 1000px;
             max-height: unset;
-            width: 80%;
             padding: 0;
 
             &:first-of-type {
-                margin-right: -200px;
+                position: absolute;
+                width: 38%;
+                max-width: 500px;
+                margin-bottom: -30px;
+            }
+
+            &:last-of-type {
+                margin-right: -230px;
+                margin-top: -200px;
+                width: 80%;
             }
         `};
     }
@@ -101,11 +128,12 @@ const Line = styled.hr`
     height: 1px;
     background-color: red;
     border: none;
-    width: 110vw;
+    width: 100vw;
     margin-top: 40px;
 
     ${theme.bp.desktop} {
         margin-left: -84px;
+        width: 110vw;
     }
 `;
 
@@ -131,7 +159,7 @@ const GameInfo = () => {
 
                 <Text
                     fontFamily={isEvil ? 'NewRocker' : 'MontSerrat'}
-                    m={['40px 12px 6px', '50px 0 16px']}
+                    m={['40px 12px 12px', '50px 0 16px']}
                     lineHeight="1.1em"
                     fontSize={['38px', '60px']}
                     fontWeight="800"
@@ -146,7 +174,7 @@ const GameInfo = () => {
                 {isEvil &&
                     <Text
                         fontFamily="NewRocker"
-                        m={'-20px 0 24px'}
+                        m={['-20px 12px 24px', '-20px 0 24px']}
                         lineHeight="1.1em"
                         fontSize={['38px', '60px']}
                         fontWeight="800"
@@ -156,12 +184,12 @@ const GameInfo = () => {
                     </Text>
                 }
 
-                <ImageWrapper>
+                <ImageWrapper isEvil={isEvil}>
                     <Text
-                        m={['8px 12px 20px', '0']}
+                        m={isEvil ? ['120px 12px 20px', '0'] : ['0 12px 86px', '0']}
                         fontWeight={isEvil ? '500' : '600'}
                         fontSize={['16px', '22px']}
-                        maxWidth="480px"
+                        maxWidth="500px"
                         lineHeight="1.4em"
                         color={isEvil ? 'white' : 'red'}
                     >
@@ -170,12 +198,11 @@ const GameInfo = () => {
                         Super Bell, which grants catlike abilities like climbing
                         and scratching, to overcome Bowser and his minions.
                     </Text>
-                    {!isEvil && 
-                        <Image
-                            src={isEvil ? bow2 : marioImg}
-                            alt="Mario and friends in cat suits"
-                        />
-                    }
+                    <Image
+                        isEvil={isEvil}
+                        src={isEvil ? angryMarioImg : marioImg}
+                        alt="Mario and friends in cat suits"
+                    />
                     <Image
                         isEvil={isEvil}
                         src={isEvil ? bows : toadImg}

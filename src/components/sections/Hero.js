@@ -66,6 +66,7 @@ const Content = styled.div`
     background-position: top;
     background-position: 50% 110%;
     background-size: 190% auto;
+    filter: ${(props) => props.isEvil && 'saturate(130%)'};
 
     ${theme.bp.desktop} {
         background-position: 50% 50%;

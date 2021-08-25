@@ -22,7 +22,7 @@ const Div = styled.div`
     }
     ${theme.bp.desktop} {
         margin-top: 32px;
-        width: 380px;
+        width: 350px;
     }
 `;
 
