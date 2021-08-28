@@ -22,7 +22,7 @@ import bellImg from '../../images/bowser/bell.png';
 
 const Wrapper = styled.div.attrs(props => ({
     style: {
-      background: `rgb(${255 - props.scrollBg}, 0, 0)`,
+      backgroundColor: `rgb(${255 - props.scrollBg}, 0, 0)`,
     },
   }))`
     width: 100%;
@@ -164,7 +164,7 @@ const StoryImg = styled.img`
     filter: drop-shadow(2px 0px 3px rgba(0, 0, 0, 0.2));
 
     ${theme.bp.desktop} {
-        margin-top: -60px;
+        margin-top: -200px;
         max-width: 600px;
         margin-right: 30px;
         margin-bottom: 20px;
@@ -318,7 +318,7 @@ const SmallImg = styled.img`
 
         &:last-of-type {
             margin-left: 20px;
-            box-shadow: 2px -50px 200px #090034;
+            box-shadow: 2px -50px 200px black;
             width: 70%;
         }
     }

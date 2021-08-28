@@ -3,7 +3,8 @@ import EventInfo from '../EventInfo';
 import Form from '../Form';
 import Text from '../Text';
 
-import MarioPoleImg from '../../images/form-mario.webp';
+import marioPoleImg from '../../images/form-mario.webp';
+import evilPoleImg from '../../images/bowser/mario-evil-pole.png';
 import nintendoImg from '../../images/sponsors-nintendo-logo.webp';
 import esrbImg from '../../images/sponsors-esrb.webp';
 import gamestopImg from '../../images/sponsors-gamestop.webp';
@@ -32,6 +33,10 @@ const Wrapper = styled.div`
 `;
 const EventInfoWrapper = styled.div`
     padding: 20px 0 12px;
+    
+    & > div > div > p {
+        color: ${(props) => (props.isEvil && 'black')};
+    }
 
     ${theme.bp.desktop} {
         padding: 40px 16px;
@@ -118,8 +123,8 @@ const SignUp = () => {
     const isEvil = useBowser();
     return (
         <Wrapper>
-            <EventInfoWrapper>
-                <EventInfo />
+            <EventInfoWrapper isEvil={isEvil}>
+                <EventInfo color={isEvil && 'blue'} />
             </EventInfoWrapper>
 
             <FormWrapper>
@@ -129,7 +134,7 @@ const SignUp = () => {
                     fontSize={['80px', 'min(9.5vw, 150px)']}
                     transform="uppercase"
                     color="#FFB3B3"
-                    lineHeight="0.9em"
+                    lineHeight={isEvil ? '1em' : '0.9em'}
                     width="100%"
                     maxWidth="500px"
                     userSelect="none"
@@ -137,7 +142,7 @@ const SignUp = () => {
                 >
                     It’s game time!
                 </Text>
-                <Image src={MarioPoleImg} alt="Mario on flag" />
+                <Image src={isEvil ? evilPoleImg : marioPoleImg} alt="Mario on flag" />
             </FormWrapper>
             <SponsorsWrapper>
                 <Text
@@ -157,7 +162,7 @@ const SignUp = () => {
                     <SponsorLogo src={esrbImg} alt="ESRB Privacy logo" />
                 </FlexWrapper>
             </SponsorsWrapper>
-            <Image src={MarioPoleImg} alt="Mario on flag" />
+            <Image src={isEvil ? evilPoleImg : marioPoleImg} alt="Mario on flag" />
         </Wrapper>
     );
 };

@@ -4,10 +4,16 @@ import Text from './Text';
 import EventTitle from './EventTitle';
 import Button from './Button';
 import theme from '../utils/theme';
+import { useBowser } from '../components/sections/BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
     max-width: 520px;
+    margin-bottom: 16px;
+
+    ${theme.bp.desktop} {
+        margin-bottom: 0;
+    }
 `;
 
 const Div = styled.div`
@@ -28,11 +34,9 @@ const Input = styled.input`
     height: 44px;
     border: 2px solid red;
     border-radius: 4px;
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-        'Helvetica Neue', sans-serif;
+    font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
     margin-top: 16px;
-    box-shadow: -4px -4px 0px red;
+    box-shadow: -4px -4px 0px ${(props) => (props.isEvil ? 'black' : 'red')};
     color: red;
     font-size: 16px;
     font-weight: 600;
@@ -95,7 +99,7 @@ const CheckboxSpan = styled.span`
     height: 25px;
     width: 25px;
     border: 2px solid red;
-    box-shadow: -4px -4px 0px red;
+    box-shadow: -4px -4px 0px ${(props) => (props.isEvil ? 'black' : 'red')};
     margin-right: 8px;
     border-radius: 2px;
     transition: 0.2s;
@@ -129,6 +133,8 @@ const CheckboxSpan = styled.span`
 const Form = ({ isPopup }) => {
     const params = new URLSearchParams(window.location.search);
     const name = params.get('name');
+    const isEvil = useBowser();
+
     return (
         <Wrapper>
             {isPopup && (
@@ -137,10 +143,11 @@ const Form = ({ isPopup }) => {
                         fontFamily="Montserrat-Italic"
                         transform="uppercase"
                         fontSize={['16px', '28px']}
+                        color={isEvil ? 'black' : 'red'}
                     >
                         Event 2021
                     </Text>
-                    <EventTitle fontSize={['16px', '28px']} />
+                    <EventTitle color={isEvil ? 'black' : 'red'} fontSize={['16px', '28px']} />
                 </Div>
             )}
 
@@ -150,6 +157,7 @@ const Form = ({ isPopup }) => {
                 fontWeight="700"
                 fontSize={isPopup ? ['24px', '42px'] : ['28px', '42px']}
                 userSelect="none"
+                color={isEvil ? 'black' : 'red'}
             >
                 Take the challenge
             </Text>
@@ -161,6 +169,7 @@ const Form = ({ isPopup }) => {
                     id="fullName"
                     placeholder="Name"
                     defaultValue={name && name}
+                    isEvil={isEvil}
                 />
                 <Input
                     required
@@ -168,6 +177,7 @@ const Form = ({ isPopup }) => {
                     type="email"
                     id="email"
                     placeholder="Email"
+                    isEvil={isEvil}
                 />
                 <Input
                     required
@@ -175,11 +185,12 @@ const Form = ({ isPopup }) => {
                     type="tel"
                     id="phone"
                     placeholder="Phone"
+                    isEvil={isEvil}
                 />
 
                 <Label>
                     <CheckboxInput type="checkbox" />
-                    <CheckboxSpan />
+                    <CheckboxSpan isEvil={isEvil} />
                     <Text
                         fontSize="14px"
                         color="black"

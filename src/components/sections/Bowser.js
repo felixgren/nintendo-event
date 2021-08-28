@@ -51,11 +51,11 @@ const StyledText = styled(Text)`
     height: 100px;
     transition: 0.3s;
     color: ${(props) =>
-        `rgba(${(props.refScrollDecimal - 0.3) * 200}, 0, 0, 0.9)`};
+        `rgba(${(props.refScrollDecimal - 0.15) * 300}, 0, 0, 0.9)`};
 
     ${theme.bp.desktop} {
-        top: 60px;
-        margin-top: 220px;
+        top: 30px;
+        margin-top: 140px;
     }
 `;
 
@@ -84,7 +84,7 @@ const BeegBowser = styled.img`
     transition: 500ms;
 
     ${theme.bp.desktop} {
-        bottom: 150px;
+        bottom: 300px;
         width: 80%;
         opacity: 0.5;
     }
@@ -155,10 +155,11 @@ const Bowser = () => {
                 setScrollDecimal(refScrollDecimal);
             }
 
-            if (refScrollDecimal > 0.6 && !isEvil) {
+            if (refScrollDecimal > 0.55 && !isEvil) {
                 document.body.style.opacity = 0;
                 document.body.style.overflowY = 'hidden';
                 document.body.style.transition = 'opacity 800ms';
+                document.body.style.backgroundColor = 'white';
 
                 setTimeout(() => {
                     setEvil(true);
@@ -166,6 +167,10 @@ const Bowser = () => {
                     document.body.style.overflowY = 'auto';
                     document.body.style.opacity = 1;
                 }, 800);
+
+                setTimeout(() => {
+                    document.body.style.backgroundColor = 'black';
+                }, 1600);
             }
         };
         window.addEventListener('scroll', onScroll);

@@ -63,18 +63,6 @@ const TextWrapper = styled.div`
     }
 `;
 
-// const Dates = styled.div`
-//     position: absolute;
-//     right: 18%;
-//     bottom: 38px;
-//     height: 80px;
-// `;
-
-// const Bold = styled.b`
-//     font-weight: 600;
-//     font-size: 24px;
-// `;
-
 const ImageWrapper = styled.div`
     width: 100%;
     max-width: 670px;
@@ -141,24 +129,12 @@ const Footer = ({ setPopupState }) => {
                             fontWeight="800"
                             color="#a50505"
                             transform="uppercase"
-                            lineHeight={['54px', '0.9em']}
+                            lineHeight={['54px', '1em']}
                             userSelect="none"
                             fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                         >
                             It’s game time!
                         </Text>
-                        {/* <Dates>
-                            <EventTitle color="#FFFFFF" size="28px" />
-                            <Text
-                                fontFamily="Montserrat-Italic"
-                                color="#FFFFFF"
-                                size="20px"
-                                transform="uppercase"
-                                m="4px 0 0 0"
-                            >
-                                Apr <Bold>27 - </Bold> June <Bold>2</Bold>
-                            </Text>
-                        </Dates> */}
                     </TextWrapper>
 
                     <ImageWrapper>

@@ -1,8 +1,10 @@
 import styled from 'styled-components/macro';
 import Form from '../Form';
 import Text from '../Text';
-import marioPole from '../../images/form-mario.webp';
-import popupIcons from '../../images/popup-icons.webp';
+import marioPoleImg from '../../images/form-mario.webp';
+import evilPoleImg from '../../images/bowser/mario-evil-pole.png';
+import popupIconsImg from '../../images/popup-icons.webp';
+import spikePatternImg from '../../images/bowser/spike-pattern.png';
 import CrossIcon from '../../icons/CrossIcon';
 import theme from '../../utils/theme';
 import { useBowser } from './BowserContext';
@@ -46,10 +48,12 @@ const FormWrapper = styled.div`
 `;
 
 const BackgroundWrapper = styled.div`
-    background-color: red;
+    background-color: ${(props) => (props.isEvil ? 'black' : 'red')};
     padding: 18px 14px 68px;
     border-radius: 10px 10px 0 0;
     position: relative;
+
+    ${(props) => (props.isEvil && `background-image: url(${spikePatternImg})`)};
 
     ${theme.bp.desktop} {
         border-radius: 0 10px 10px 0;
@@ -95,7 +99,7 @@ const SignUpPopup = ({ showPopup, setPopupState }) => {
                 <FormWrapper>
                     <Form isPopup />
                 </FormWrapper>
-                <BackgroundWrapper>
+                <BackgroundWrapper isEvil={isEvil}>
                     <CrossWrapper onClick={() => setPopupState(false)}>
                         <CrossIcon />
                     </CrossWrapper>
@@ -104,14 +108,14 @@ const SignUpPopup = ({ showPopup, setPopupState }) => {
                         fontWeight="800"
                         fontSize={['40px', 'min(9vw, 76px)']}
                         transform="uppercase"
-                        color="#a50505"
-                        lineHeight="1em"
+                        color={isEvil ? 'white' : '#a50505'}
+                        lineHeight={isEvil ? ['1.2em', '1em'] : '1em'}
                         maxWidth="300px"
                     >
                         It’s game time!
                     </Text>
-                    <Image src={marioPole} alt="mario on flag" />
-                    <Icons src={popupIcons} alt="popup icons" />
+                    <Image src={isEvil ? evilPoleImg : marioPoleImg} alt="mario on flag" />
+                    <Icons src={popupIconsImg} alt="popup icons" />
                 </BackgroundWrapper>
             </Wrapper>
         </DarkOverlay>
