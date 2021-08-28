@@ -72,8 +72,8 @@ const Image = styled.img`
     ${(props) => props.isEvil && `
         &:first-of-type {
             position: absolute;
-            bottom: -130px;
-            width: 60%;
+            bottom: -160px;
+            width: 80%;
             max-height: unset;
         }
 

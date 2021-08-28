@@ -66,7 +66,7 @@ const Content = styled.div`
     background-position: top;
     background-position: 50% 110%;
     background-size: 190% auto;
-    filter: ${(props) => props.isEvil && 'saturate(130%)'};
+    filter: ${(props) => props.isEvil && 'saturate(120%)'};
 
     ${theme.bp.desktop} {
         background-position: 50% 50%;
@@ -141,15 +141,15 @@ const Hero = ({ setPopupState }) => {
     const GridRef = useRef(null);
 
     // this is TRULY amazing
-    const gridStyles = Grid.componentStyle.rules[0];
-    const splitStyles = gridStyles.split(';');
+    // const gridStyles = Grid.componentStyle.rules[0];
+    // const splitStyles = gridStyles.split(';');
 
-    const digitRegex = /\d+/;
-    const gridRowCount = parseInt(splitStyles[3].match(digitRegex));
-    const gridColCount = parseInt(splitStyles[4].match(digitRegex));
+    // const digitRegex = /\d+/;
+    // const gridRowCount = parseInt(splitStyles[3].match(digitRegex));
+    // const gridColCount = parseInt(splitStyles[4].match(digitRegex));
 
-    console.log(`${gridRowCount} rows haHAAaaa`);
-    console.log(`${gridColCount} cols`);
+    // console.log(`${gridRowCount} rows haHAAaaa`);
+    // console.log(`${gridColCount} cols`);
 
     // const gridRowCount = splitStyles[4].split(':');
     // const gridColumnCount = splitStyles[3].split(':');
@@ -160,10 +160,10 @@ const Hero = ({ setPopupState }) => {
     // console.log(`${lmaoRow} rows haHAAaaa`);
     // console.log(`${lmaoCol} columns`);
 
-    console.log(Grid);
-    console.log(splitStyles);
-    console.log(gridRowCount);
-    console.log(gridColCount);
+    // console.log(Grid);
+    // console.log(splitStyles);
+    // console.log(gridRowCount);
+    // console.log(gridColCount);
 
     // test = gridStyles.split();
     // console.log(test);

@@ -3,15 +3,22 @@ import { useBowser } from './BowserContext';
 import styled from 'styled-components/macro';
 import Text from '../Text';
 import ShapeDivider from '../../icons/ShapeDivider';
+import theme from '../../utils/theme';
+
 import flyingImg from '../../images/gallery-flying.webp';
-import fairyStoryImg from '../../images/gallery-map.webp';
+import fairyStoryImg from '../../images/gallery-fairy.png';
 import castleImg from '../../images/gallery-castle.png';
 import bowserImg from '../../images/gallery-bowser.webp';
 import glassImg from '../../images/gallery-glass.webp';
 import bigMarioImg from '../../images/gallery-big-mario.webp';
 import marioImg from '../../images/gallery-mario.webp';
 import tubeImg from '../../images/gallery-pipe.webp';
-import theme from '../../utils/theme';
+import worldImg from '../../images/bowser/world.png';
+import angryCatsImg from '../../images/bowser/angry-cats.png';
+import furiousBowserImg from '../../images/bowser/furious-bowser.png';
+import furiousCatMarioImg from '../../images/bowser/furious-cat-mario.png';
+import marioCatFriendsImg from '../../images/bowser/mario-cat-friends.png';
+import bellImg from '../../images/bowser/bell.png';
 
 const Wrapper = styled.div.attrs(props => ({
     style: {
@@ -116,8 +123,8 @@ const FirstGroup = styled.div`
 
     ${theme.bp.desktop} {
         & > p {
-            margin-top: -220px;
-            margin-bottom: 460px;
+            margin-top: ${(props) => (props.isEvil ? '-400px' : '-260px')};
+            margin-bottom: ${(props) => (props.isEvil ? '480px' : '460px')};
             top: 120px;
         }
     }
@@ -125,7 +132,7 @@ const FirstGroup = styled.div`
 
 const FlyingImg = styled.img`
     max-width: 90%;
-    margin-left: -30px;
+    margin-left: ${(props) => (props.isEvil ? '12px' : '-30px')};
     margin-bottom: 400px;
     position: sticky;
     top: 30px;
@@ -134,14 +141,21 @@ const FlyingImg = styled.img`
     ${theme.bp.desktop} {
         width: 50%;
         z-index: 1;
-        margin-bottom: 0;
         top: calc(50vh - 100px);
-        max-width: 630px;
-        margin-left: -110px;
+
+        ${(props) => (props.isEvil ? `
+            margin-bottom: 160px;
+            max-width: 40vw;
+            margin-left: -20px;
+        ` : `
+            margin-bottom: 0;
+            max-width: 630px;
+            margin-left: -110px;
+        `)};
     }
 `;
 
-const FairyStoryImg = styled.img`
+const StoryImg = styled.img`
     align-self: flex-end;
     max-width: 300px;
     margin-right: 12px;
@@ -166,23 +180,41 @@ const SecondGroup = styled.div`
 
 const BowserImg = styled.img`
     position: sticky;
-    top: 340px;
     align-self: flex-end;
-    width: 160px;
     height: 234px;
     object-fit: cover;
     object-position: 0;
     overflow: hidden;
-    margin-bottom: 80px;
-    z-index: 1;
     filter: drop-shadow(-2px -2px 2px rgba(0, 0, 0, 0.1));
 
+    ${(props) => (props.isEvil ? `
+        top: 66vh;
+        width: 210px; 
+        margin-bottom: 10px; 
+        z-index: 10;
+    ` : `
+        top: 340px;
+        width: 160px; 
+        margin-bottom: 80px; 
+        z-index: 1;
+    `)};
+
+
     ${theme.bp.desktop} {
-        top: 40px;
-        width: 660px;
         height: auto;
-        margin-right: -350px;
-        margin-bottom: 110px;
+
+        ${(props) => (props.isEvil ? `
+            top: 35vh;
+            width: 460px;
+            margin-right: -50px;
+            margin-bottom: -64px;
+            z-index: 10;
+        ` : `
+            top: 40px;
+            width: 660px;
+            margin-right: -350px;
+            margin-bottom: 110px;
+        `)};
     }
 `;
 
@@ -212,7 +244,7 @@ const CastleImg = styled.img`
     margin-left: 12px;
     margin-bottom: 440px;
     border-radius: 10px;
-    margin-top: -100px;
+    margin-top: ${(props) => (props.isEvil ? '-250px' : '-100px')};
     position: sticky;
     top: 50px;
 
@@ -222,17 +254,17 @@ const CastleImg = styled.img`
         margin-left: 0;
         max-width: 80%;
         margin-bottom: 300px;
-        margin-top: 150px;
+        margin-top: ${(props) => (props.isEvil ? '-200px' : '50px')};
     }
 `;
 
 const SmallImageWrapper = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: ${(props) => (props.isEvil ? 'column-reverse' : 'column')};
+    margin-bottom: ${(props) => (props.isEvil ? '40px' : '140px')};
     align-items: flex-start;
     justify-content: center;
     margin-top: -270px;
-    margin-bottom: 140px;
     top: 250px;
     position: sticky;
 
@@ -252,19 +284,42 @@ const SmallImg = styled.img`
     border-radius: 10px;
     box-shadow: 2px -20px 60px black;
     max-width: 100%;
+    
+    &:first-of-type {
+        ${(props) => (props.isEvil && `
+            box-shadow: none;
+            margin-left: -30px;
+            width: 70%;
+        `)};
+    }
     &:last-of-type {
-        margin-left: 10px;
+        margin-left: ${(props) => (props.isEvil ? '50px' : '10px')};
         margin-top: -14px;
+        margin-bottom: ${(props) => (props.isEvil && '20px')};
+        width: ${(props) => (props.isEvil && '82%')};
     }
 
     ${theme.bp.desktop} {
-        width: 60%;
+        width: 70%;
         max-width: 1000px;
         margin-left: -30px;
         border-radius: 10px;
-        box-shadow: 2px -50px 200px black;
+        box-shadow: ${(props) => (props.isEvil ? 'none' : '2px -50px 200px black')};
+
+        &:first-of-type {
+            ${(props) => (props.isEvil && `
+                width: 660px;
+                margin-left: -110px;
+                margin-bottom: -110px;
+                margin-top: 180px;
+                margin-right: -130px;
+            `)};
+        }
+
         &:last-of-type {
             margin-left: 20px;
+            box-shadow: 2px -50px 200px #090034;
+            width: 70%;
         }
     }
 `;
@@ -310,12 +365,16 @@ const GameGallery = () => {
                 <ShapeDivider color="white" />
             </ShapeBottom>
             <EventGalleryWrapper>
-                <TubeImageBlur src={tubeImg} alt="tube" />
-                <TubeImage src={tubeImg} alt="tube" />
+
+                {!isEvil && <>
+                    <TubeImageBlur src={tubeImg} alt="tube" />
+                    <TubeImage src={tubeImg} alt="tube" />
+                </>}
 
                 <TitleWrapper>
                     <Text
-                        m={['0 12px 8px', '30px 64px 48px']}
+                        fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
+                        m={isEvil ? ['140px 12px 24px', '80px 64px 48px'] : ['0 12px 8px', '30px 64px 48px']}
                         lineHeight="1em"
                         fontSize={['38px', '60px']}
                         fontWeight="800"
@@ -326,11 +385,13 @@ const GameGallery = () => {
                         Get a sneak peek of the new action-packed game!
                     </Text>
                 </TitleWrapper>
-                <FirstGroup>
+                <FirstGroup isEvil={isEvil}>
                     <FlyingImg
-                        src={flyingImg}
-                        alt="Mario and friends flying on water dino"
+                        isEvil={isEvil}
+                        src={isEvil ? marioCatFriendsImg : flyingImg}
+                        alt="Mario and friends"
                     />
+                    
                     <Text
                         m={['0px 12px', '0 30px']}
                         color="white"
@@ -345,25 +406,33 @@ const GameGallery = () => {
                         and scratching, to overcome Bowser and his minions.
                     </Text>
 
-                    <FairyStoryImg src={fairyStoryImg} alt="Distressed fairy" />
+                    <StoryImg src={isEvil ? worldImg : fairyStoryImg} alt="Distressed fairy" />
                 </FirstGroup>
 
                 <SecondGroup>
                     <BowserImg
-                        src={bowserImg}
+                        isEvil={isEvil}
+                        src={isEvil ? furiousCatMarioImg : bowserImg}
                         alt="Menacing Bowser holding a fairy in a glass bottle"
                     />
-                    <GlassImg
-                        src={glassImg}
-                        alt="A trapped fairy in a small bottle"
-                    />
-                    <CastleImg src={castleImg} alt="Bowsers castle" />
-                    <SmallImageWrapper>
+                    {!isEvil && 
+                        <GlassImg
+                            src={glassImg}
+                            alt="A trapped fairy in a small bottle"
+                        />
+                    }
+
+                    <CastleImg isEvil={isEvil} src={isEvil ? furiousBowserImg : castleImg} alt="Furious bowser" />
+
+                    <SmallImageWrapper isEvil={isEvil}>
                         <SmallImg
-                            src={marioImg}
+                            isEvil={isEvil}
+                            src={isEvil ? bellImg : marioImg}
                             alt="Mario brothers in cat suits"
                         />
-                        <SmallImg src={bigMarioImg} alt="beeg beeg mario" />
+
+                        <SmallImg isEvil={isEvil} src={isEvil ? angryCatsImg : bigMarioImg} alt="beeg beeg mario" />
+
                     </SmallImageWrapper>
                     <HiddenStickyStop />
                 </SecondGroup>
