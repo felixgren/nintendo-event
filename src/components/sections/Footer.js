@@ -1,6 +1,8 @@
 import styled from 'styled-components/macro';
-import iconImage from '../../images/footer-icons.webp';
+import iconImg from '../../images/footer-icons.webp';
+import evilIconImg from '../../images/bowser/background-icons.png';
 import marioImage from '../../images/footer-cats.webp';
+import allCats from '../../images/bowser/all-cats.png';
 import youtubeLogo from '../../images/footer-youtube.webp';
 import twitterLogo from '../../images/footer-twitter.webp';
 import instagramLogo from '../../images/footer-instagram.webp';
@@ -13,7 +15,8 @@ import { useBowser } from './BowserContext';
 
 const Wrapper = styled.div`
     width: 100%;
-    background: #ff0000;
+    background-color: ${(props) => props.isEvil ? 'black' : 'red'};
+    border-top: ${(props) => props.isEvil && '1px solid red'};
 `;
 
 const FooterComp = styled.footer`
@@ -41,7 +44,7 @@ const Div = styled.div`
 
 const TopIcons = styled.img`
     width: 100%;
-    height: 90px;
+    height: 79px;
     object-fit: cover;
     padding: 20px 0;
 
@@ -76,11 +79,12 @@ const ImageWrapper = styled.div`
 `;
 
 const Image = styled.img`
-    margin-top: -30px;
+    margin-top: ${(props) => props.isEvil ? '20px' : '-30px'};
     z-index: 1;
-    width: 100%;
-    max-width: 540px;
+    width: ${(props) => props.isEvil ? '120%' : '100%'};
+    max-width: ${(props) => props.isEvil ? 'unset' : '540px'};
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.25));
+    margin-right: ${(props) => props.isEvil && '-24px'};
 `;
 
 const BottomWrapper = styled.div`
@@ -118,18 +122,18 @@ const ButtonWrapper = styled.div`
 const Footer = ({ setPopupState }) => {
     const isEvil = useBowser();
     return (
-        <Wrapper>
+        <Wrapper isEvil={isEvil}>
             <FooterComp>
-                <TopIcons src={iconImage} alt="Icons of mario characters" />
+                <TopIcons src={isEvil ? evilIconImg : iconImg} alt="Icons of mario characters" />
 
                 <Div>
                     <TextWrapper>
                         <Text
-                            fontSize={['60px', 'min(9.5vw, 160px)']}
+                            fontSize={[isEvil ? '56px' : '53px', 'min(9.5vw, 160px)']}
                             fontWeight="800"
                             color="#a50505"
                             transform="uppercase"
-                            lineHeight={['54px', '1em']}
+                            lineHeight={isEvil ? '1.1em' : ['50px', '1em']}
                             userSelect="none"
                             fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
                         >
@@ -141,7 +145,7 @@ const Footer = ({ setPopupState }) => {
                         <ButtonWrapper onClick={() => setTimeout(() => setPopupState(true), 200)}>
                             <Button isBlue />
                         </ButtonWrapper>
-                        <Image src={marioImage} alt="Mario and friends" />
+                        <Image isEvil={isEvil} src={isEvil ? allCats : marioImage} alt="Mario and friends" />
                     </ImageWrapper>
                 </Div>
             </FooterComp>

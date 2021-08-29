@@ -1,12 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import Thumbnail from './../VideoThumbnail';
-import video1 from '../../videos/video1.mp4';
-import video2 from '../../videos/video2.mp4';
-import video3 from '../../videos/video1.mp4';
 import Text from '../Text';
 import theme from '../../utils/theme';
 import { useBowser } from './BowserContext';
+
+import marioVideo1 from '../../videos/marioVideo1.mov';
+import marioVideo2 from '../../videos/marioVideo2.mp4';
+import marioVideo3 from '../../videos/marioVideo3.mp4';
+
+import bowserVideo1 from '../../videos/bowsersfury3.mov';
+import bowserVideo2 from '../../videos/bowsersfury2.MOV';
+import bowserVideo3 from '../../videos/bowsersfury1.mov';
 
 const Wrapper = styled.div`
     width: 100%;
@@ -94,45 +99,81 @@ const Fade = styled.div`
 
 const VideoGallery = () => {
     const isEvil = useBowser();
+    const [activeVideo, setActiveVideo] = useState();
+    const [activeFade, setFade] = useState(false);
+    const [videos, setVideos] = useState([]);
 
-    const videos = [
+    let bowserVideos = [          
         {
-            src: video1,
-            thumbnailDesc: 'C.1 Bowsers car',
+            src: bowserVideo1,
+            thumbnailDesc: 'C.1 Bowser Jrs world',
             title: 'Challenge 1',
             description:
                 'First challenge: be the one to get all 1000 lives first schallenge: be the one to get be the one to get all 1000 lives first schallenge: be the one to get...',
         },
         {
-            src: video2,
+            src: bowserVideo2,
             thumbnailDesc: 'C.2 Cat power',
             title: 'Challenge 2',
             description:
                 'Second challenge: be the one to get all 1000 lives first schallenge: be the one to get be the one to get all 1000 lives first schallenge: be the one to get...',
         },
         {
-            src: video3,
-            thumbnailDesc: 'C.3 test',
+            src: bowserVideo3,
+            thumbnailDesc: 'C.3 Speed test',
             title: 'Challenge 3',
             description:
                 'Third challenge: be the one to get all 1000 lives first schallenge: be the one to get be the one to get all 1000 lives first schallenge: be the one to get...',
         },
     ];
 
-    const [activeVideo, setVideo] = useState(videos[0]);
-    const [activeFade, setFade] = useState(false);
+    let marioVideos = [
+        {
+            src: marioVideo1,
+            thumbnailDesc: 'C.1 Bowsers car',
+            title: 'Challenge 1',
+            description:
+                'First challenge: be the one to get all 1000 lives first schallenge: be the one to get be the one to get all 1000 lives first schallenge: be the one to get...',
+        },
+        {
+            src: marioVideo2,
+            thumbnailDesc: 'C.2 Cat power',
+            title: 'Challenge 2',
+            description:
+                'Second challenge: be the one to get all 1000 lives first schallenge: be the one to get be the one to get all 1000 lives first schallenge: be the one to get...',
+        },
+        {
+            src: marioVideo3,
+            thumbnailDesc: 'C.3 Speed test',
+            title: 'Challenge 3',
+            description:
+                'Third challenge: be the one to get all 1000 lives first schallenge: be the one to get be the one to get all 1000 lives first schallenge: be the one to get...',
+        },
+    ];
+
+    useEffect(() => {
+        if(isEvil) {
+            setVideos(bowserVideos);
+            setActiveVideo(bowserVideos[0]);
+        }
+        if(!isEvil) {
+            setVideos(marioVideos);
+            setActiveVideo(marioVideos[0]);
+        }
+    }, [isEvil]);
 
     return (
         <Wrapper>
             <ActiveVideo
                 activeFade={activeFade}
-                key={activeVideo.src}
-                muted
-                disablekb
+                key={activeVideo && activeVideo.src}
                 autoPlay
                 loop
+                playsInline
+                muted
+                disablekb
             >
-                <Source src={activeVideo.src} type="video/mp4" />
+                <Source src={activeVideo && activeVideo.src} type="video/mp4" />
             </ActiveVideo>
 
             <Fade activeFade={activeFade} />
@@ -145,7 +186,7 @@ const VideoGallery = () => {
                     color="white"
                     transform="uppercase"
                 >
-                    {activeVideo.title}
+                    {activeVideo && activeVideo.title}
                 </Text>
                 <Text
                     fontSize={['16px', '24px']}
@@ -154,25 +195,34 @@ const VideoGallery = () => {
                     color="white"
                     maxWidth={['320px', '470px']}
                 >
-                    {activeVideo.description}
+                    {activeVideo && activeVideo.description}
                 </Text>
             </TextWrapper>
 
             <ThumbnailWrapper>
-                {videos.map((video, key) => (
+                {videos && videos.map((video, key) => (
                     <Div
                         key={key}
                         onClick={() => {
                             setFade(true);
-                            setTimeout(() => setVideo(video), 250);
+                            setTimeout(() => setActiveVideo(video), 250);
                             setTimeout(() => setFade(false), 500);
                         }}
                     >
-                        <Thumbnail
-                            active={video.title === activeVideo.title}
-                            vidSrc={video.src}
-                            description={video.thumbnailDesc}
-                        />
+                        {isEvil && 
+                            <Thumbnail
+                                active={video.title === activeVideo && activeVideo.title}
+                                vidSrc={video.src}
+                                description={video.thumbnailDesc}
+                            />
+                        }
+                        {!isEvil && 
+                            <Thumbnail
+                                active={video.title === activeVideo && activeVideo.title}
+                                vidSrc={video.src}
+                                description={video.thumbnailDesc}
+                            />
+                        }
                     </Div>
                 ))}
             </ThumbnailWrapper>

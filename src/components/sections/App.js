@@ -38,7 +38,7 @@ function App() {
                     <GameInfo />
                     <GameGallery />
                     <SignUp />
-                    <Bowser />
+                    {/* <Bowser /> */}
                     {showPopup && (
                         <SignUpPopup
                             showPopup={showPopup}
