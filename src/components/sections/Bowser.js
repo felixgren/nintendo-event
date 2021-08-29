@@ -12,7 +12,7 @@ BowserSession()
     : console.log('BowserSession bool FALSE');
 
 const Wrapper = styled.div`
-    height: 160vh;
+    height: ${(props) => (props.isEvil ? '90vh' : '160vh')};
     background-color: ${(props) =>
         `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
     position: relative;
@@ -23,7 +23,8 @@ const Wrapper = styled.div`
 
     ${theme.bp.desktop} {
         overflow: unset;
-        height: 250vh;
+        height: ${(props) => (props.isEvil ? '120vh' : '250vh')};
+        min-height: 1080px;
     }
 `;
 
@@ -62,14 +63,14 @@ const StyledText = styled(Text)`
 const Fade = styled.div`
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
     width: 100%;
-    height: 700px;
+    height: ${(props) => (props.isEvil ? '350px' : '700px')};
     max-width: 1440px;
     position: absolute;
-    bottom: 120px;
-    z-index: 10;
+    bottom: ${(props) => (props.isEvil ? '0' : '120px')};
+    z-index: 12;
 
     ${theme.bp.desktop} {
-        bottom: 150px;
+        bottom: ${(props) => (props.isEvil ? '0' : '150px')};
         height: 500px;
     }
 `;
@@ -78,15 +79,17 @@ const BeegBowser = styled.img`
     width: 150%;
     max-width: 1440px;
     position: absolute;
-    bottom: 200px;
+    top: ${(props) => (props.isEvil ? '20px' : '400px')};
     margin-right: auto;
     margin-left: auto;
     transition: 500ms;
 
     ${theme.bp.desktop} {
-        bottom: 300px;
+        top: ${(props) => (props.isEvil ? '30px' : '550px')};
         width: 80%;
+        max-width: 1050px;
         opacity: 0.5;
+        z-index: 10;
     }
 `;
 
@@ -95,15 +98,17 @@ const BrightBeegBowser = styled.img`
     width: 150%;
     max-width: 1440px;
     position: absolute;
-    bottom: 200px;
+    top: 110px;
     margin-right: auto;
     margin-left: auto;
     opacity: ${(props) => (props.isEvil ? 1 : 0)};
     transition: 500ms;
 
     ${theme.bp.desktop} {
-        bottom: 150px;
+        top: 170px;
         width: 80%;
+        max-width: 1050px;
+        z-index: 11;
     }
 `;
 
@@ -179,30 +184,29 @@ const Bowser = () => {
     }, [scrollBg]);
 
     return (
-        <Wrapper ref={WrapperRef} scrollBg={scrollBg}>
+        <Wrapper isEvil={isEvil} ref={WrapperRef} scrollBg={scrollBg}>
             <DebugBar>
                 <p> isEvil bool: {isEvil ? 'TRUE' : 'FALSE'}</p>
                 <p> scrollBg: {scrollBg}</p>
                 <p> scrollRef: {refScrollDecimal}</p>
             </DebugBar>
-            <StyledText
-                refScrollDecimal={refScrollDecimal}
-                transform="uppercase"
-                fontSize={['36px', '120px']}
-                userSelect="none"
-                fontWeight="750"
-                textAlign="center"
-            >
-                Introducing...
-            </StyledText>
 
-            <Fade />
-            <BeegBowser src={darkBowserImg} alt="Mega Bowser" />
-            <BrightBeegBowser
-                src={brightBowserImg}
-                alt="Mega Bowser"
-                isEvil={isEvil}
-            />
+            {!isEvil &&
+                <StyledText
+                    refScrollDecimal={refScrollDecimal}
+                    transform="uppercase"
+                    fontSize={['36px', '120px']}
+                    userSelect="none"
+                    fontWeight="750"
+                    textAlign="center"
+                >
+                    Introducing...
+                </StyledText>
+            }
+
+            <Fade isEvil={isEvil} />
+            <BeegBowser isEvil={isEvil} src={darkBowserImg} alt="Mega Bowser" />
+            <BrightBeegBowser isEvil={isEvil} src={brightBowserImg} alt="Mega Bowser" />
         </Wrapper>
     );
 };

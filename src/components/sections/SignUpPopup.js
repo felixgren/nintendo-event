@@ -109,7 +109,7 @@ const SignUpPopup = ({ showPopup, setPopupState }) => {
                         fontSize={['40px', 'min(9vw, 76px)']}
                         transform="uppercase"
                         color={isEvil ? 'white' : '#a50505'}
-                        lineHeight={isEvil ? ['1.2em', '1em'] : '1em'}
+                        lineHeight={isEvil ? ['1.2em', '1.1em'] : '1em'}
                         maxWidth="300px"
                     >
                         It’s game time!
