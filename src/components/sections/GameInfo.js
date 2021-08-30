@@ -130,11 +130,8 @@ const Line = styled.hr`
     border: none;
     width: 100vw;
     margin-top: 40px;
-
-    ${theme.bp.desktop} {
-        margin-left: -84px;
-        width: 110vw;
-    }
+    position: absolute;
+    left: 0;
 `;
 
 const GameInfo = () => {
@@ -159,7 +156,7 @@ const GameInfo = () => {
 
                 <Text
                     fontFamily={isEvil ? 'NewRocker' : 'MontSerrat'}
-                    m={['40px 12px 12px', '50px 0 16px']}
+                    m={['40px 12px 12px', isEvil ? '110px 0 16px' : '50px 0 16px']}
                     lineHeight="1.1em"
                     fontSize={['38px', '60px']}
                     fontWeight="800"

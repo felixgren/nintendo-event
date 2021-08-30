@@ -12,6 +12,11 @@ import swicthImg from '../../images/sponsors-switch.webp';
 import theme from '../../utils/theme';
 import { useBowser } from './BowserContext';
 
+const FullWrapper = styled.div`
+    background-color: white;
+    width: 100%;
+`;
+
 const Wrapper = styled.div`
     display: flex;
     z-index: 4;
@@ -122,48 +127,50 @@ const Image = styled.img`
 const SignUp = () => {
     const isEvil = useBowser();
     return (
-        <Wrapper>
-            <EventInfoWrapper isEvil={isEvil}>
-                <EventInfo color={isEvil && 'blue'} />
-            </EventInfoWrapper>
+        <FullWrapper>
+            <Wrapper>
+                <EventInfoWrapper isEvil={isEvil}>
+                    <EventInfo color={isEvil && 'blue'} />
+                </EventInfoWrapper>
 
-            <FormWrapper>
-                <Form />
-                <Text
-                    fontWeight="800"
-                    fontSize={['80px', 'min(9.5vw, 150px)']}
-                    transform="uppercase"
-                    color="#FFB3B3"
-                    lineHeight={isEvil ? '1em' : '0.9em'}
-                    width="100%"
-                    maxWidth="500px"
-                    userSelect="none"
-                    fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
-                >
-                    It’s game time!
-                </Text>
+                <FormWrapper>
+                    <Form />
+                    <Text
+                        fontWeight="800"
+                        fontSize={['80px', 'min(9.5vw, 150px)']}
+                        transform="uppercase"
+                        color="#FFB3B3"
+                        lineHeight={isEvil ? '1em' : '0.9em'}
+                        width="100%"
+                        maxWidth="500px"
+                        userSelect="none"
+                        fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
+                    >
+                        It’s game time!
+                    </Text>
+                    <Image src={isEvil ? evilPoleImg : marioPoleImg} alt="Mario on flag" />
+                </FormWrapper>
+                <SponsorsWrapper>
+                    <Text
+                        transform="uppercase"
+                        fontSize={['24px', 'min(3.6vw, 48px)']}
+                        fontWeight="800"
+                        color="#FFB3B3"
+                        userSelect="none"
+                        fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
+                    >
+                        Sponsorship
+                    </Text>
+                    <FlexWrapper>
+                        <SponsorLogo src={gamestopImg} alt="Gamestop logo" />
+                        <SponsorLogo src={swicthImg} alt="Switch console logo" />
+                        <SponsorLogo src={nintendoImg} alt="Nintendo logo" />
+                        <SponsorLogo src={esrbImg} alt="ESRB Privacy logo" />
+                    </FlexWrapper>
+                </SponsorsWrapper>
                 <Image src={isEvil ? evilPoleImg : marioPoleImg} alt="Mario on flag" />
-            </FormWrapper>
-            <SponsorsWrapper>
-                <Text
-                    transform="uppercase"
-                    fontSize={['24px', 'min(3.6vw, 48px)']}
-                    fontWeight="800"
-                    color="#FFB3B3"
-                    userSelect="none"
-                    fontFamily={isEvil ? 'NewRocker' : 'Montserrat'}
-                >
-                    Sponsorship
-                </Text>
-                <FlexWrapper>
-                    <SponsorLogo src={gamestopImg} alt="Gamestop logo" />
-                    <SponsorLogo src={swicthImg} alt="Switch console logo" />
-                    <SponsorLogo src={nintendoImg} alt="Nintendo logo" />
-                    <SponsorLogo src={esrbImg} alt="ESRB Privacy logo" />
-                </FlexWrapper>
-            </SponsorsWrapper>
-            <Image src={isEvil ? evilPoleImg : marioPoleImg} alt="Mario on flag" />
-        </Wrapper>
+            </Wrapper>
+        </FullWrapper>
     );
 };
 
