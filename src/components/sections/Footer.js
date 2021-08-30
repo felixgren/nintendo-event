@@ -16,7 +16,6 @@ import { useBowser } from './BowserContext';
 const Wrapper = styled.div`
     width: 100%;
     background-color: ${(props) => props.isEvil ? 'black' : 'red'};
-    border-top: ${(props) => props.isEvil && '1px solid red'};
 `;
 
 const FooterComp = styled.footer`

@@ -11,7 +11,7 @@ import marioVideo3 from '../../videos/marioVideo3.mp4';
 
 import bowserVideo1 from '../../videos/bowsersfury3.mov';
 import bowserVideo2 from '../../videos/bowsersfury2.MOV';
-import bowserVideo3 from '../../videos/bowsersfury1.mov';
+import bowserVideo3 from '../../videos/bowsersfury3.mov';
 
 const Wrapper = styled.div`
     width: 100%;

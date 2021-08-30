@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useBowser } from './BowserContext';
+import { useBowser, useBowserUpdate } from './BowserContext';
 import styled from 'styled-components/macro';
 import Text from '../Text';
 import ShapeDivider from '../../icons/ShapeDivider';
@@ -310,7 +310,7 @@ const SmallImg = styled.img`
             ${(props) => (props.isEvil && `
                 width: 660px;
                 margin-left: -110px;
-                margin-bottom: -110px;
+                margin-bottom: -120px;
                 margin-top: 180px;
                 margin-right: -130px;
             `)};
@@ -322,6 +322,36 @@ const SmallImg = styled.img`
             width: 70%;
         }
     }
+
+    ${(props) => props.isReturnMario && `
+        transition: 0.2s;
+        cursor: pointer;
+        animation: Bell-Calling infinite 3s linear;
+        
+        &:hover {
+            animation: Bell-Calling 3s linear;
+            filter: grayscale(0%);
+        }
+
+        @keyframes Bell-Calling {
+            0% {
+                transform: scale(1);
+                filter: grayscale(80%);
+            }
+            10% {
+                transform: scale(1.05);
+                filter: grayscale(0%);
+            }
+            20% {
+                transform: scale(1);
+                filter: grayscale(60%);
+            }
+            100% {
+                transform: scale(1);
+                filter: grayscale(80%);
+            }
+        }
+    `};
 `;
 
 const HiddenStickyStop = styled.div`
@@ -333,6 +363,9 @@ const HiddenStickyStop = styled.div`
 const GameGallery = () => {
     const WrapperRef = useRef(null);
     const isEvil = useBowser();
+    const setEvil = useBowserUpdate();
+    const bowserSection = document.querySelector('#bowserSection');
+
     const [scrollBg, setScrollBg] = useState('0');
     // eslint-disable-next-line
     const [refScrollDecimal, setScrollDecimal] = useState(false);
@@ -355,6 +388,26 @@ const GameGallery = () => {
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
     }, [isEvil]);
+
+
+    const returnMarioMode = () => {
+        document.body.style.opacity = 0;
+        document.body.style.overflowY = 'hidden';
+        document.body.style.transition = 'opacity 800ms';
+        document.body.style.backgroundColor = 'red';
+
+        setTimeout(() => {
+            setEvil(false);
+            window.scrollTo({ top: 0, left: 0 });
+            document.body.style.overflowY = 'auto';
+            document.body.style.opacity = 1;
+            bowserSection.style.display = 'none';
+        }, 800);
+
+        setTimeout(() => {
+            document.body.style.backgroundColor = 'black';
+        }, 1600);
+    }
 
     return (
         <Wrapper ref={WrapperRef} scrollBg={scrollBg}>
@@ -427,8 +480,10 @@ const GameGallery = () => {
                     <SmallImageWrapper isEvil={isEvil}>
                         <SmallImg
                             isEvil={isEvil}
+                            isReturnMario={isEvil}
                             src={isEvil ? bellImg : marioImg}
                             alt="Mario brothers in cat suits"
+                            onClick={() => isEvil && returnMarioMode()}
                         />
 
                         <SmallImg isEvil={isEvil} src={isEvil ? angryCatsImg : bigMarioImg} alt="beeg beeg mario" />

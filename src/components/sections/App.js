@@ -32,13 +32,13 @@ function App() {
             <ThemeProvider theme={theme}>
                 <PageWrapper>
                     {/* <AnimationTest /> */}
-                    <SessionTester />
+                    {/* <SessionTester /> */}
                     <Hero setPopupState={setPopupState} />
                     <VideoGallery />
                     <GameInfo />
                     <GameGallery />
                     <SignUp />
-                    {/* <Bowser /> */}
+                    <Bowser />
                     {showPopup && (
                         <SignUpPopup
                             showPopup={showPopup}

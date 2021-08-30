@@ -184,12 +184,12 @@ const Bowser = () => {
     }, [scrollBg]);
 
     return (
-        <Wrapper isEvil={isEvil} ref={WrapperRef} scrollBg={scrollBg}>
-            <DebugBar>
+        <Wrapper id="bowserSection" isEvil={isEvil} ref={WrapperRef} scrollBg={scrollBg}>
+            {/* <DebugBar>
                 <p> isEvil bool: {isEvil ? 'TRUE' : 'FALSE'}</p>
                 <p> scrollBg: {scrollBg}</p>
                 <p> scrollRef: {refScrollDecimal}</p>
-            </DebugBar>
+            </DebugBar> */}
 
             {!isEvil &&
                 <StyledText
