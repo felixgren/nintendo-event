@@ -93,7 +93,7 @@ const SignUpPopup = ({ showPopup, setPopupState }) => {
                     <Form isPopup />
                 </FormWrapper>
                 <BackgroundWrapper>
-                    <CrossWrapper onClick={() => setPopupState(false)}>
+                    <CrossWrapper onClick={() => setTimeout(() => setPopupState(false), 200)}>
                         <CrossIcon />
                     </CrossWrapper>
                     <Text

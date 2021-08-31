@@ -1,8 +1,8 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components/macro';
-// import heroBackground from '../../images/hero-background.webp';
-import heroIcon1 from '../../images/hero/icon7.png';
-import evilHeroIcon1 from '../../images/hero/icon6.png';
+import heroBackground from '../../images/hero-background.webp';
+// import heroIcon1 from '../../images/hero/icon7.png';
+// import evilHeroIcon1 from '../../images/hero/icon6.png';
 import evilHeroBackground from '../../images/bowser/hero-evilbackground.webp';
 import heroLogo from '../../images/hero-logo.webp';
 import evilLogo from '../../images/bowser/bowser-logo.webp';
@@ -56,11 +56,14 @@ const Grid = styled.div`
 //     }
 // `;
 
+// background: ${(props) =>
+//     `url(${props.isEvil ? evilHeroIcon1 : heroIcon1})`};
+
 const Content = styled.div`
     width: 100%;
     height: 100%;
     background: ${(props) =>
-        `url(${props.isEvil ? evilHeroIcon1 : heroIcon1})`};
+        `url(${props.isEvil ? evilHeroBackground : heroBackground})`};
     background-position: top;
     background-position: 50% 110%;
     background-size: 190% auto;

@@ -5,7 +5,7 @@ import Text from '../Text';
 import ShapeDivider from '../../icons/ShapeDivider';
 import flyingImg from '../../images/gallery-flying.webp';
 import fairyStoryImg from '../../images/gallery-map.webp';
-import castleImg from '../../images/gallery-castle.webp';
+import castleImg from '../../images/gallery-castle.png';
 import bowserImg from '../../images/gallery-bowser.webp';
 import glassImg from '../../images/gallery-glass.webp';
 import bigMarioImg from '../../images/gallery-big-mario.webp';
@@ -17,10 +17,7 @@ const Wrapper = styled.div`
     width: 100%;
     position: relative;
     /* Refactor into variable */
-    background-color: ${(props) =>
-        `rgb(${70 - props.scrollBg}, ${147 - props.scrollBg}, ${
-            223 - props.scrollBg
-        })`};
+    background-color: ${(props) => `rgb(${255 - props.scrollBg}, 0, 0)`};
     ${theme.bp.desktop} {
         margin-top: 0;
     }
@@ -75,7 +72,7 @@ const TubeImageBlur = styled.img`
     z-index: 4;
 
     ${theme.bp.desktop} {
-        right: 290px;
+        right: 226px;
         height: 300px;
     }
 `;
@@ -90,8 +87,9 @@ const TubeImage = styled.img`
     z-index: 2;
 
     ${theme.bp.desktop} {
-        right: 290px;
+        right: 226px;
         height: 300px;
+        filter: drop-shadow(-3px -3px 40px rgba(0, 0, 0, 1));
     }
 `;
 
@@ -117,9 +115,9 @@ const FirstGroup = styled.div`
 
     ${theme.bp.desktop} {
         & > p {
-            margin-top: -380px;
+            margin-top: -220px;
             margin-bottom: 460px;
-            top: 140px;
+            top: 120px;
         }
     }
 `;
@@ -135,8 +133,8 @@ const FlyingImg = styled.img`
     ${theme.bp.desktop} {
         width: 50%;
         z-index: 1;
-        margin-bottom: 40px;
-        top: calc(50vh - 200px);
+        margin-bottom: 0;
+        top: calc(50vh - 100px);
         max-width: 630px;
         margin-left: -110px;
     }
@@ -151,9 +149,9 @@ const FairyStoryImg = styled.img`
     filter: drop-shadow(2px 0px 3px rgba(0, 0, 0, 0.2));
 
     ${theme.bp.desktop} {
-        margin-top: -160px;
+        margin-top: -60px;
         max-width: 600px;
-        margin-right: 82px;
+        margin-right: 30px;
         margin-bottom: 20px;
     }
 `;
@@ -176,13 +174,13 @@ const BowserImg = styled.img`
     overflow: hidden;
     margin-bottom: 80px;
     z-index: 1;
-    filter: drop-shadow(-10px -10px 2px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(-2px -2px 2px rgba(0, 0, 0, 0.1));
 
     ${theme.bp.desktop} {
         top: 40px;
         width: 660px;
         height: auto;
-        margin-right: -290px;
+        margin-right: -350px;
         margin-bottom: 110px;
     }
 `;
@@ -199,7 +197,7 @@ const GlassImg = styled.img`
 
     ${theme.bp.desktop} {
         width: 81px;
-        margin-right: 268px;
+        margin-right: 208px;
         margin-top: -304px;
         margin-bottom: -130px;
         top: 363px;
@@ -223,7 +221,7 @@ const CastleImg = styled.img`
         margin-left: 0;
         max-width: 80%;
         margin-bottom: 300px;
-        margin-top: -220px;
+        margin-top: 150px;
     }
 `;
 
@@ -240,9 +238,10 @@ const SmallImageWrapper = styled.div`
     ${theme.bp.desktop} {
         align-items: center;
         flex-direction: row;
-        margin-top: 100px;
-        margin-bottom: 140px;
-        top: 480px;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        top: 550px;
+        width: 70%;
     }
 `;
 
@@ -260,7 +259,7 @@ const SmallImg = styled.img`
     ${theme.bp.desktop} {
         width: 60%;
         max-width: 1000px;
-        margin-left: -50px;
+        margin-left: -30px;
         border-radius: 10px;
         box-shadow: 2px -50px 200px black;
         &:last-of-type {
@@ -303,11 +302,7 @@ const GameGallery = () => {
     return (
         <Wrapper ref={WrapperRef} scrollBg={scrollBg}>
             <ShapeTop>
-                <ShapeDivider
-                    color={`rgba(${70 - scrollBg}, ${147 - scrollBg}, ${
-                        223 - scrollBg
-                    }, 1)`}
-                />
+                <ShapeDivider color={`rgb(${255 - scrollBg}, 0, 0)`} />
             </ShapeTop>
             <ShapeBottom>
                 <ShapeDivider color="white" />
@@ -318,7 +313,7 @@ const GameGallery = () => {
 
                 <TitleWrapper>
                     <Text
-                        m={['0 12px 8px', '30px 64px 0']}
+                        m={['0 12px 8px', '30px 64px 48px']}
                         lineHeight="1em"
                         fontSize={['38px', '60px']}
                         fontWeight="800"
@@ -335,7 +330,7 @@ const GameGallery = () => {
                         alt="Mario and friends flying on water dino"
                     />
                     <Text
-                        m={['0px 12px', '0 80px']}
+                        m={['0px 12px', '0 30px']}
                         color="white"
                         fontWeight="500"
                         fontSize={['16px', '24px']}
