@@ -156,7 +156,7 @@ const GameInfo = () => {
 
                 <Text
                     fontFamily={isEvil ? 'NewRocker' : 'MontSerrat'}
-                    m={['40px 12px 12px', isEvil ? '110px 0 16px' : '50px 0 16px']}
+                    m={isEvil ? ['70px 12px 12px', '110px 0 16px'] : ['40px 12px 12px', '50px 0 16px']}
                     lineHeight="1.1em"
                     fontSize={['38px', '60px']}
                     fontWeight="800"

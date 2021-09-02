@@ -2,17 +2,13 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useBowser, useBowserUpdate } from './BowserContext';
 import styled from 'styled-components/macro';
 import Text from '../Text';
-import BowserSession from '../../utils/bowserSession';
 import darkBowserImg from '../../images/bowser/bowser-dark.webp';
 import brightBowserImg from '../../images/bowser/bowser.webp';
 import theme from '../../utils/theme';
 
-BowserSession()
-    ? console.log('BowserSession bool TRUE')
-    : console.log('BowserSession bool FALSE');
-
 const Wrapper = styled.div`
     height: ${(props) => (props.isEvil ? '90vh' : '160vh')};
+    max-height: ${(props) => (props.isEvil ? '700px' : '860px')};
     background-color: ${(props) =>
         `rgba(${(props.scrollBg - 0.5) * 200}, 0, 0, 1)`};
     position: relative;
@@ -24,7 +20,8 @@ const Wrapper = styled.div`
     ${theme.bp.desktop} {
         overflow: unset;
         height: ${(props) => (props.isEvil ? '120vh' : '250vh')};
-        min-height: 1080px;
+        min-height: ${(props) => (props.isEvil ? '1200px' : '1600px')};
+        max-height: ${(props) => (props.isEvil ? '1200px' : '1600px')};
     }
 `;
 
@@ -62,24 +59,23 @@ const StyledText = styled(Text)`
 
 const Fade = styled.div`
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
-    width: 100%;
-    height: ${(props) => (props.isEvil ? '350px' : '700px')};
-    max-width: 1440px;
+    width: 100vw;
+    height: 350px;
     position: absolute;
-    bottom: ${(props) => (props.isEvil ? '0' : '120px')};
+    bottom: 0;
+    left: 0;
     z-index: 12;
 
     ${theme.bp.desktop} {
-        bottom: ${(props) => (props.isEvil ? '0' : '150px')};
-        height: 500px;
+        height: ${(props) => (props.isEvil ? '600px' : '500px')};
     }
 `;
 
 const BeegBowser = styled.img`
-    width: 150%;
-    max-width: 1440px;
+    width: 170%;
+    max-width: 700px;
     position: absolute;
-    top: ${(props) => (props.isEvil ? '20px' : '400px')};
+    top: ${(props) => (props.isEvil ? '20px' : '280px')};
     margin-right: auto;
     margin-left: auto;
     transition: 500ms;
@@ -87,7 +83,7 @@ const BeegBowser = styled.img`
     ${theme.bp.desktop} {
         top: ${(props) => (props.isEvil ? '30px' : '550px')};
         width: 80%;
-        max-width: 1050px;
+        max-width: 1200px;
         opacity: 0.5;
         z-index: 10;
     }
@@ -96,7 +92,7 @@ const BeegBowser = styled.img`
 const BrightBeegBowser = styled.img`
     z-index: 5;
     width: 150%;
-    max-width: 1440px;
+    max-width: 700px;
     position: absolute;
     top: 110px;
     margin-right: auto;
@@ -107,8 +103,18 @@ const BrightBeegBowser = styled.img`
     ${theme.bp.desktop} {
         top: 170px;
         width: 80%;
-        max-width: 1050px;
+        max-width: 1200px;
         z-index: 11;
+    }
+`;
+
+const SpaceDiv = styled.div`
+    height: 300px;
+    background-color: black;
+    margin-top: -10px;
+
+    ${theme.bp.desktop} {
+        display: none;
     }
 `;
 
@@ -181,33 +187,36 @@ const Bowser = () => {
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [scrollBg]);
+    }, [scrollBg, isEvil]);
 
     return (
-        <Wrapper id="bowserSection" isEvil={isEvil} ref={WrapperRef} scrollBg={scrollBg}>
-            {/* <DebugBar>
-                <p> isEvil bool: {isEvil ? 'TRUE' : 'FALSE'}</p>
-                <p> scrollBg: {scrollBg}</p>
-                <p> scrollRef: {refScrollDecimal}</p>
-            </DebugBar> */}
+        <>
+            <Wrapper id="bowserSection" isEvil={isEvil} ref={WrapperRef} scrollBg={scrollBg}>
+                {/* <DebugBar>
+                    <p> isEvil bool: {isEvil ? 'TRUE' : 'FALSE'}</p>
+                    <p> scrollBg: {scrollBg}</p>
+                    <p> scrollRef: {refScrollDecimal}</p>
+                </DebugBar> */}
 
-            {!isEvil &&
-                <StyledText
-                    refScrollDecimal={refScrollDecimal}
-                    transform="uppercase"
-                    fontSize={['36px', '120px']}
-                    userSelect="none"
-                    fontWeight="750"
-                    textAlign="center"
-                >
-                    Introducing...
-                </StyledText>
-            }
+                {!isEvil &&
+                    <StyledText
+                        refScrollDecimal={refScrollDecimal}
+                        transform="uppercase"
+                        fontSize={['36px', '120px']}
+                        userSelect="none"
+                        fontWeight="750"
+                        textAlign="center"
+                    >
+                        Introducing...
+                    </StyledText>
+                }
 
-            <Fade isEvil={isEvil} />
-            <BeegBowser isEvil={isEvil} src={darkBowserImg} alt="Mega Bowser" />
-            <BrightBeegBowser isEvil={isEvil} src={brightBowserImg} alt="Mega Bowser" />
-        </Wrapper>
+                <Fade isEvil={isEvil} />
+                <BeegBowser isEvil={isEvil} src={darkBowserImg} alt="Mega Bowser" />
+                <BrightBeegBowser isEvil={isEvil} src={brightBowserImg} alt="Mega Bowser" />
+            </Wrapper>
+            {!isEvil && <SpaceDiv/>}
+        </>
     );
 };
 
