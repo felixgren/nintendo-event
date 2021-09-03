@@ -56,10 +56,6 @@ const TopIcons = styled.img`
 const TextWrapper = styled.div`
     display: flex;
     position: relative;
-    /* width: auto; */
-    /* min-width: 800px; */
-    /* height: 300px; */
-
     ${theme.bp.desktop} {
         min-width: 62%;
     }

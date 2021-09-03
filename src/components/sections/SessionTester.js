@@ -39,8 +39,6 @@ const SessionTester = () => {
                 color="green"
                 onClick={() => {
                     setEvil(true);
-                    // sessionStorage.setItem(`${mykey}`, true);
-                    // console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}
             >
                 set true (context)
@@ -49,9 +47,6 @@ const SessionTester = () => {
                 color="blue"
                 onClick={() => {
                     setEvil(false);
-                    // updatehejTest('amazing');
-                    // sessionStorage.setItem(`${mykey}`, false);
-                    // console.log(`Set: ${sessionStorage.getItem(mykey)}`);
                 }}
             >
                 set false (context)

@@ -107,27 +107,6 @@ const CheckboxSpan = styled.span`
     ${theme.bp.desktop} {
         border: 3px solid red;
     }
-
-    /* &::before {
-        content: 'url("https://mdn.mozillademos.org/files/12668/MDN.svg%22)';
-        position: absolute;
-        font-size: 1.2em;
-        right: 0;
-        top: 0;
-        visibility: hidden;
-        background-color: red;
-    }
-
-    &:checked::before {
-        border-color: black;
-        background: #ddd;
-        color: gray;
-    }
-
-    &:checked::before {
-        visibility: visible;
-        background-color: red;
-    } */
 `;
 
 const Form = ({ isPopup }) => {
@@ -199,8 +178,6 @@ const Form = ({ isPopup }) => {
                         I have read and accepted the privacy policy
                     </Text>
                 </Label>
-
-                {/* <Input type="submit" value="Send" /> */}
                 <Button type="submit" />
             </StyledForm>
         </Wrapper>

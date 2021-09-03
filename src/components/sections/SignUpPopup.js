@@ -90,7 +90,7 @@ const Icons = styled.img`
     width: 90%;
 `;
 
-const SignUpPopup = ({ showPopup, setPopupState }) => {
+const SignUpPopup = ({ setPopupState }) => {
     const isEvil = useBowser();
 
     return (
