@@ -3,11 +3,8 @@ import iconImg from '../../images/footer-icons.webp';
 import evilIconImg from '../../images/bowser/background-icons.png';
 import marioImage from '../../images/footer-cats.webp';
 import allCats from '../../images/bowser/all-cats.png';
-import youtubeLogo from '../../images/footer-youtube.webp';
-import twitterLogo from '../../images/footer-twitter.webp';
-import instagramLogo from '../../images/footer-instagram.webp';
-import facebookLogo from '../../images/footer-facebook.webp';
-import nintendoLogo from '../../images/sponsors-nintendo-logo.webp';
+import socialLogos from '../../images/social-logos.png';
+import nintendoLogo from '../../images/sponsors-nintendo-logo.png';
 import Button from '../Button';
 import Text from '../Text';
 import theme from '../../utils/theme';
@@ -98,13 +95,10 @@ const SocialsWrapper = styled.div`
     justify-content: space-between;
 `;
 
-const SocialDiv = styled.div``;
-
 const SocialIcon = styled.img`
     padding-right: 16px;
     height: 20px;
-    cursor: pointer;
-
+    
     ${theme.bp.desktop} {
         height: 29px;
     }
@@ -146,12 +140,7 @@ const Footer = ({ setPopupState }) => {
             </FooterComp>
             <BottomWrapper>
                 <SocialsWrapper>
-                    <SocialDiv>
-                        <SocialIcon src={twitterLogo} alt="Twitter" />
-                        <SocialIcon src={facebookLogo} alt="Facebook" />
-                        <SocialIcon src={instagramLogo} alt="Instagram" />
-                        <SocialIcon src={youtubeLogo} alt="Youtube" />
-                    </SocialDiv>
+                    <SocialIcon src={socialLogos} alt="Social Icons" />
                     <SocialIcon src={nintendoLogo} alt="Nintendo logo" />
                 </SocialsWrapper>
             </BottomWrapper>

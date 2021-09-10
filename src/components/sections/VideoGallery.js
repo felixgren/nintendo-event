@@ -7,7 +7,7 @@ import { useBowser } from './BowserContext';
 
 import marioVideo1 from '../../videos/marioVideo1.mov';
 import marioVideo2 from '../../videos/marioVideo2.mp4';
-import marioVideo3 from '../../videos/reserv.mov';
+import marioVideo3 from '../../videos/marioVideo3.mov';
 
 import bowserVideo1 from '../../videos/bowsersfury3.mov';
 import bowserVideo2 from '../../videos/bowsersfury2.mov';

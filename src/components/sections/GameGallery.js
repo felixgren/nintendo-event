@@ -10,7 +10,7 @@ import fairyStoryImg from '../../images/gallery-fairy.png';
 import castleImg from '../../images/gallery-castle.png';
 import bowserImg from '../../images/gallery-bowser.webp';
 import glassImg from '../../images/gallery-glass.webp';
-import bigMarioImg from '../../images/gallery-big-mario.webp';
+import bigMarioImg from '../../images/gallery-big-mario.png';
 import marioImg from '../../images/gallery-mario.webp';
 import tubeImg from '../../images/gallery-pipe.webp';
 import worldImg from '../../images/bowser/world.png';

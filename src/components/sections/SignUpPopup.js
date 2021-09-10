@@ -1,10 +1,10 @@
 import styled from 'styled-components/macro';
 import Form from '../Form';
 import Text from '../Text';
-import marioPoleImg from '../../images/form-mario.webp';
+import marioPoleImg from '../../images/form-mario.png';
 import evilPoleImg from '../../images/bowser/mario-evil-pole.png';
 import popupIconsImg from '../../images/popup-icons.webp';
-import spikePatternImg from '../../images/bowser/spike-pattern.png';
+import spikePatternImg from '../../images/bowser/form-spikepattern.webp';
 import CrossIcon from '../../icons/CrossIcon';
 import theme from '../../utils/theme';
 import { useBowser } from './BowserContext';
@@ -115,7 +115,7 @@ const SignUpPopup = ({ setPopupState }) => {
                         It’s game time!
                     </Text>
                     <Image src={isEvil ? evilPoleImg : marioPoleImg} alt="mario on flag" />
-                    <Icons src={popupIconsImg} alt="popup icons" />
+                    {!isEvil && <Icons src={popupIconsImg} alt="popup icons" />}
                 </BackgroundWrapper>
             </Wrapper>
         </DarkOverlay>

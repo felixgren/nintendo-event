@@ -16,6 +16,7 @@ const Wrapper = styled.div`
     justify-content: center;
     transition: 0.3s;
     overflow: hidden;
+    margin-bottom: ${(props) => (props.isEvil ? '0px' : '300px')};
 
     ${theme.bp.desktop} {
         overflow: unset;
@@ -215,7 +216,6 @@ const Bowser = () => {
                 <BeegBowser isEvil={isEvil} src={darkBowserImg} alt="Mega Bowser" />
                 <BrightBeegBowser isEvil={isEvil} src={brightBowserImg} alt="Mega Bowser" />
             </Wrapper>
-            {!isEvil && <SpaceDiv/>}
         </>
     );
 };

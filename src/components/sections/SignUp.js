@@ -3,12 +3,12 @@ import EventInfo from '../EventInfo';
 import Form from '../Form';
 import Text from '../Text';
 
-import marioPoleImg from '../../images/form-mario.webp';
+import marioPoleImg from '../../images/form-mario.png';
 import evilPoleImg from '../../images/bowser/mario-evil-pole.png';
-import nintendoImg from '../../images/sponsors-nintendo-logo.webp';
-import esrbImg from '../../images/sponsors-esrb.webp';
-import gamestopImg from '../../images/sponsors-gamestop.webp';
-import swicthImg from '../../images/sponsors-switch.webp';
+import nintendoImg from '../../images/sponsors-nintendo-logo.png';
+import esrbImg from '../../images/sponsors-esrb.png';
+import gamestopImg from '../../images/sponsors-gamestop.png';
+import swicthImg from '../../images/sponsors-switch.png';
 import theme from '../../utils/theme';
 import { useBowser } from './BowserContext';
 
