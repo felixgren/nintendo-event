@@ -172,6 +172,7 @@ const VideoGallery = () => {
                 playsInline
                 muted
                 disablekb
+                disableRemotePlayback
             >
                 <Source src={activeVideo && activeVideo.src} type="video/mp4" />
             </ActiveVideo>
