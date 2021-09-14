@@ -6,19 +6,19 @@ import ShapeDivider from '../../icons/ShapeDivider';
 import theme from '../../utils/theme';
 
 import flyingImg from '../../images/gallery-flying.webp';
-import fairyStoryImg from '../../images/gallery-fairy.png';
-import castleImg from '../../images/gallery-castle.png';
+import fairyStoryImg from '../../images/gallery-fairy.webp';
+import castleImg from '../../images/gallery-castle.webp';
 import bowserImg from '../../images/gallery-bowser.webp';
 import glassImg from '../../images/gallery-glass.webp';
-import bigMarioImg from '../../images/gallery-big-mario.png';
+import bigMarioImg from '../../images/gallery-big-mario.webp';
 import marioImg from '../../images/gallery-mario.webp';
 import tubeImg from '../../images/gallery-pipe.webp';
-import worldImg from '../../images/bowser/world.png';
-import angryCatsImg from '../../images/bowser/angry-cats.png';
-import furiousBowserImg from '../../images/bowser/furious-bowser.png';
-import furiousCatMarioImg from '../../images/bowser/furious-cat-mario.png';
-import marioCatFriendsImg from '../../images/bowser/mario-cat-friends.png';
-import bellImg from '../../images/bowser/bell.png';
+import worldImg from '../../images/bowser/world.webp';
+import angryCatsImg from '../../images/bowser/angry-cats.webp';
+import furiousBowserImg from '../../images/bowser/furious-bowser.webp';
+import furiousCatMarioImg from '../../images/bowser/furious-cat-mario.webp';
+import marioCatFriendsImg from '../../images/bowser/mario-cat-friends.webp';
+import bellImg from '../../images/bowser/bell.webp';
 
 const Wrapper = styled.div.attrs(props => ({
     style: {

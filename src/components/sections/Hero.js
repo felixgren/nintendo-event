@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import styled from 'styled-components/macro';
 import heroBackground from '../../images/hero-background.webp';
 import evilHeroBackground from '../../images/bowser/hero-evilbackground.webp';
-import heroLogo from '../../images/hero-logo.png';
+import heroLogo from '../../images/hero-logo.webp';
 import evilLogo from '../../images/bowser/bowser-logo.webp';
 import Button from '../Button';
 import EventTitle from '../EventTitle';
@@ -70,15 +70,6 @@ const InfoWrapper = styled.div`
     padding: 14px 24px 0;
     margin: auto;
     height: 130px;
-
-    ${(props) =>
-        props.isEvil
-            ? `
-            background: linear-gradient(270deg, rgba(0, 0, 0, 0) 0%, #000000 52.08%, rgba(0, 0, 0, 0) 100%);
-            `
-            : `
-            background: linear-gradient(270deg, rgba(255, 0, 0, 0) 0%, #ff0000 52.08%, rgba(255, 0, 0, 0) 100%);
-    `};
 
     ${theme.bp.desktop} {
         padding: 20px 24px;

@@ -16,28 +16,13 @@ const Wrapper = styled.div`
     justify-content: center;
     transition: 0.3s;
     overflow: hidden;
-    margin-bottom: ${(props) => (props.isEvil ? '0px' : '300px')};
+    border-bottom: ${(props) => (props.isEvil ? '0px' : '300px solid black')};
 
     ${theme.bp.desktop} {
         overflow: unset;
         height: ${(props) => (props.isEvil ? '120vh' : '250vh')};
         min-height: ${(props) => (props.isEvil ? '1200px' : '1600px')};
         max-height: ${(props) => (props.isEvil ? '1200px' : '1600px')};
-    }
-`;
-
-const DebugBar = styled.div`
-    z-index: 1337;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 120px;
-    width: 100px;
-    background: lime;
-    opacity: 0.5;
-    pointer-events: none;
-    & > p {
-        padding: 2px;
     }
 `;
 
@@ -106,16 +91,6 @@ const BrightBeegBowser = styled.img`
         width: 80%;
         max-width: 1200px;
         z-index: 11;
-    }
-`;
-
-const SpaceDiv = styled.div`
-    height: 300px;
-    background-color: black;
-    margin-top: -10px;
-
-    ${theme.bp.desktop} {
-        display: none;
     }
 `;
 
@@ -193,12 +168,6 @@ const Bowser = () => {
     return (
         <>
             <Wrapper id="bowserSection" isEvil={isEvil} ref={WrapperRef} scrollBg={scrollBg}>
-                {/* <DebugBar>
-                    <p> isEvil bool: {isEvil ? 'TRUE' : 'FALSE'}</p>
-                    <p> scrollBg: {scrollBg}</p>
-                    <p> scrollRef: {refScrollDecimal}</p>
-                </DebugBar> */}
-
                 {!isEvil &&
                     <StyledText
                         refScrollDecimal={refScrollDecimal}

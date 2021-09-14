@@ -2,7 +2,7 @@ import styled from 'styled-components/macro';
 import iconImg from '../../images/footer-icons.webp';
 import evilIconImg from '../../images/bowser/background-icons.png';
 import marioImage from '../../images/footer-cats.webp';
-import allCats from '../../images/bowser/all-cats.png';
+import allCats from '../../images/bowser/all-cats.webp';
 import socialLogos from '../../images/social-logos.png';
 import nintendoLogo from '../../images/sponsors-nintendo-logo.png';
 import Button from '../Button';

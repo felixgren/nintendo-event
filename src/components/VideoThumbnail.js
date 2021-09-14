@@ -43,7 +43,7 @@ const VideoThumbnail = ({ vidSrc, description, active }) => {
                 onMouseEnter={(e) => e.target.play()}
                 onMouseLeave={(e) => e.target.pause()}
             >
-                <Source src={vidSrc} type="video/mp4" />
+                <Source src={vidSrc} type="video/mp4"/>
             </StyledVideo>
             <Text color="white" fontSize={['14px', '16px']} userSelect="none">
                 {description}

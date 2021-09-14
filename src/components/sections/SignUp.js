@@ -3,8 +3,8 @@ import EventInfo from '../EventInfo';
 import Form from '../Form';
 import Text from '../Text';
 
-import marioPoleImg from '../../images/form-mario.png';
-import evilPoleImg from '../../images/bowser/mario-evil-pole.png';
+import marioPoleImg from '../../images/form-mario.webp';
+import evilPoleImg from '../../images/bowser/mario-evil-pole.webp';
 import nintendoImg from '../../images/sponsors-nintendo-logo.png';
 import esrbImg from '../../images/sponsors-esrb.png';
 import gamestopImg from '../../images/sponsors-gamestop.png';
