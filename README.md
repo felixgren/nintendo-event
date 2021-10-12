@@ -1,10 +1,11 @@
-<img src="https://media1.tenor.com/images/0a01a61946fbff2de62c7dae33fc0be2/tenor.gif" width=30%/>
+<p align="center"><img src="https://user-images.githubusercontent.com/33127919/137032115-fb37b175-88ae-4c66-8c3d-45727cf99aed.png" width="100%"></p>
 
-# Nintendo Event
+## Nintendo Event
+I created this website using React and styled components with a focus to keep it as light on packages as possible. Make sure to scroll down far enough..
 
-<strong> LIVE: https://www.marioevent.live </strong>
+Designed it from scratch using Figma.
 
-Created using React and styled components. Designed in Figma.
+Live here, <strong> *www.mariotime.com* </strong>
 
 ## Installation
 ```
@@ -13,4 +14,3 @@ cd nintendo-event
 npm install
 npm start
 ```
-Open locally, if you are using VSCode this [VSCode-styled-components fork](https://marketplace.visualstudio.com/items?itemName=diegolincoln.vscode-styled-components) is recommended.
