@@ -5,7 +5,7 @@ I created this website using React and styled components with a focus to keep it
 
 Designed it from scratch using Figma.
 
-Live here, <strong> *www.mariotime.com* </strong>
+Live here, <strong> *[www.mariotime.com](https://nintendo-event.vercel.app/)* </strong>
 
 ## Installation
 ```
